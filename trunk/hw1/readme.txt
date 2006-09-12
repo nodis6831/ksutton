@@ -6,7 +6,8 @@
 # Garrett Shannon 
 # Kelly Sutton
 #
-
+Homework points in class:
+	9/12 - Garrett noted a + needed to be added to the constructor on the UML diagram of class Point 
 
 #### 
 # ACCESS
