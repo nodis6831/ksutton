@@ -5,7 +5,7 @@ package edu.lmu.cs.msutton.university;
 
 /**
  * @author Michael Sutton
- *
+ * @author Garrett Shannon
  */
 public class Person {
 
