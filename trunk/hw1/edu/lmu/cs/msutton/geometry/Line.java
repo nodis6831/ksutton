@@ -36,8 +36,7 @@ public class Line {
 	public void rotateLine(double theta) {
 
 		double i = 1;
-		double j = Math.atan(theta); // When using rotate line, this will
-		// always be a decimal
+		double j = Math.tan(theta); 
 
 		this.v = new Vector(i, j);
 	}
@@ -61,17 +60,12 @@ public class Line {
 
 			Line that = (Line) obj;
 
-			if (this.v.directionAsDegrees() == that.v.directionAsDegrees()
-					|| this.v.directionAsDegrees() == 180.0 + that.v
-							.directionAsDegrees()) {
-				// TODO test for the origin. Right now parallel lines register
-				// as being equal to eachother
-
-				// TODO clean up logic
-				if (this.isPointOnLine(that.p)) {
+			if (	this.isPointOnLine(that.p) && 
+					(		this.v.directionAsDegrees() == that.v.directionAsDegrees()
+						||	this.v.directionAsDegrees() == 180.0 + that.v.directionAsDegrees()
+						||  Math.abs( this.v.directionAsDegrees() - that.v.directionAsDegrees() ) < 0.001 )){ //The lines are close enough
 					return true;
 				}
-			}
 		}
 
 		return false;
@@ -88,10 +82,12 @@ public class Line {
 
 	}
 
-	public boolean isPointOnLine( Point p ){
-		
-		//TODO implement
-		
+	public boolean isPointOnLine( Point point ){
+
+		//point-slope formula
+		if( point.getY() - this.p.getY() == (this.v.getJ() / this.v.getI()) * ( point.getX() - this.p.getX() ) ){
+			return true;
+		}
 		return false;
 	}
 
