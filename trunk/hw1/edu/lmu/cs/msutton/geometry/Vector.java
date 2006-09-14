@@ -4,12 +4,13 @@
 package edu.lmu.cs.msutton.geometry;
 
 /**
+ * A simple vector class
+ * 
  * @author Kelly Sutton
  * @author Garrett Shannon
  */
 public class Vector {
 
-	// TODO should Vector be its own public class? Is this okay with Ray?
 	private double i;
 
 	private double j;
@@ -23,7 +24,7 @@ public class Vector {
 	 *            magnitude of y vector
 	 */
 	public Vector(double i, double j) {
-		super();
+
 		this.i = i;
 		this.j = j;
 	}
@@ -39,8 +40,8 @@ public class Vector {
 	 */
 	public static Vector FromAngleAndMagnitude(double angle, double magnitude) {
 
-		return new Vector(magnitude * Math.cos(angle), magnitude
-				* Math.sin(angle));
+		return new Vector(magnitude * Math.cos(angle),
+							magnitude * Math.sin(angle));
 	}
 
 	/**
@@ -71,14 +72,18 @@ public class Vector {
 	public double getJ() {
 		return j;
 	}
-
+	
+	/**
+	 * 
+	 * @return A double of the direction as radians
+	 */
 	public double directionAsDegrees() {
 
 		return Math.atan(this.j / this.i);
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * Displays the Vector object in the format "<i,j>"
 	 * 
 	 * @see java.lang.Object#toString()
 	 * @override
