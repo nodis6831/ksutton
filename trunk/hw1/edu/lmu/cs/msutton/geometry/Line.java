@@ -1,5 +1,7 @@
 package edu.lmu.cs.msutton.geometry;
+
 /**
+ * A simple vector-based line class
  * 
  * @author Kelly Sutton
  * @author Garrett Shannon
@@ -96,16 +98,10 @@ public class Line {
 			Line that = (Line) obj;
 
 			if (this.isPointOnLine(that.p)
-					&& (this.v.directionAsDegrees() == that.v
-							.directionAsDegrees()
-							|| this.v.directionAsDegrees() == 180.0 + that.v
-									.directionAsDegrees() || Math.abs(this.v
-							.directionAsDegrees()
-							- that.v.directionAsDegrees()) < 0.001)) { // The
-				// lines
-				// are
-				// close
-				// enough
+					&& (this.v.directionAsDegrees() == that.v.directionAsDegrees()
+							|| this.v.directionAsDegrees() == 180.0 + that.v.directionAsDegrees() 
+							|| Math.abs(this.v.directionAsDegrees() - that.v.directionAsDegrees()) < 0.001)) { 
+				//TODO make sure this is radianized
 				return true;
 			}
 		}
