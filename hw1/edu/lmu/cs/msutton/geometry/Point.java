@@ -55,17 +55,13 @@ public class Point {
 		return false;
 	}
 
-	/**
-	 * Calling the main of this Point class runs the unit tests
+	/*
+	 * @override (non-Javadoc)
 	 * 
-	 * @param args
+	 * @see java.lang.Object#toString()
 	 */
-	public static void main(String[] args) {
-		// TODO move unit tests to LineTest.java
-		Point p = new Point(0, 0);
-		Point q = new Point(10, 10);
-
-		assert p.equals(ORIGIN);
-		assert !q.equals(ORIGIN);
+	public String toString() {
+		return "(" + this.x + "," + this.y + ")";
 	}
+
 }
