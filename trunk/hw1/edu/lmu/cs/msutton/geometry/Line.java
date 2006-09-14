@@ -51,7 +51,7 @@ public class Line {
 
 	/*
 	 * Returns true iff this == that @param that A Line object (non-Javadoc)
-	 * 
+	 * NOTE: To avoid rounding error, equals() returns true of the direction of the vectors are within 0.001 of eachother
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object obj) {
