@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Michael Sutton
  * @author Garrett Shannon
- * @author Kelly Sutton
  * 
  */
 public class Student extends Person {
@@ -20,6 +20,18 @@ public class Student extends Person {
 	public Student(String name, boolean male, int yob, String country) {
 		super(name, male, yob);
 		this.country = country;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public int getCredits() {
+		return credits;
+	}
+
+	public double getGpa() {
+		return gpa;
 	}
 
 	public void updateTranscript(Section section, Grade grade) {
@@ -40,11 +52,15 @@ public class Student extends Person {
 			gradeList.add(grade);
 		}
 
+		@Override
 		public String toString() {
-			List tmp = new ArrayList;
-			s.
-			
-			return sectionList.toString() + gradeList.toString()
+			List tmp = new ArrayList();
+			for (int i = 0; i < sectionList.size(); i++) {
+				tmp.add(sectionList.get(i));
+				tmp.add(gradeList.get(i));
+			}
+
+			return tmp.toString();
 		}
 	}
 
