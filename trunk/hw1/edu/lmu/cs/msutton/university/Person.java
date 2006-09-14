@@ -1,5 +1,6 @@
-/**
- * 
+/*
+ * Note: The field for Phone and all its related methods have been commented out
+ * as it is not used by the Student class which is the main focus of this execise.
  */
 package edu.lmu.cs.msutton.university;
 
@@ -12,7 +13,7 @@ public class Person {
 
 	protected String name;
 
-	protected Phone phone;
+	//protected Phone phone;
 
 	protected int yob;
 
@@ -26,9 +27,9 @@ public class Person {
 		return name;
 	}
 
-	public Phone getPhone() {
-		return phone;
-	}
+	//public Phone getPhone() {
+	//	return phone;
+	//}
 
 	public int getYob() {
 		return yob;
@@ -38,7 +39,7 @@ public class Person {
 		return male;
 	}
 
-	public void setPhone(Phone phone) {
-		this.phone = phone;
-	}
+	//public void setPhone(Phone phone) {
+	//	this.phone = phone;
+	//}
 }
