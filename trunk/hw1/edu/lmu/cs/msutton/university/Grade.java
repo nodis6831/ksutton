@@ -1,13 +1,5 @@
 package edu.lmu.cs.msutton.university;
 
-public class Grade {
-	private double grade;
-
-	public Grade(double g) {
-		this.grade = g;
-	}
-
-	public double getGrade() {
-		return grade;
-	}
+public enum Grade {
+	APLUS, A, AMINUS, BPLUS, B, BMINUS, CPLUS, C, CMINUS, DPLUS, D, DMINUS, F;
 }
