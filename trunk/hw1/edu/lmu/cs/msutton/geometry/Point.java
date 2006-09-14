@@ -1,4 +1,4 @@
-/*
+/**
  * A simple immutable Point class
  * Kelly Sutton, Garrett Shannon
  * CMSI 281, Fall 2006
@@ -55,8 +55,8 @@ public class Point {
 		return false;
 	}
 
-	/*
-	 * @override (non-Javadoc)
+	/**
+	 * @override
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
