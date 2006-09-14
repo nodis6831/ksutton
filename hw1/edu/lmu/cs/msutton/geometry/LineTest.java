@@ -17,15 +17,12 @@ public class LineTest {
 		Line a = new Line(Point.ORIGIN, 4, 3);
 		Line b = new Line(Point.ORIGIN, 1, 0);
 		
-		System.out.println( b.toString() );
-		b.rotateLine( Math.PI / 4 );
-		System.out.println( b.toString() );
+		b.rotateLine(Math.PI / 4); //rotate 45 d
 		
 		assert m.equals(n);
 		assert m.equals(b);
 		assert n.equals(b);
 		assert !a.equals(m);
-		
 
 		System.out.println("Complete.");
 	}
