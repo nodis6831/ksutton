@@ -1,14 +1,20 @@
 package edu.lmu.cs.msutton.geometry;
-
+/**
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
 public class Line {
 
 	private Point p;
 
 	private Vector v;
 
-	/*
-	 * @param point The point from which the Line object is defined @param
-	 * vector The vector of the Line object
+	/**
+	 * @param point
+	 *            The point from which the Line object is defined
+	 * @param vector
+	 *            The vector of the Line object
 	 */
 	public Line(Point point, Vector vector) {
 
@@ -34,9 +40,13 @@ public class Line {
 
 	}
 
-	/*
-	 * Shifts a line by shifting its Point @param x The (+/-) x shift @param y
-	 * The (+/-) y shift
+	/**
+	 * Shifts a line by shifting its Point
+	 * 
+	 * @param x
+	 *            The (+/-) x shift
+	 * @param y
+	 *            The (+/-) y shift
 	 */
 	public void shiftLine(double x, double y) {
 
