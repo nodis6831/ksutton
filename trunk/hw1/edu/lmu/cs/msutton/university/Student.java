@@ -80,8 +80,8 @@ public class Student extends Person {
 
 		/**
 		 * 
-		 * @param section
-		 * @param grade
+		 * @param section The section
+		 * @param grade The grade
 		 */
 		void add(Section section, Grade grade) {
 			sectionList.add(section);
