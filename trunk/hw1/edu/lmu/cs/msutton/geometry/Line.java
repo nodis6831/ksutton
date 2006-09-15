@@ -109,8 +109,7 @@ public class Line {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * 
 	 * @see java.lang.Object#toString() @override
 	 */
