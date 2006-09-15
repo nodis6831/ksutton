@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Michael Sutton
+ * A simple Student class
+ * 
+ * @author Kelly Sutton
  * @author Garrett Shannon
  * 
  */
@@ -17,19 +19,38 @@ public class Student extends Person {
 
 	private final Transcript transcript = new Transcript();
 
+	/**
+	 * 
+	 * @param name The student's name
+	 * @param male The student's gender. true for male, false for female
+	 * @param yob The student's year of birth
+	 * @param country The student's country
+	 */
 	public Student(String name, boolean male, int yob, String country) {
 		super(name, male, yob);
 		this.country = country;
 	}
 
+	/**
+	 * 
+	 * @return the country
+	 */
 	public String getCountry() {
 		return country;
 	}
 
+	/**
+	 * 
+	 * @return the credits
+	 */
 	public int getCredits() {
 		return credits;
 	}
 
+	/**
+	 * 
+	 * @return the gpa
+	 */
 	public double getGpa() {
 		return gpa;
 	}
@@ -38,15 +59,30 @@ public class Student extends Person {
 		transcript.add(section, grade);
 	}
 
+	/**
+	 * Prints the transcript
+	 *
+	 */
 	public void printTranscript() {
 		System.out.println(transcript);
 	}
 
+	/**
+	 * A simple transcript class
+	 * 
+	 * @author Kelly Sutton
+	 * @author Garrett Shannon
+	 */
 	private class Transcript {
 		private List sectionList = new ArrayList();
 
 		private List gradeList = new ArrayList();
 
+		/**
+		 * 
+		 * @param section
+		 * @param grade
+		 */
 		void add(Section section, Grade grade) {
 			sectionList.add(section);
 			gradeList.add(grade);
