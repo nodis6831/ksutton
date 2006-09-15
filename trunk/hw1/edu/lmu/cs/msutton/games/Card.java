@@ -13,15 +13,30 @@ public class Card {
 
 	private Rank rank;
 
+	/**
+	 * 
+	 * @param s
+	 *            The desired suit of the Card object
+	 * @param r
+	 *            The desired rank of the Card object
+	 */
 	public Card(Suit s, Rank r) {
 		this.suit = s;
 		this.rank = r;
 	}
 
+	/**
+	 * 
+	 * @return the rank
+	 */
 	public Rank getRank() {
 		return rank;
 	}
 
+	/**
+	 * 
+	 * @return the suit
+	 */
 	public Suit getSuit() {
 		return suit;
 	}
