@@ -21,10 +21,14 @@ public class Student extends Person {
 
 	/**
 	 * 
-	 * @param name The student's name
-	 * @param male The student's gender. true for male, false for female
-	 * @param yob The student's year of birth
-	 * @param country The student's country
+	 * @param name
+	 *            The student's name
+	 * @param male
+	 *            The student's gender. true for male, false for female
+	 * @param yob
+	 *            The student's year of birth
+	 * @param country
+	 *            The student's country
 	 */
 	public Student(String name, boolean male, int yob, String country) {
 		super(name, male, yob);
@@ -61,7 +65,7 @@ public class Student extends Person {
 
 	/**
 	 * Prints the transcript
-	 *
+	 * 
 	 */
 	public void printTranscript() {
 		System.out.println(transcript);
@@ -80,8 +84,10 @@ public class Student extends Person {
 
 		/**
 		 * 
-		 * @param section The section
-		 * @param grade The grade
+		 * @param section
+		 *            The section
+		 * @param grade
+		 *            The grade
 		 */
 		void add(Section section, Grade grade) {
 			sectionList.add(section);
