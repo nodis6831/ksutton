@@ -59,6 +59,14 @@ public class Student extends Person {
 		return gpa;
 	}
 
+	/**
+	 * Updates the transcript with a new section and a grade for that section
+	 * 
+	 * @param section
+	 *            The section
+	 * @param grade
+	 *            The grade
+	 */
 	public void updateTranscript(Section section, Grade grade) {
 		transcript.add(section, grade);
 	}
