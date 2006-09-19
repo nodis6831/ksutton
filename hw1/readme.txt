@@ -18,3 +18,5 @@ Homework points in class:
  	svn checkout http://ksutton.googlecode.com/svn/trunk/ ksutton
  	
  into your preferred Subversion-enabled shell.
+ 
+ http://www.adamchance.com/funny.htm
