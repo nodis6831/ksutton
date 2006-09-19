@@ -19,7 +19,7 @@ public class Person {
 	 * @param name
 	 *            The person's name
 	 * @param male
-	 *            The person's gender. true for male, false for female
+	 *            The person's gender. True for male, false for female.
 	 * @param yob
 	 *            The person's year of birth.
 	 */
@@ -37,10 +37,18 @@ public class Person {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @return the phone
+	 */
 	public Phone getPhone() {
 		return phone;
 	}
 
+	/**
+	 * 
+	 * @param phone
+	 */
 	public void setPhone(Phone phone) {
 		this.phone = phone;
 	}
@@ -61,13 +69,29 @@ public class Person {
 		return male;
 	}
 
+	/**
+	 * 
+	 * @author Kelly Sutton
+	 * @author Garrett Shannon
+	 * 
+	 */
 	class Phone {
+
 		private final int areaCode;
 
 		private final int prefix;
 
 		private final int suffix;
 
+		/**
+		 * 
+		 * @param a
+		 *            Area code of the phone number
+		 * @param p
+		 *            Prefix of the phone number
+		 * @param s
+		 *            Suffix of the phone number
+		 */
 		public Phone(int a, int p, int s) {
 			this.areaCode = a;
 			this.prefix = p;
