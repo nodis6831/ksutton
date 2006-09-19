@@ -1,10 +1,25 @@
 package edu.lmu.cs.msutton.games;
-
+/**
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
 public class Card {
+	/**
+	 * 
+	 * @author Kelly Sutton
+	 * @author Garrett Shannon
+	 *
+	 */
 	public enum Suit {
 		SPADES, HEARTS, DIAMONDS, CLUBS;
 	}
-
+/**
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ *
+ */
 	public enum Rank {
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 	}
