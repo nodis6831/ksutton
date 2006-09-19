@@ -3,20 +3,68 @@ package edu.lmu.cs.msutton.math;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shanno
+ * 
+ */
 public class ArrayPolynomial extends Polynomial {
 
-	private List coefficients = new ArrayList();
+	private double[] coefficients;
 
+	/**
+	 * 
+	 * @param coefficients
+	 *            polynomial coefficients
+	 */
+	public ArrayPolynomial(double[] coefficients) {
+
+	}
+
+	/**
+	 * 
+	 * @param coefficients
+	 *            polynomial coefficients
+	 */
 	public ArrayPolynomial(String coefficients) {
 
-		for (String string : coefficients) {
-			this.coefficients.add(Double.parseDouble(string));
-		}
 	}
-	
-	public ArrayPolynomial(double[] coefficients){
-		for(double[] double : coefficients){
-			this.coefficients.add(double);
-		}
+
+	/**
+	 * 
+	 * @return the derivative
+	 */
+	public ArrayPolynomial derivative() {
+		double[] derivative = new double[this.coefficients.length - 1];
+		// TODO Copy oirginal polynomial coefficients into the derivative array
+		return new ArrayPolynomial(derivative);
 	}
+
+	/**
+	 * 
+	 * @return the degree
+	 */
+	public int getDegree() {
+		return this.coefficients.length;
+	}
+
+	/**
+	 * 
+	 * @return String representation
+	 */
+	public String toString() {
+
+	}
+
+	/**
+	 * 
+	 * @param d
+	 *            number to evaluate at
+	 * @return value of the polynomial
+	 */
+	public double valueAt(double d) {
+
+	}
+
 }
