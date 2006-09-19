@@ -6,8 +6,10 @@
 # Garrett Shannon 
 # Kelly Sutton
 #
+
 Homework points in class:
 	9/12 - Garrett noted a + needed to be added to the constructor on the UML diagram of class Point 
+	9/19 - Kelly answered a question about String being a final class.
 
 #### 
 # ACCESS
