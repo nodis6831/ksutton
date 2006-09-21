@@ -12,8 +12,18 @@ public class Card {
 	 * @author Garrett Shannon
 	 * 
 	 */
-	public enum Suit {
-		SPADES, HEARTS, DIAMONDS, CLUBS;
+	public static enum Suit {
+		SPADES("Spades"), HEARTS("Hearts"), DIAMONDS("Diamonds"), CLUBS("Clubs");
+		private String name;
+
+		private Suit(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return this.name;
+		}
 	}
 
 	/**
@@ -22,8 +32,20 @@ public class Card {
 	 * @author Garrett Shannon
 	 * 
 	 */
-	public enum Rank {
-		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
+	public static enum Rank {
+		ACE("Ace"), TWO("Two"), THREE("Three"), FOUR("Four"), FIVE("Five"), SIX(
+				"Six"), SEVEN("Seven"), EIGHT("Eight"), NINE("Nine"), TEN("Ten"), JACK(
+				"Jack"), QUEEN("Queen"), KING("King");
+		private String name;
+
+		private Rank(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return this.name;
+		}
 	}
 
 	private Suit suit;
@@ -32,14 +54,14 @@ public class Card {
 
 	/**
 	 * 
-	 * @param s
+	 * @param suit
 	 *            The desired suit of the Card object
-	 * @param r
+	 * @param rank
 	 *            The desired rank of the Card object
 	 */
-	public Card(Suit s, Rank r) {
-		this.suit = s;
-		this.rank = r;
+	public Card(Rank rank, Suit suit) {
+		this.suit = suit;
+		this.rank = rank;
 	}
 
 	/**
@@ -47,7 +69,7 @@ public class Card {
 	 * @return the rank
 	 */
 	public Rank getRank() {
-		return rank;
+		return this.rank;
 	}
 
 	/**
@@ -55,7 +77,7 @@ public class Card {
 	 * @return the suit
 	 */
 	public Suit getSuit() {
-		return suit;
+		return this.suit;
 	}
 
 	@Override
