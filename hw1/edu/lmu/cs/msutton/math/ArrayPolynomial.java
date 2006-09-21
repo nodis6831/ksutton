@@ -1,7 +1,5 @@
 package edu.lmu.cs.msutton.math;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 
@@ -9,7 +7,7 @@ import java.util.List;
  * @author Garrett Shanno
  * 
  */
-public class ArrayPolynomial extends Polynomial {
+public class ArrayPolynomial {
 
 	private double[] coefficients;
 
