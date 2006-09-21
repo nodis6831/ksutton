@@ -57,7 +57,7 @@ public class Line {
 	}
 
 	/**
-	 * Rotates the line by a set number of degrees
+	 * Rotates the line <b>clockwise</b> by a set number of degrees
 	 */
 	public void rotateLine(double theta) {
 
@@ -101,7 +101,6 @@ public class Line {
 					&& (this.v.directionAsDegrees() == that.v.directionAsDegrees()
 							|| this.v.directionAsDegrees() == 180.0 + that.v.directionAsDegrees() 
 							|| Math.abs(this.v.directionAsDegrees() - that.v.directionAsDegrees()) < 0.001)) { 
-				//TODO make sure this is radianized
 				return true;
 			}
 		}
