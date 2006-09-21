@@ -4,7 +4,8 @@
 package edu.lmu.cs.msutton.geometry;
 
 /**
- * A simple vector class
+ * A simple vector class. Each vector is defined by its x-magnitude (i) and its
+ * y-magnitude (j)
  * 
  * @author Kelly Sutton
  * @author Garrett Shannon
@@ -40,8 +41,8 @@ public class Vector {
 	 */
 	public static Vector FromAngleAndMagnitude(double angle, double magnitude) {
 
-		return new Vector(magnitude * Math.cos(angle),
-							magnitude * Math.sin(angle));
+		return new Vector(magnitude * Math.cos(angle), magnitude
+				* Math.sin(angle));
 	}
 
 	/**
@@ -72,7 +73,7 @@ public class Vector {
 	public double getJ() {
 		return j;
 	}
-	
+
 	/**
 	 * 
 	 * @return A double of the direction as radians
