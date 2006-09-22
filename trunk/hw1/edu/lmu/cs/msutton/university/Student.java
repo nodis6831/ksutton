@@ -1,7 +1,8 @@
 package edu.lmu.cs.msutton.university;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Map.Entry;
 
 /**
  * A simple Student class
@@ -84,33 +85,29 @@ public class Student extends Person {
 	 * 
 	 * @author Kelly Sutton
 	 * @author Garrett Shannon
+	 * Some code borrowed form class MoneyBag
 	 */
 	private class Transcript {
-		private List sectionList = new ArrayList();
 
-		private List gradeList = new ArrayList();
+		private Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
 		/**
 		 * 
-		 * @param section
-		 *            The section
-		 * @param grade
-		 *            The grade
+		 * @param section the section
+		 * @param grade the grade
 		 */
 		void add(Section section, Grade grade) {
-			sectionList.add(section);
-			gradeList.add(grade);
+			contents.put(section, grade);
 		}
 
 		@Override
 		public String toString() {
-			List tmp = new ArrayList();
-			for (int i = 0; i < sectionList.size(); i++) {
-				tmp.add(sectionList.get(i));
-				tmp.add(gradeList.get(i));
+			StringBuffer buffer = new StringBuffer("Section: ");
+			for (Entry<Section, Grade> entry : contents.entrySet()) {
+				buffer.append(entry.getKey() + " Grade: " + entry.getValue()
+						+ " ");
 			}
-
-			return tmp.toString();
+			return buffer.toString();
 		}
 	}
 

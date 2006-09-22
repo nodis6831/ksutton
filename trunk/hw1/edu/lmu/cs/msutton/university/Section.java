@@ -28,4 +28,8 @@ public class Section {
 		this.course = course;
 		this.section = section;
 	}
+	
+	public String toString() {
+		return department + " " + course + " Section " + section;
+	}
 }

@@ -52,7 +52,8 @@ public class ArrayPolynomial {
 	 * @return String representation
 	 */
 	public String toString() {
-
+		//TODO write this
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -62,7 +63,8 @@ public class ArrayPolynomial {
 	 * @return value of the polynomial
 	 */
 	public double valueAt(double d) {
-
+		//TODO write this
+		throw new UnsupportedOperationException();
 	}
 
 }
