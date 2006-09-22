@@ -80,4 +80,5 @@ public class Purse {
 		return (0.01 * numPennies) + (0.05 * numNickels) + (0.10 * numDimes)
 				+ (0.25 * numQuarters);
 	}
+	//TODO override toString()??
 }

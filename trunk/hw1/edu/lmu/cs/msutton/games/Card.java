@@ -81,6 +81,13 @@ public class Card {
 	}
 
 	@Override
+	/**
+	 * Returns a brief description of the Card. The exact details of the
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical:
+	 * 
+	 * "Rank of Suit" "Five of Spades"
+	 */
 	public String toString() {
 		return this.rank + " of " + this.suit;
 	}
