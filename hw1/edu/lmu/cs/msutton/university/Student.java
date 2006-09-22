@@ -100,6 +100,12 @@ public class Student extends Person {
 			contents.put(section, grade);
 		}
 
+		/**
+		 * Returns a brief description of the Card. The exact details of the
+		 * representation are unspecified and subject to change, but the following
+		 * may be regarded as typical:
+		 */
+		// TODO Define / give example of typical string output in the comment
 		@Override
 		public String toString() {
 			StringBuffer buffer = new StringBuffer("Section: ");

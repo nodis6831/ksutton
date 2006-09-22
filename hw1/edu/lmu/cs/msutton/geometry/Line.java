@@ -98,9 +98,12 @@ public class Line {
 			Line that = (Line) obj;
 
 			if (this.isPointOnLine(that.p)
-					&& (this.v.directionAsDegrees() == that.v.directionAsDegrees()
-							|| this.v.directionAsDegrees() == 180.0 + that.v.directionAsDegrees() 
-							|| Math.abs(this.v.directionAsDegrees() - that.v.directionAsDegrees()) < 0.001)) { 
+					&& (this.v.directionAsDegrees() == that.v
+							.directionAsDegrees()
+							|| this.v.directionAsDegrees() == 180.0 + that.v
+									.directionAsDegrees() || Math.abs(this.v
+							.directionAsDegrees()
+							- that.v.directionAsDegrees()) < 0.001)) {
 				return true;
 			}
 		}
@@ -109,9 +112,13 @@ public class Line {
 	}
 
 	/**
-	 * 
-	 * @see java.lang.Object#toString() @override
+	 * @Override
+	 * Returns a brief description of the Card. The exact details of the
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical:
 	 */
+	// TODO Define / give example of typical string output in the comment
+	@Override
 	public String toString() {
 
 		return this.p.toString() + " " + this.v.toString();

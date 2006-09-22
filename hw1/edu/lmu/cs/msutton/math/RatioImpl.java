@@ -57,4 +57,5 @@ public class RatioImpl extends Ratio {
 		} while (u > 0);
 		return v << k; // returns v * 2^k
 	}
+	//TODO override toString() method??
 }
