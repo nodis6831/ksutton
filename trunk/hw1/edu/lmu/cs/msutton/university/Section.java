@@ -23,8 +23,8 @@ public class Section {
 	 * @param section
 	 *            the section number
 	 */
-	public Section(String deparment, int course, int section) {
-		this.department = new String(department);
+	public Section(String department, int course, int section) {
+		this.department = department;
 		this.course = course;
 		this.section = section;
 	}
@@ -32,8 +32,9 @@ public class Section {
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical:
+	 * "Department # Section #" "History 101 Section 02"
 	 */
-	// TODO Define / give example of typical string output in the comment
+	
 	@Override	
 	public String toString() {
 		return department + " " + course + " Section " + section;
