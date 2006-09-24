@@ -92,21 +92,22 @@ public class Person {
 		 * @param s
 		 *            Suffix of the phone number
 		 */
-		public Phone(int a, int p, int s) {
-			this.areaCode = a;
-			this.prefix = p;
-			this.suffix = s;
+		public Phone(int areaCode, int prefix, int suffix) {
+			this.areaCode = areaCode;
+			this.prefix = prefix;
+			this.suffix = suffix;
 		}
 
 		/**
 		 * Returns a brief description of the Card. The exact details of the
 		 * representation are unspecified and subject to change, but the following
 		 * may be regarded as typical:
+		 * "(AAA)-PPP-SSS" "(310)-338-2768"
 		 */
-		// TODO Define / give example of typical string output in the comment
+		
 		@Override
 		public String toString() {
-			return "(" + this.areaCode + ") - " + this.prefix + " - "
+			return "(" + this.areaCode + ")-" + this.prefix + "-"
 					+ this.suffix;
 		}
 	}
