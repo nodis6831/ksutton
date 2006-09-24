@@ -100,15 +100,14 @@ public class Person {
 
 		/**
 		 * Returns a brief description of the Card. The exact details of the
-		 * representation are unspecified and subject to change, but the following
-		 * may be regarded as typical:
-		 * "(AAA)-PPP-SSS" "(310)-338-2768"
+		 * representation are unspecified and subject to change, but the
+		 * following may be regarded as typical: "(AAA)-PPP-SSS"
+		 * "(310)-338-2768"
 		 */
-		
+
 		@Override
 		public String toString() {
-			return "(" + this.areaCode + ")-" + this.prefix + "-"
-					+ this.suffix;
+			return "(" + this.areaCode + ")-" + this.prefix + "-" + this.suffix;
 		}
 	}
 

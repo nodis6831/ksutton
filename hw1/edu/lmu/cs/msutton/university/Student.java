@@ -1,8 +1,11 @@
+//TODO Should the phone class be completely immutable even through the Student class or is it ok for Student to reference a new Phone
 package edu.lmu.cs.msutton.university;
 
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
+
+import edu.lmu.cs.msutton.university.Person.Phone;
 
 /**
  * A simple Student class
@@ -11,12 +14,10 @@ import java.util.Map.Entry;
  * @author Garrett Shannon
  * 
  */
-public class Student extends Person {
+public class Student {
+	private final Person person;
+
 	private String country;
-
-	private int credits;
-
-	private double gpa;
 
 	private final Transcript transcript = new Transcript();
 
@@ -32,8 +33,53 @@ public class Student extends Person {
 	 *            The student's country
 	 */
 	public Student(String name, boolean male, int yob, String country) {
-		super(name, male, yob);
+		person = new Person(name, male, yob);
 		this.country = country;
+	}
+
+	/**
+	 * forwarding method
+	 * 
+	 * @return the name
+	 */
+	public String getName() {
+		return person.getName();
+	}
+
+	/**
+	 * forwarding method
+	 * 
+	 * @return the phone
+	 */
+	public Phone getPhone() {
+		return person.getPhone();
+	}
+
+	/**
+	 * forwarding method
+	 * 
+	 * @param phone
+	 */
+	public void setPhone(Phone phone) {
+		person.phone = phone;
+	}
+
+	/**
+	 * forwarding method
+	 * 
+	 * @return the year of birth
+	 */
+	public int getYob() {
+		return person.getYob();
+	}
+
+	/**
+	 * forwarding method
+	 * 
+	 * @return the gender
+	 */
+	public boolean isMale() {
+		return person.isMale();
 	}
 
 	/**
@@ -46,10 +92,10 @@ public class Student extends Person {
 
 	/**
 	 * 
-	 * @return the credits
+	 * @return the credits hours
 	 */
-	public int getCredits() {
-		return credits;
+	public int getCreditHours() {
+		return transcript.getCreditHours();
 	}
 
 	/**
@@ -57,7 +103,7 @@ public class Student extends Person {
 	 * @return the gpa
 	 */
 	public double getGpa() {
-		return gpa;
+		return transcript.computeGpa();
 	}
 
 	/**
@@ -84,34 +130,58 @@ public class Student extends Person {
 	 * A simple transcript class
 	 * 
 	 * @author Kelly Sutton
-	 * @author Garrett Shannon
-	 * Some code borrowed form class MoneyBag
+	 * @author Garrett Shannon Some code borrowed form class MoneyBag
 	 */
 	private class Transcript {
 
 		private Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
+		private int creditHours = 0;
+
+		private double gradePoints = 0;
+
 		/**
 		 * 
-		 * @param section the section
-		 * @param grade the grade
+		 * @param section
+		 *            the section
+		 * @param grade
+		 *            the grade
 		 */
 		void add(Section section, Grade grade) {
 			contents.put(section, grade);
+			creditHours += section.getCreditHours();
+			gradePoints += grade.getGrade();
+		}
+
+		/**
+		 * 
+		 * @return the overall gpa
+		 */
+		double computeGpa() {
+			return gradePoints / (double) creditHours;
+
+		}
+
+		/**
+		 * 
+		 * @return the total crdit hours
+		 */
+		public int getCreditHours() {
+			return creditHours;
 		}
 
 		/**
 		 * Returns a brief description of the Card. The exact details of the
-		 * representation are unspecified and subject to change, but the following
-		 * may be regarded as typical:
+		 * representation are unspecified and subject to change, but the
+		 * following may be regarded as typical: "Section:History Grade:95.34(A) | "
 		 */
-		// TODO Define / give example of typical string output in the comment
+
 		@Override
 		public String toString() {
 			StringBuffer buffer = new StringBuffer("Section: ");
 			for (Entry<Section, Grade> entry : contents.entrySet()) {
-				buffer.append(entry.getKey() + " Grade: " + entry.getValue()
-						+ " ");
+				buffer.append(entry.getKey() + " Grade:" + entry.getValue()
+						+ " | ");
 			}
 			return buffer.toString();
 		}
