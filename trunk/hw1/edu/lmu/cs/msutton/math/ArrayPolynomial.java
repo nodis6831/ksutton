@@ -66,7 +66,11 @@ public class ArrayPolynomial {
 		StringBuffer buffer = new StringBuffer("Polynomial: ");
 		buffer.append(coefficients[0] + " + ");
 		for (int i = 1; i < coefficients.length - 1; i++) {
-			buffer.append(coefficients[i] + "X^" + i + " + ");
+			if (coefficients[i] == 0.0) {
+				buffer.append("");
+			} else {
+				buffer.append(coefficients[i] + "X^" + i + " + ");
+			}
 		}
 		buffer.append(coefficients[coefficients.length - 1] + "X^"
 				+ (coefficients.length - 1));
