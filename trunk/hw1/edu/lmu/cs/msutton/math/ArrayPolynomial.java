@@ -7,7 +7,7 @@ package edu.lmu.cs.msutton.math;
  * the x term to which it is a coefficient.
  * 
  * @author Kelly Sutton
- * @author Garrett Shanno
+ * @author Garrett Shannon
  * 
  */
 public class ArrayPolynomial {
