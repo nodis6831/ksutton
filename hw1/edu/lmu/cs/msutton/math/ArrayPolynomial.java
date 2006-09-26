@@ -63,8 +63,7 @@ public class ArrayPolynomial {
 	 */
 	@Override
 	public String toString() {
-		StringBuffer buffer = new StringBuffer("Polynomial: ");
-		buffer.append(coefficients[0] + " + ");
+		StringBuffer buffer = new StringBuffer(coefficients[0] + " + ");
 		for (int i = 1; i < coefficients.length - 1; i++) {
 			if (coefficients[i] == 0.0) {
 				buffer.append("");
