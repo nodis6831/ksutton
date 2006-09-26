@@ -59,7 +59,8 @@ public class ArrayPolynomial {
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 +
-	 * -33X^3"
+	 * -33X^3 + 5X^5"
+	 * Note* It skips coefficients of zero
 	 */
 	@Override
 	public String toString() {
@@ -83,8 +84,11 @@ public class ArrayPolynomial {
 	 * @return value of the polynomial
 	 */
 	public double valueAt(double d) {
-		// TODO write this
-		throw new UnsupportedOperationException();
+		double sum = 0; //TODO better way to do this?
+		for (int i = 0; i < coefficients.length; i++) {
+			sum += (Math.pow(d, i)) * coefficients[i]; 
+		}
+		return sum;
 	}
 
 }
