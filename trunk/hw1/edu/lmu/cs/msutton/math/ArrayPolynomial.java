@@ -20,7 +20,12 @@ public class ArrayPolynomial {
 	 *            polynomial coefficients
 	 */
 	public ArrayPolynomial(double[] coefficients) {
-		this.coefficients = coefficients;
+		this.coefficients = new double[coefficients.length];
+		System.arraycopy(coefficients, 0, this.coefficients, 0,
+				coefficients.length);
+		// TODO do we need a defensive copy?
+		// TODO make a constructor which is created by passing the leements in
+		// the array
 	}
 
 	/**
@@ -39,11 +44,9 @@ public class ArrayPolynomial {
 	 */
 	public ArrayPolynomial derivative() {
 		double[] derivative = new double[this.coefficients.length - 1];
-
-		for (int i = 0; 1 < derivative.length; i++) {
-			derivative[i] = this.coefficients[i + 1];
-		}
-		// TODO is there a better way to do this for loop?
+		System
+				.arraycopy(this.coefficients, 1, derivative, 0,
+						derivative.length);
 		return new ArrayPolynomial(derivative);
 	}
 
@@ -58,9 +61,8 @@ public class ArrayPolynomial {
 	/**
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 +
-	 * -33X^3 + 5X^5"
-	 * Note* It skips coefficients of zero
+	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 + -33X^3 +
+	 * 5X^5" Note* It skips coefficients of zero
 	 */
 	@Override
 	public String toString() {
@@ -84,9 +86,9 @@ public class ArrayPolynomial {
 	 * @return value of the polynomial
 	 */
 	public double valueAt(double d) {
-		double sum = 0; //TODO better way to do this?
+		double sum = 0; // TODO better way to do this?
 		for (int i = 0; i < coefficients.length; i++) {
-			sum += (Math.pow(d, i)) * coefficients[i]; 
+			sum += (Math.pow(d, i)) * coefficients[i];
 		}
 		return sum;
 	}
