@@ -10,11 +10,12 @@ import static org.junit.Assert.assertEquals;
  * 
  */
 public class PolynomialTest {
+	double[] d = new double[] { 3, 0, 4.7, -8.2, -53 };
+
 	@Test
 	public void testToString() {
-		double[] d = new double[] { 3, 0, 4.7, -8.2, -53 };
 		ArrayPolynomial a = new ArrayPolynomial(d);
 		assertEquals(a.toString(), "3.0 + 4.7X^2 + -8.2X^3 + -53.0X^4");
-		
+
 	}
 }
