@@ -112,10 +112,9 @@ public class Line {
 	}
 
 	/**
-	 * @Override
-	 * Returns a brief description of the Card. The exact details of the
-	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical:
+	 * @Override Returns a brief description of the Card. The exact details of
+	 *           the representation are unspecified and subject to change, but
+	 *           the following may be regarded as typical:
 	 */
 	// TODO Define / give example of typical string output in the comment
 	@Override
@@ -130,6 +129,9 @@ public class Line {
 		// point-slope formula
 		if (point.getY() - this.p.getY() == (this.v.getJ() / this.v.getI())
 				* (point.getX() - this.p.getX())) {
+			return true;
+		} else if (this.v.getI() == 0.0 && point.getX() == this.p.getX()) { // vertical
+																			// line
 			return true;
 		}
 		return false;
