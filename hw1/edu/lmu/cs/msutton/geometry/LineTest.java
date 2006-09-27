@@ -59,4 +59,19 @@ public class LineTest {
 		b.rotateLine(Math.PI / 4);
 		assertEquals(a,b);
 	}
+	
+	/**
+	 * Tests line shift
+	 * 
+	 */
+	@Test
+	public void testLineShift(){
+		Line a = new Line(new Point(0,0), new Vector(0,1));
+		Line b = new Line(new Point(1,0), new Vector(0,1));
+		
+		b.shiftLine(-1, 0);
+		
+		assertEquals(a,b);
+	}
+	
 }
