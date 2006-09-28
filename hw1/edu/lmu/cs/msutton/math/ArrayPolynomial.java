@@ -30,16 +30,6 @@ public class ArrayPolynomial {
 
 	/**
 	 * 
-	 * @param coefficients
-	 *            polynomial coefficients
-	 */
-	public ArrayPolynomial(String coefficients) {
-		// TODO write this if we want to be able to create from Strings
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
 	 * @return the derivative
 	 */
 	public ArrayPolynomial derivative() {
@@ -56,37 +46,11 @@ public class ArrayPolynomial {
 	 */
 	public int getDegree() {
 		int i = (this.coefficients.length - 1);
-		while (this.coefficients[i] == 0.0){
+		while (this.coefficients[i] == 0.0) {
 			i--;
 		}
 		return i;
-		//TODO Better way to do this?
-	}
-
-	/**
-	 * Returns a brief description of the Card. The exact details of the
-	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 + -33X^3 +
-	 * 5X^5" Note* It skips coefficients of zero
-	 */
-	@Override
-	public String toString() {
-		StringBuffer buffer;
-		if (coefficients[0] == 0.0) {
-			buffer = new StringBuffer("");
-		} else {
-			buffer = new StringBuffer(coefficients[0] + " + ");
-		}
-		for (int i = 1; i < coefficients.length - 1; i++) {
-			if (coefficients[i] == 0.0) {
-				buffer.append("");
-			} else {
-				buffer.append(coefficients[i] + "X^" + i + " + ");
-			}
-		}
-		buffer.append(coefficients[coefficients.length - 1] + "X^"
-				+ (coefficients.length - 1));
-		return buffer.toString();
+		// TODO Better way to do this?
 	}
 
 	/**
@@ -101,6 +65,35 @@ public class ArrayPolynomial {
 			sum += (Math.pow(d, i)) * coefficients[i];
 		}
 		return sum;
+	}
+
+	/**
+	 * Returns a brief description of the Card. The exact details of the
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 + -33X^3 +
+	 * 5X^5" Note* It skips coefficients of zero
+	 */
+	@Override
+	public String toString() {
+		StringBuffer buffer;
+		if (coefficients[0] == 0.0) {
+			buffer = new StringBuffer();
+		} else {
+			buffer = new StringBuffer(coefficients[0] + " + ");
+		}
+		for (int i = 1; i < coefficients.length - 1; i++) {
+			if (coefficients[i] == 0.0) {
+			} else {
+				buffer.append(coefficients[i] + "X^" + i + " + ");
+			}
+		}
+		if (coefficients[coefficients.length - 1] == 0) {
+			buffer.setLength(buffer.length() - 3);
+		} else {
+			buffer.append(coefficients[coefficients.length - 1] + "X^"
+					+ (coefficients.length - 1));
+		}
+		return buffer.toString();
 	}
 
 }
