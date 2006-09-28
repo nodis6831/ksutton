@@ -38,15 +38,19 @@ public class Purse {
 		case 3:
 			return numQuarters;
 		default:
-			throw new IllegalArgumentException(); //TODO are switch statements evil for CMSI 281?
+			throw new IllegalArgumentException(); // TODO are switch
+													// statements evil for CMSI
+													// 281?
 		}
 	}
 
 	/**
 	 * Add a number of coins of a certain denomination to the Purse object.
 	 * 
-	 * @param number The number of coins to add
-	 * @param denomination The particular denomination of coins to add
+	 * @param number
+	 *            The number of coins to add
+	 * @param denomination
+	 *            The particular denomination of coins to add
 	 */
 	public void addNumCoinsOf(int number, int denomination) {
 
@@ -63,7 +67,7 @@ public class Purse {
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return The total number of coins.
@@ -83,14 +87,16 @@ public class Purse {
 
 	/**
 	 * Returns a brief description of the Card. The exact details of the
-	 * representation are unspecified and subject to change, but the
-	 * following may be regarded as typical:
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical:
 	 * 
-	 *  "2 pennie(s), 1 nickel(s), 3 dime(s), and 4 quarter(s)"
+	 * "2 pennie(s), 1 nickel(s), 3 dime(s), and 4 quarter(s)"
 	 */
-	
+
 	@Override
-	public String toString(){
-		return this.numPennies + " pennie(s), " + this.numNickels + " nickel(s), " + this.numDimes + " dime(s), and " + this.numQuarters + " quarter(s)";
+	public String toString() {
+		return this.numPennies + " pennie(s), " + this.numNickels
+				+ " nickel(s), " + this.numDimes + " dime(s), and "
+				+ this.numQuarters + " quarter(s)";
 	}
 }
