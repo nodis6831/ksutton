@@ -79,4 +79,6 @@ public class Section {
 		return department + " " + course + " Section " + section + " ("
 				+ creditHours + ")";
 	}
+	
+	//TODO equals method
 }
