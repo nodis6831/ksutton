@@ -1,7 +1,8 @@
 /**
  * A simple immutable Point class
- * Kelly Sutton, Garrett Shannon
- * CMSI 281, Fall 2006
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
  */
 
 package edu.lmu.cs.msutton.geometry;
