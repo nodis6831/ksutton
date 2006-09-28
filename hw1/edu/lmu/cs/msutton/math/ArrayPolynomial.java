@@ -24,7 +24,7 @@ public class ArrayPolynomial {
 		System.arraycopy(coefficients, 0, this.coefficients, 0,
 				coefficients.length);
 		// TODO do we need a defensive copy?
-		// TODO make a constructor which is created by passing the leements in
+		// TODO make a constructor which is created by passing the elements in
 		// the array
 	}
 
@@ -55,7 +55,12 @@ public class ArrayPolynomial {
 	 * @return the degree
 	 */
 	public int getDegree() {
-		return this.coefficients.length;
+		int i = (this.coefficients.length - 1);
+		while (this.coefficients[i] == 0.0){
+			i--;
+		}
+		return i;
+		//TODO Better way to do this?
 	}
 
 	/**
@@ -66,7 +71,12 @@ public class ArrayPolynomial {
 	 */
 	@Override
 	public String toString() {
-		StringBuffer buffer = new StringBuffer(coefficients[0] + " + ");
+		StringBuffer buffer;
+		if (coefficients[0] == 0.0) {
+			buffer = new StringBuffer("");
+		} else {
+			buffer = new StringBuffer(coefficients[0] + " + ");
+		}
 		for (int i = 1; i < coefficients.length - 1; i++) {
 			if (coefficients[i] == 0.0) {
 				buffer.append("");
