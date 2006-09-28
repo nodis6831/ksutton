@@ -37,4 +37,5 @@ public class StudentTest {
 	public void testUpdateTranscript() {
 
 	}
+	//TODO test the final-ness of the Transcript private field
 }
