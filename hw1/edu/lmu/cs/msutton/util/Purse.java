@@ -80,5 +80,17 @@ public class Purse {
 		return (0.01 * numPennies) + (0.05 * numNickels) + (0.10 * numDimes)
 				+ (0.25 * numQuarters);
 	}
-	//TODO override toString()??
+
+	/**
+	 * Returns a brief description of the Card. The exact details of the
+	 * representation are unspecified and subject to change, but the
+	 * following may be regarded as typical:
+	 * 
+	 *  "2 pennie(s), 1 nickel(s), 3 dime(s), and 4 quarter(s)"
+	 */
+	
+	@Override
+	public String toString(){
+		return this.numPennies + " pennie(s), " + this.numNickels + " nickel(s), " + this.numDimes + " dime(s), and " + this.numQuarters + " quarter(s)";
+	}
 }
