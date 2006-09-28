@@ -47,6 +47,7 @@ public class RatioImpl implements Ratio {
 	/**
 	 * @return true iff this == obj
 	 */
+	@Override
 	public boolean equals(Object obj) {
 
 		RatioImpl that = (RatioImpl) obj;
