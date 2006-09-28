@@ -104,4 +104,16 @@ public class LineTest {
 		
 	}
 	
+	/**
+	 * Tests the hashCode() methods
+	 */
+	@Test
+	public void testHashCodeMethod(){
+		Line a = new Line(new Point(10,10), new Vector(35,1));
+		Line b = new Line(new Point(10,10), new Vector(35,1));
+		
+		assertEquals(a.getP().hashCode(), b.getP().hashCode());
+		assertEquals(a.getV().hashCode(), b.getV().hashCode());
+		assertEquals(a.hashCode(), b.hashCode());
+	}
 }
