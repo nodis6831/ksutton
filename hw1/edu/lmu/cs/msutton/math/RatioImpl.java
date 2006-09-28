@@ -20,6 +20,9 @@ public class RatioImpl implements Ratio {
 	 *            The numerator of the RatioImpl object
 	 * @param d
 	 *            The denominator of the RatioImpl object
+	 * @exception java.util.IllegalArgumentException
+	 *                if the denominator is <= 0 or if the GCF is not == 1
+	 * 
 	 */
 	public RatioImpl(long n, long d) {
 		if (d > 0 && (gcf(n, d) == 1 || (gcf(n, d) == n))) {
@@ -62,12 +65,11 @@ public class RatioImpl implements Ratio {
 		return false;
 	}
 
-	
 	@Override
-	public final String toString(){
+	public final String toString() {
 		return this.getNum() + "/" + this.getDen();
 	}
-	
+
 	/**
 	 * Function from http://forums.dreamincode.net/showtopic18476.htm
 	 * 
@@ -77,7 +79,8 @@ public class RatioImpl implements Ratio {
 	 *            Second long
 	 * @return The greatest common factor (GCF)
 	 */
-	private final long gcf(long u, long v) { // TODO test if this actually works
+	private final long gcf(long u, long v) { // TODO test if this actually
+												// works
 		int k = 0;
 		if (u == 0)
 			return v;
@@ -102,5 +105,5 @@ public class RatioImpl implements Ratio {
 		} while (u > 0);
 		return v << k; // returns v * 2^k
 	}
-	
+
 }
