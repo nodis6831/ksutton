@@ -69,8 +69,9 @@ public class Section {
 	/**
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Department # Section # (Credits)" "History
-	 * 101 Section 02 (3)"
+	 * may be regarded as typical: 
+	 * "Department # Section # (Credits)" 
+	 * "History 101 Section 02 (3)"
 	 */
 
 	@Override
