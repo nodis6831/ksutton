@@ -121,6 +121,14 @@ public class Line {
 		return this.p.toString() + " " + this.v.toString();
 
 	}
+	
+	@Override
+	public final int hashCode(){
+		int result = 17;
+		result = 37 * result + this.p.hashCode(); 
+		result = 37 * result + this.v.hashCode();
+		return result;
+	}
 
 	private boolean isPointOnLine(Point point) {
 
