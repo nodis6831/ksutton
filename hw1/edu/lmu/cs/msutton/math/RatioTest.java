@@ -36,8 +36,8 @@ public class RatioTest {
 	public void testZeroDenominator() {
 		try {
 			RatioImpl a = new RatioImpl(1, 0);
-		} catch (IllegalArgumentException e) {
-			assertNotNull(e); //TODO I don't think this does exactly what I think it does --Kelly
+		} catch (Exception e) {
+			assertTrue(e instanceof IllegalArgumentException);
 		}
 	}
 
