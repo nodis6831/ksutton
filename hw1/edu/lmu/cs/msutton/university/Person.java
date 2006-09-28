@@ -109,6 +109,8 @@ public class Person {
 		public String toString() {
 			return "(" + this.areaCode + ")-" + this.prefix + "-" + this.suffix;
 		}
+		
+		//TODO equals method
 	}
 
 }

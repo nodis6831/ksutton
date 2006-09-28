@@ -185,6 +185,8 @@ public class Student {
 			}
 			return buffer.toString();
 		}
+		
+		//TODO equals method
 	}
 
 }

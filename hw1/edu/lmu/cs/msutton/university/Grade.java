@@ -70,4 +70,5 @@ public class Grade {
 		return this.grade + "(" + this.getLetterGrade() + ")";
 	}
 
+	//TODO equals method
 }
