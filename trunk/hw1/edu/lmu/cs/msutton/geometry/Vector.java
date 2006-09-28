@@ -82,8 +82,7 @@ public class Vector {
 	/**
 	 * Returns a brief description of the Vector. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical:
-	 *  "<1,2>"
+	 * may be regarded as typical: "<1,2>"
 	 */
 	@Override
 	public final String toString() {
@@ -95,24 +94,25 @@ public class Vector {
 	@Override
 	public final boolean equals(Object obj) {
 
-		Vector that = (Vector) obj;
-		
-		if (that instanceof Vector){
-			if (this.getI() == that.getI() && this.getJ() == that.getJ()){
+		if (obj instanceof Vector) {
+
+			Vector that = (Vector) obj;
+
+			if (this.getI() == that.getI() && this.getJ() == that.getJ()) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	@Override
-	public final int hashCode(){
-		
+	public final int hashCode() {
+
 		int result = 17;
 		result = 37 * result + (int) Double.doubleToLongBits(this.i);
 		result = 37 * result + (int) Double.doubleToLongBits(this.j);
 		return result;
-		
+
 	}
 }
