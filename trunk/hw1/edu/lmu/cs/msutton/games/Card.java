@@ -27,6 +27,7 @@ public class Card {
 		public String toString() {
 			return this.name;
 		}
+		
 	}
 
 	/**
@@ -52,6 +53,8 @@ public class Card {
 		public String toString() {
 			return this.name;
 		}
+		
+		
 	}
 
 	private Suit suit;
@@ -97,4 +100,5 @@ public class Card {
 	public String toString() {
 		return this.rank + " of " + this.suit;
 	}
+	//TODO override equals
 }

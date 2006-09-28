@@ -9,7 +9,7 @@ package edu.lmu.cs.msutton.math;
  * coefficients.
  * 
  */
-interface Polynomial {
+public interface Polynomial {
 	/**
 	 * 
 	 * @return the derivative

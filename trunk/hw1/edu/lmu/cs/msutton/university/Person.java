@@ -75,6 +75,42 @@ public class Person {
 	 * @author Garrett Shannon
 	 * 
 	 */
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + (male ? 1231 : 1237);
+		result = PRIME * result + ((name == null) ? 0 : name.hashCode());
+		result = PRIME * result + ((phone == null) ? 0 : phone.hashCode());
+		result = PRIME * result + yob;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Person other = (Person) obj;
+		if (male != other.male)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (yob != other.yob)
+			return false;
+		return true;
+	}
 	class Phone {
 
 		private final int areaCode;
@@ -110,7 +146,36 @@ public class Person {
 			return "(" + this.areaCode + ")-" + this.prefix + "-" + this.suffix;
 		}
 		
-		//TODO equals method
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + areaCode;
+			result = PRIME * result + prefix;
+			result = PRIME * result + suffix;
+			return result;
+		}
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Phone other = (Phone) obj;
+			if (areaCode != other.areaCode)
+				return false;
+			if (prefix != other.prefix)
+				return false;
+			if (suffix != other.suffix)
+				return false;
+			return true;
+		}
 	}
+
+
 
 }

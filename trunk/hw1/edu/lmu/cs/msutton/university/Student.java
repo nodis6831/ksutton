@@ -1,4 +1,3 @@
-//TODO Should the phone class be completely immutable even through the Student class or is it ok for Student to reference a new Phone
 package edu.lmu.cs.msutton.university;
 
 import java.util.Map;
