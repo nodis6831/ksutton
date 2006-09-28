@@ -86,7 +86,7 @@ public class Purse {
 	}
 
 	/**
-	 * Returns a brief description of the Card. The exact details of the
+	 * Returns a brief description of the Purse. The exact details of the
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical:
 	 * 
