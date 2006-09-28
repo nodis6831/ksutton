@@ -37,7 +37,7 @@ public class RatioTest {
 		try {
 			RatioImpl a = new RatioImpl(1, 0);
 		} catch (IllegalArgumentException e) {
-			assertNotNull(e);
+			assertNotNull(e); //TODO I don't think this does exactly what I think it does --Kelly
 		}
 	}
 
