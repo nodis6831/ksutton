@@ -9,7 +9,7 @@ package edu.lmu.cs.msutton.util;
 
 public class Purse {
 
-	// TODO should these be arrays?
+	// TODO should these be arrays? Answer: These should be a MAP
 	private int numPennies;
 
 	private int numNickels;
@@ -38,9 +38,8 @@ public class Purse {
 		case 3:
 			return numQuarters;
 		default:
-			throw new IllegalArgumentException(); // TODO are switch
-													// statements evil for CMSI
-													// 281?
+			throw new IllegalArgumentException(); 
+		// TODO are switch statements evil for CMSI 281? Answer: NO, use a map
 		}
 	}
 
