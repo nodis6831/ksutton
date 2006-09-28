@@ -1,7 +1,7 @@
 package edu.lmu.cs.msutton.math;
 
 /**
- * An class that implements the Ratio interface
+ * An immutable class that implements the Ratio interface
  * 
  * @author Kelly Sutton
  * @author Garrett Shannon
@@ -9,9 +9,9 @@ package edu.lmu.cs.msutton.math;
 
 public class RatioImpl implements Ratio {
 
-	private long num;
+	private final long num;
 
-	private long den; // numerator and denominator
+	private final long den; // numerator and denominator
 
 	/**
 	 * A Ratio class
@@ -33,14 +33,14 @@ public class RatioImpl implements Ratio {
 	/**
 	 * @return This objects numerator
 	 */
-	public long getNum() {
+	public final long getNum() {
 		return this.num;
 	}
 
 	/**
 	 * @return This objects denominator
 	 */
-	public long getDen() {
+	public final long getDen() {
 		return this.den;
 	}
 
@@ -48,7 +48,7 @@ public class RatioImpl implements Ratio {
 	 * @return true iff this == obj
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 
 		RatioImpl that = (RatioImpl) obj;
 
@@ -62,6 +62,12 @@ public class RatioImpl implements Ratio {
 		return false;
 	}
 
+	
+	@Override
+	public final String toString(){
+		return this.getNum() + "/" + this.getDen();
+	}
+	
 	/**
 	 * Function from http://forums.dreamincode.net/showtopic18476.htm
 	 * 
@@ -71,7 +77,7 @@ public class RatioImpl implements Ratio {
 	 *            Second long
 	 * @return The greatest common factor (GCF)
 	 */
-	private long gcf(long u, long v) { // TODO test if this actually works
+	private final long gcf(long u, long v) { // TODO test if this actually works
 		int k = 0;
 		if (u == 0)
 			return v;
@@ -96,5 +102,5 @@ public class RatioImpl implements Ratio {
 		} while (u > 0);
 		return v << k; // returns v * 2^k
 	}
-	// TODO override toString() method??
+	
 }
