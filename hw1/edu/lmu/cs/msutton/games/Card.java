@@ -16,6 +16,9 @@ public class Card {
 		SPADES("Spades"), HEARTS("Hearts"), DIAMONDS("Diamonds"), CLUBS("Clubs");
 		private String name;
 
+		/**
+		 * Assigns each field a String with only the first letter capitalized
+		 */
 		private Suit(String name) {
 			this.name = name;
 		}
@@ -38,6 +41,9 @@ public class Card {
 				"Jack"), QUEEN("Queen"), KING("King");
 		private String name;
 
+		/**
+		 * Assigns each field a String with only the first letter capitalized
+		 */
 		private Rank(String name) {
 			this.name = name;
 		}
