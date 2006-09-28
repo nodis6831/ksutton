@@ -15,11 +15,10 @@ public class Point {
 	public static final Point ORIGIN = new Point(0, 0);
 
 	/**
-	 * @param x
-	 * @param y
+	 * @param x The x-coordinate
+	 * @param y The y-coordinate
 	 */
 	public Point(double x, double y) {
-		super();
 		this.x = x;
 		this.y = y;
 	}
@@ -41,6 +40,7 @@ public class Point {
 	/**
 	 * @return true iff this == that
 	 */
+	@Override
 	public boolean equals(Object that) {
 
 		if (that instanceof Point) {
@@ -56,12 +56,12 @@ public class Point {
 	}
 
 	/**
-	 * @Override
-	 * Returns a brief description of the Card. The exact details of the
-	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical:
+	 * @Override Returns a brief description of the Point. The exact details of
+	 *           the representation are unspecified and subject to change, but
+	 *           the following may be regarded as typical:
+	 *           
+	 *           "(1,2)"
 	 */
-	// TODO Define / give example of typical string output in the comment
 	@Override
 	public String toString() {
 		return "(" + this.x + "," + this.y + ")";
