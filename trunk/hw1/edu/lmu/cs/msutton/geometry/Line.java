@@ -85,7 +85,7 @@ public class Line {
 
 	/**
 	 * @return true iff this == that
-	 * @param that
+	 * @param obj
 	 *            A Line object NOTE: To avoid rounding error, equals() returns
 	 *            true of the direction of the vectors are within 0.001 of
 	 *            eachother
@@ -97,13 +97,10 @@ public class Line {
 
 			Line that = (Line) obj;
 
-			if (this.isPointOnLine(that.p)
-					&& (this.v.directionAsDegrees() == that.v
-							.directionAsDegrees()
-							|| this.v.directionAsDegrees() == 180.0 + that.v
-									.directionAsDegrees() || Math.abs(this.v
-							.directionAsDegrees()
-							- that.v.directionAsDegrees()) < 0.001)) {
+			if (this.isPointOnLine(that.p) //make sure the two lines have a point in common
+					&& (this.v.directionAsRadians() == that.v.directionAsRadians() //test if the vectors point in the same direction
+							|| this.v.directionAsRadians() == Math.PI + that.v.directionAsRadians() //test if the vectors point in opposite directions
+							|| Math.abs(this.v.directionAsRadians()	- that.v.directionAsRadians()) < 0.001)) { //test if the vectors point in a close enough direction
 				return true;
 			}
 		}
@@ -112,11 +109,12 @@ public class Line {
 	}
 
 	/**
-	 * @Override Returns a brief description of the Card. The exact details of
+	 * @Override Returns a brief description of the Line. The exact details of
 	 *           the representation are unspecified and subject to change, but
 	 *           the following may be regarded as typical:
+	 *           
+	 *           "(0,0) <1,2>"
 	 */
-	// TODO Define / give example of typical string output in the comment
 	@Override
 	public String toString() {
 
@@ -124,14 +122,13 @@ public class Line {
 
 	}
 
-	public boolean isPointOnLine(Point point) {
+	private boolean isPointOnLine(Point point) {
 
 		// point-slope formula
 		if (point.getY() - this.p.getY() == (this.v.getJ() / this.v.getI())
 				* (point.getX() - this.p.getX())) {
 			return true;
-		} else if (this.v.getI() == 0.0 && point.getX() == this.p.getX()) { // vertical
-																			// line
+		} else if (this.v.getI() == 0.0 && point.getX() == this.p.getX()) { // vertical line
 			return true;
 		}
 		return false;
