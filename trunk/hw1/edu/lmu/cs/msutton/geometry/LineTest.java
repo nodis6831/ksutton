@@ -32,13 +32,13 @@ public class LineTest {
 	 * 
 	 */
 	@Test
-	public void testIdenticalLines() {
-		Line a = new Line(new Point(0, 0), new Vector(1, 1));
-		Line b = new Line(new Point(0, 0), new Vector(1, 1));
-
+	public void testIdenticalLines(){
+		Line a = new Line(new Point(0,0),new Vector(1,1));
+		Line b = new Line(new Point(0,0),new Vector(1,1));
+		
 		assertTrue(a.equals(b));
 	}
-
+	
 	/**
 	 * Tests three identical lines defined by opposing vectors of different
 	 * magnitudes.
@@ -51,57 +51,57 @@ public class LineTest {
 		assertTrue(a.equals(b));
 
 		Line c = new Line(new Point(0, 0), new Vector(10, 10));
-		assertEquals(a, b);
-		assertEquals(b, c);
-		assertEquals(c, a);
-
+		assertEquals(a,b);
+		assertEquals(b,c);
+		assertEquals(c,a);
+		
 	}
 
 	/**
 	 * Tests line rotation.
-	 * 
+	 *
 	 */
 	@Test
-	public void testLineRotation() {
-		Line a = new Line(new Point(0, 0), new Vector(1, 1));
-		Line b = new Line(new Point(0, 0), new Vector(1, 0));
-
+	public void testLineRotation(){
+		Line a = new Line(new Point(0,0), new Vector(1,1));
+		Line b = new Line(new Point(0,0), new Vector(1,0));
+		
 		assertFalse(a.equals(b));
-
+		
 		b.rotateLine(Math.PI / 4);
-		assertEquals(a, b);
+		assertEquals(a,b);
 	}
-
+	
 	/**
 	 * Tests line shift
 	 * 
 	 */
 	@Test
-	public void testLineShift() {
-		Line a = new Line(new Point(0, 0), new Vector(0, 1));
-		Line b = new Line(new Point(1, 0), new Vector(0, 1));
-
+	public void testLineShift(){
+		Line a = new Line(new Point(0,0), new Vector(0,1));
+		Line b = new Line(new Point(1,0), new Vector(0,1));
+		
 		b.shiftLine(-1, 0);
-
-		assertEquals(a, b);
+		
+		assertEquals(a,b);
 	}
-
+	
 	/**
 	 * Tests line rotation and shift at the same time
 	 * 
 	 */
 	@Test
-	public void testLineShiftAndRotation() {
-		Line a = new Line(new Point(0, 0), new Vector(0, 1));
-		Line b = new Line(new Point(0, -1), new Vector(1, 0));
-
+	public void testLineShiftAndRotation(){
+		Line a = new Line(new Point(0,0), new Vector(0,1));
+		Line b = new Line(new Point(0,-1), new Vector(1,0));
+		
 		assertFalse(a.equals(b));
-
+		
 		b.shiftLine(0, 1);
-		b.rotateLine(Math.PI / 2); // rotate -45 degrees
-
+		b.rotateLine(Math.PI / 2); //rotate -45 degrees
+		
 		assertEquals(a, b);
-
+		
 	}
-
+	
 }
