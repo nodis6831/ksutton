@@ -3,7 +3,7 @@ package edu.lmu.cs.msutton.util;
 /**
  * A Purse class
  * 
- * @author Michael Sutton
+ * @author Kelly Sutton
  * @author Garrett Shannon
  */
 
@@ -38,7 +38,7 @@ public class Purse {
 		case 3:
 			return numQuarters;
 		default:
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(); //TODO are switch statements evil for CMSI 281?
 		}
 	}
 
