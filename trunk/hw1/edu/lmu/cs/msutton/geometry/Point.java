@@ -9,9 +9,9 @@ package edu.lmu.cs.msutton.geometry;
 
 public class Point {
 
-	private double x;
+	private final double x;
 
-	private double y;
+	private final double y;
 
 	public static final Point ORIGIN = new Point(0, 0);
 
@@ -27,14 +27,14 @@ public class Point {
 	/**
 	 * @return the x
 	 */
-	public double getX() {
+	public final double getX() {
 		return x;
 	}
 
 	/**
 	 * @return the y
 	 */
-	public double getY() {
+	public final double getY() {
 		return y;
 	}
 
@@ -42,7 +42,7 @@ public class Point {
 	 * @return true iff this == that
 	 */
 	@Override
-	public boolean equals(Object that) {
+	public final boolean equals(Object that) {
 
 		if (that instanceof Point) {
 
@@ -64,8 +64,16 @@ public class Point {
 	 *           "(1,2)"
 	 */
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "(" + this.x + "," + this.y + ")";
+	}
+	
+	@Override
+	public final int hashCode(){
+		int result = 17;
+		result = 37 * (int) Double.doubleToLongBits(this.x);
+		result = 37 * (int) Double.doubleToLongBits(this.y);
+		return result;
 	}
 
 }
