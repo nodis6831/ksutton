@@ -9,8 +9,8 @@ package edu.lmu.cs.msutton.math;
 
 public interface Ratio {
 
-	public long getNum();
-	public long getDen();
-	public boolean equals(Object obj);
-	public String toString();
+	long getNum();
+	long getDen();
+	boolean equals(Object obj);
+	String toString();
 }
