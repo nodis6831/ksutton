@@ -13,8 +13,8 @@ public class PolynomialTest {
 	double[] d = new double[] { 3, 0, 4.7, -8.2, -53 };
 	double[] e = new double[] {0, -2.3, 10.5, 0,}; 
 
-	ArrayPolynomial a = new ArrayPolynomial(d);
-	ArrayPolynomial b = new ArrayPolynomial(e);
+	Polynomial a = new ArrayPolynomial(d);
+	Polynomial b = new ArrayPolynomial(e);
 
 	@Test
 	public void testToString() {

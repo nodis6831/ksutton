@@ -69,9 +69,8 @@ public class Section {
 	/**
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: 
-	 * "Department # Section # (Credits)" 
-	 * "History 101 Section 02 (3)"
+	 * may be regarded as typical: "Department # Section # (Credits)" "History
+	 * 101 Section 02 (3)"
 	 */
 
 	@Override
@@ -79,6 +78,40 @@ public class Section {
 		return department + " " + course + " Section " + section + " ("
 				+ creditHours + ")";
 	}
-	
-	//TODO equals method
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + course;
+		result = PRIME * result + creditHours;
+		result = PRIME * result + ((department == null) ? 0 : department.hashCode());
+		result = PRIME * result + section;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Section other = (Section) obj;
+		if (course != other.course)
+			return false;
+		if (creditHours != other.creditHours)
+			return false;
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
+			return false;
+		if (section != other.section)
+			return false;
+		return true;
+	}
+
+
 }

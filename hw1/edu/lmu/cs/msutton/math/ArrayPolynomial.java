@@ -1,5 +1,7 @@
 package edu.lmu.cs.msutton.math;
 
+import java.util.Arrays;
+
 /**
  * A class representing a single variable polynomial with real number
  * coefficients using an array. When creating the ArrayPolynomial, you must use
@@ -10,7 +12,7 @@ package edu.lmu.cs.msutton.math;
  * @author Garrett Shannon
  * 
  */
-public class ArrayPolynomial {
+public class ArrayPolynomial implements Polynomial {
 
 	private double[] coefficients;
 
@@ -24,8 +26,6 @@ public class ArrayPolynomial {
 		System.arraycopy(coefficients, 0, this.coefficients, 0,
 				coefficients.length);
 		// TODO do we need a defensive copy?
-		// TODO make a constructor which is created by passing the elements in
-		// the array
 	}
 
 	/**
@@ -94,6 +94,28 @@ public class ArrayPolynomial {
 					+ (coefficients.length - 1));
 		}
 		return buffer.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + Arrays.hashCode(coefficients);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final ArrayPolynomial other = (ArrayPolynomial) obj;
+		if (!Arrays.equals(coefficients, other.coefficients))
+			return false;
+		return true;
 	}
 
 }

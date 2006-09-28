@@ -62,13 +62,38 @@ public class Grade {
 	/**
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical:
-	 * "94.76(A)"
+	 * may be regarded as typical: "94.76(A)"
 	 */
 	@Override
 	public String toString() {
 		return this.grade + "(" + this.getLetterGrade() + ")";
 	}
 
-	//TODO equals method
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(grade);
+		result = PRIME * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Grade other = (Grade) obj;
+		if (Double.doubleToLongBits(grade) != Double.doubleToLongBits(other.grade))
+			return false;
+		return true;
+	}
+
+
 }
