@@ -71,8 +71,8 @@ public class Point {
 	@Override
 	public final int hashCode(){
 		int result = 17;
-		result = 37 * (int) Double.doubleToLongBits(this.x);
-		result = 37 * (int) Double.doubleToLongBits(this.y);
+		result = 37 * result + (int) Double.doubleToLongBits(this.x);
+		result = 37 * result + (int) Double.doubleToLongBits(this.y);
 		return result;
 	}
 
