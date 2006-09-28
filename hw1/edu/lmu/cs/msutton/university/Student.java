@@ -132,7 +132,7 @@ public class Student {
 	 * @author Garrett Shannon Some code borrowed form class MoneyBag
 	 */
 	private class Transcript {
-
+		//TODO make private class with public fields and methods (private member class
 		private Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
 		private int creditHours = 0;
