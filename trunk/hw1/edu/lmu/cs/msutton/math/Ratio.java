@@ -1,8 +1,16 @@
 package edu.lmu.cs.msutton.math;
 
-public abstract class Ratio {
+/**
+ * A rather stupid Ratio interface
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
 
-	private long num;
-	private long den;
-	
+public interface Ratio {
+
+	public long getNum();
+	public long getDen();
+	public boolean equals(Object obj);
+	public String toString();
 }

@@ -1,6 +1,13 @@
 package edu.lmu.cs.msutton.math;
 
-public class RatioImpl extends Ratio {
+/**
+ * An class that implements the Ratio interface
+ * 
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
+
+public class RatioImpl implements Ratio {
 
 	private long num;
 
@@ -15,12 +22,43 @@ public class RatioImpl extends Ratio {
 	 *            The denominator of the RatioImpl object
 	 */
 	public RatioImpl(long n, long d) {
-		if (d > 0 && gcf(n, d) == 1 || (gcf(n, d) == n)) {
+		if (d > 0 && (gcf(n, d) == 1 || (gcf(n, d) == n))) {
 			this.num = n;
 			this.den = d;
 		} else {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	/**
+	 * @return This objects numerator
+	 */
+	public long getNum() {
+		return this.num;
+	}
+
+	/**
+	 * @return This objects denominator
+	 */
+	public long getDen() {
+		return this.den;
+	}
+
+	/**
+	 * @return true iff this == obj
+	 */
+	public boolean equals(Object obj) {
+
+		RatioImpl that = (RatioImpl) obj;
+
+		if (that instanceof RatioImpl) {
+			if (this.getNum() == that.getNum()
+					&& this.getDen() == that.getDen()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -57,5 +95,5 @@ public class RatioImpl extends Ratio {
 		} while (u > 0);
 		return v << k; // returns v * 2^k
 	}
-	//TODO override toString() method??
+	// TODO override toString() method??
 }
