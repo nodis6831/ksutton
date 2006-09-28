@@ -53,10 +53,10 @@ public class RatioImpl implements Ratio {
 	@Override
 	public final boolean equals(Object obj) {
 
-		RatioImpl that = (RatioImpl) obj;
-
-		if (that instanceof RatioImpl) {
+		if (obj instanceof RatioImpl) {
 			{
+				RatioImpl that = (RatioImpl) obj;
+
 				return this.getNum() == that.getNum()
 						&& this.getDen() == that.getDen();
 			}

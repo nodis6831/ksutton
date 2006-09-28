@@ -16,8 +16,10 @@ public class Point {
 	public static final Point ORIGIN = new Point(0, 0);
 
 	/**
-	 * @param x The x-coordinate
-	 * @param y The y-coordinate
+	 * @param x
+	 *            The x-coordinate
+	 * @param y
+	 *            The y-coordinate
 	 */
 	public Point(double x, double y) {
 		this.x = x;
@@ -42,15 +44,14 @@ public class Point {
 	 * @return true iff this == that
 	 */
 	@Override
-	public final boolean equals(Object that) {
+	public final boolean equals(Object obj) {
 
-		if (that instanceof Point) {
+		if (obj instanceof Point) {
 
-			Point p = (Point) that;
+			Point that = (Point) obj;
 
-			if ((this.x == p.x) && (this.y == p.y)) {
-				return true;
-			}
+			return this.x == that.x && this.y == that.y;
+
 		}
 
 		return false;
@@ -60,16 +61,16 @@ public class Point {
 	 * @Override Returns a brief description of the Point. The exact details of
 	 *           the representation are unspecified and subject to change, but
 	 *           the following may be regarded as typical:
-	 *           
-	 *           "(1,2)"
+	 * 
+	 * "(1,2)"
 	 */
 	@Override
 	public final String toString() {
 		return "(" + this.x + "," + this.y + ")";
 	}
-	
+
 	@Override
-	public final int hashCode(){
+	public final int hashCode() {
 		int result = 17;
 		result = 37 * result + (int) Double.doubleToLongBits(this.x);
 		result = 37 * result + (int) Double.doubleToLongBits(this.y);
