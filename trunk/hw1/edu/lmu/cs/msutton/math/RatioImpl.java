@@ -56,9 +56,9 @@ public class RatioImpl implements Ratio {
 		RatioImpl that = (RatioImpl) obj;
 
 		if (that instanceof RatioImpl) {
-			if (this.getNum() == that.getNum()
-					&& this.getDen() == that.getDen()) {
-				return true;
+			{
+				return this.getNum() == that.getNum()
+						&& this.getDen() == that.getDen();
 			}
 		}
 
@@ -80,7 +80,7 @@ public class RatioImpl implements Ratio {
 	 * @return The greatest common factor (GCF)
 	 */
 	private final long gcf(long u, long v) { // TODO test if this actually
-												// works
+		// works
 		int k = 0;
 		if (u == 0)
 			return v;
