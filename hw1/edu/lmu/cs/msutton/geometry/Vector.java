@@ -1,17 +1,17 @@
 package edu.lmu.cs.msutton.geometry;
 
 /**
- * A simple vector class. Each vector is defined by its x-magnitude (i) and its
- * y-magnitude (j)
+ * A simple immutable vector class. Each vector is defined by its x-magnitude
+ * (i) and its y-magnitude (j)
  * 
  * @author Kelly Sutton
  * @author Garrett Shannon
  */
 public class Vector {
 
-	private double i;
+	private final double i;
 
-	private double j;
+	private final double j;
 
 	/**
 	 * Constructor for two-dimensional vector
@@ -29,7 +29,8 @@ public class Vector {
 
 	/**
 	 * Creates a new Vector object from an angle (in radians) and magnitude.
-	 * This is a static constructor because we already have the constructor Vector( double, double)
+	 * This is a static constructor because we already have the constructor
+	 * Vector( double, double)
 	 * 
 	 * @param angle
 	 *            The angle of the Vector object
@@ -59,21 +60,21 @@ public class Vector {
 	/**
 	 * @return the i
 	 */
-	public double getI() {
+	public final double getI() {
 		return i;
 	}
 
 	/**
 	 * @return the j
 	 */
-	public double getJ() {
+	public final double getJ() {
 		return j;
 	}
 
 	/**
 	 * @return A double of the direction as radians
 	 */
-	public double directionAsRadians() {
+	public final double directionAsRadians() {
 
 		return Math.atan(this.j / this.i);
 	}
@@ -82,13 +83,36 @@ public class Vector {
 	 * Returns a brief description of the Vector. The exact details of the
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical:
-	 * 
-	 * "<1,2>"
+	 *  "<1,2>"
 	 */
 	@Override
-	public String toString() {
+	public final String toString() {
 
 		return "<" + this.i + "," + this.j + ">";
 
+	}
+
+	@Override
+	public final boolean equals(Object obj) {
+
+		Vector that = (Vector) obj;
+		
+		if (that instanceof Vector){
+			if (this.getI() == that.getI() && this.getJ() == that.getJ()){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public final int hashCode(){
+		
+		int result = 17;
+		result = 37 * result + (int) Double.doubleToLongBits(this.i);
+		result = 37 * result + (int) Double.doubleToLongBits(this.j);
+		return result;
+		
 	}
 }
