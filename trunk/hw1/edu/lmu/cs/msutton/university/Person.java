@@ -5,13 +5,14 @@ package edu.lmu.cs.msutton.university;
  * @author Garrett Shannon
  */
 public class Person {
-	protected boolean male;
 
-	protected String name;
+	private String name;
 
-	protected Phone phone;
+	private boolean male;
 
-	protected int yob;
+	private int yob;
+
+	private Phone phone;
 
 	/**
 	 * A person class
@@ -111,6 +112,7 @@ public class Person {
 			return false;
 		return true;
 	}
+
 	class Phone {
 
 		private final int areaCode;
@@ -121,12 +123,12 @@ public class Person {
 
 		/**
 		 * 
-		 * @param a
-		 *            Area code of the phone number
-		 * @param p
-		 *            Prefix of the phone number
-		 * @param s
-		 *            Suffix of the phone number
+		 * @param areaCode
+		 *            the area code *
+		 * @param prefix
+		 *            the prefix
+		 * @param suffix
+		 *            the suffix
 		 */
 		public Phone(int areaCode, int prefix, int suffix) {
 			this.areaCode = areaCode;
@@ -145,7 +147,7 @@ public class Person {
 		public String toString() {
 			return "(" + this.areaCode + ")-" + this.prefix + "-" + this.suffix;
 		}
-		
+
 		@Override
 		public int hashCode() {
 			final int PRIME = 31;
@@ -155,7 +157,6 @@ public class Person {
 			result = PRIME * result + suffix;
 			return result;
 		}
-
 
 		@Override
 		public boolean equals(Object obj) {
@@ -175,7 +176,5 @@ public class Person {
 			return true;
 		}
 	}
-
-
 
 }

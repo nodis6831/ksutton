@@ -16,6 +16,10 @@ public class Section {
 
 	private int creditHours;
 
+	private int year;
+
+	private boolean fallSemester;
+
 	/**
 	 * 
 	 * @param deparment
@@ -26,57 +30,63 @@ public class Section {
 	 *            the section number
 	 * @param credits
 	 *            the credit hours
+	 * @param year
+	 *            the year
+	 * @param fallSemester
+	 *            the semester
 	 */
-	public Section(String department, int course, int section, int creditHours) {
+	public Section(String department, int course, int section, int creditHours,
+			int year, boolean fallSemester) {
 		this.department = department;
 		this.course = course;
 		this.section = section;
 		this.creditHours = creditHours;
+		this.year = year;
+		this.fallSemester = fallSemester;
 	}
 
-	/**
-	 * 
-	 * @return the course number
-	 */
 	public int getCourse() {
 		return course;
 	}
 
-	/**
-	 * 
-	 * @return the credits
-	 */
 	public int getCreditHours() {
 		return creditHours;
 	}
 
-	/**
-	 * 
-	 * @return the department name
-	 */
 	public String getDepartment() {
 		return department;
 	}
 
-	/**
-	 * 
-	 * @return the section number
-	 */
 	public int getSection() {
 		return section;
+	}
+
+	public boolean isFallSemester() {
+		return fallSemester;
+	}
+
+	public int getYear() {
+		return year;
 	}
 
 	/**
 	 * Returns a brief description of the Card. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Department # Section # (Credits)" "History
-	 * 101 Section 02 (3)"
+	 * may be regarded as typical: "Department:department Course:# Section:#
+	 * Credits:crdits Semester:semester Year:year" "Department:History
+	 * Course:101 Section:02 Credits:3 Semester:Fall Year:2005"
 	 */
 
 	@Override
 	public String toString() {
-		return department + " " + course + " Section " + section + " ("
-				+ creditHours + ")";
+		if (this.fallSemester)
+			return "Department:" + department + " Course:" + course
+					+ " Section:" + section + " Credits:" + creditHours
+					+ " Semester:Fall Year:" + year;
+		else
+			return "Department:" + department + " Course:" + course
+					+ " Section:" + section + " Credits:" + creditHours
+					+ " Semester:Spring Year:" + year;
 	}
 
 	@Override
@@ -85,8 +95,11 @@ public class Section {
 		int result = 1;
 		result = PRIME * result + course;
 		result = PRIME * result + creditHours;
-		result = PRIME * result + ((department == null) ? 0 : department.hashCode());
+		result = PRIME * result
+				+ ((department == null) ? 0 : department.hashCode());
+		result = PRIME * result + (fallSemester ? 1231 : 1237);
 		result = PRIME * result + section;
+		result = PRIME * result + year;
 		return result;
 	}
 
@@ -108,10 +121,13 @@ public class Section {
 				return false;
 		} else if (!department.equals(other.department))
 			return false;
+		if (fallSemester != other.fallSemester)
+			return false;
 		if (section != other.section)
+			return false;
+		if (year != other.year)
 			return false;
 		return true;
 	}
-
 
 }
