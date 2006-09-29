@@ -60,7 +60,7 @@ public class Student {
 	 * @param phone
 	 */
 	public void setPhone(Phone phone) {
-		person.phone = phone;
+		person.setPhone(phone);
 	}
 
 	/**
@@ -93,16 +93,16 @@ public class Student {
 	 * 
 	 * @return the credits hours
 	 */
-	public int getCreditHours() {
-		return transcript.getCreditHours();
+	public int credits() {
+		return transcript.creditHours;
 	}
 
 	/**
 	 * 
 	 * @return the gpa
 	 */
-	public double getGpa() {
-		return transcript.computeGpa();
+	public double gpa() {
+		return transcript.gradePoints / (double) transcript.creditHours;
 	}
 
 	/**
@@ -114,7 +114,9 @@ public class Student {
 	 *            The grade
 	 */
 	public void updateTranscript(Section section, Grade grade) {
-		transcript.add(section, grade);
+		transcript.contents.put(section, grade);
+		transcript.creditHours += section.getCreditHours();
+		transcript.gradePoints += grade.getGrade();
 	}
 
 	/**
@@ -133,41 +135,11 @@ public class Student {
 	 */
 	private class Transcript {
 		//TODO make private class with public fields and methods (private member class
-		private Map<Section, Grade> contents = new TreeMap<Section, Grade>();
+		public Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
-		private int creditHours = 0;
+		public int creditHours = 0;
 
-		private double gradePoints = 0;
-
-		/**
-		 * 
-		 * @param section
-		 *            the section
-		 * @param grade
-		 *            the grade
-		 */
-		void add(Section section, Grade grade) {
-			contents.put(section, grade);
-			creditHours += section.getCreditHours();
-			gradePoints += grade.getGrade();
-		}
-
-		/**
-		 * 
-		 * @return the overall gpa
-		 */
-		double computeGpa() {
-			return gradePoints / (double) creditHours;
-
-		}
-
-		/**
-		 * 
-		 * @return the total crdit hours
-		 */
-		public int getCreditHours() {
-			return creditHours;
-		}
+		public double gradePoints = 0;
 
 		/**
 		 * Returns a brief description of the Card. The exact details of the
