@@ -79,14 +79,12 @@ public class Section {
 
 	@Override
 	public String toString() {
-		if (this.fallSemester)
-			return "Department:" + department + " Course:" + course
-					+ " Section:" + section + " Credits:" + creditHours
-					+ " Semester:Fall Year:" + year;
+		if (fallSemester)
+			return department + " " + course + " " + section + " "
+					+ creditHours + " Fall " + year;
 		else
-			return "Department:" + department + " Course:" + course
-					+ " Section:" + section + " Credits:" + creditHours
-					+ " Semester:Spring Year:" + year;
+			return department + " " + course + " " + section + " "
+					+ creditHours + " Spring " + year;
 	}
 
 	@Override

@@ -11,6 +11,7 @@
 	I was reading the Bloch book.  We should make our classes final if there are no subclasses and change abstract classes to interfaces if possible.
 	Make sure Grade and Section are immutable
 	What is the purpose of Polynomial as an interface?
+	Names of methods must be included in UML
 
 Homework points in class:
 	9/12 - Garrett noted a + needed to be added to the constructor on the UML diagram of class Point 
