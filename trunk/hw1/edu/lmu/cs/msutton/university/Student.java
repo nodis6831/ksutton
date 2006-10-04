@@ -16,7 +16,7 @@ import edu.lmu.cs.msutton.university.Person.Phone;
 public class Student {
 	private final Person person;
 
-	private String country;
+	private final String country;
 
 	private final Transcript transcript = new Transcript();
 
@@ -114,9 +114,7 @@ public class Student {
 	 *            The grade
 	 */
 	public void updateTranscript(Section section, Grade grade) {
-		transcript.contents.put(section, grade);
-		transcript.creditHours += section.getCreditHours();
-		transcript.gradePoints += grade.getGrade();
+		transcript.add(section, grade);
 	}
 
 	/**
@@ -126,6 +124,49 @@ public class Student {
 	public void printTranscript() {
 		System.out.println(transcript);
 	}
+//TODO description of toString
+	@Override
+	public String toString() {
+		return person + country;
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((country == null) ? 0 : country.hashCode());
+		result = PRIME * result + ((person == null) ? 0 : person.hashCode());
+		result = PRIME * result
+				+ ((transcript == null) ? 0 : transcript.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Student other = (Student) obj;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
+		if (person == null) {
+			if (other.person != null)
+				return false;
+		} else if (!person.equals(other.person))
+			return false;
+		if (transcript == null) {
+			if (other.transcript != null)
+				return false;
+		} else if (!transcript.equals(other.transcript))
+			return false;
+		return true;
+	}
 
 	/**
 	 * A simple transcript class
@@ -134,30 +175,69 @@ public class Student {
 	 * @author Garrett Shannon Some code borrowed form class MoneyBag
 	 */
 	private class Transcript {
-		//TODO make private class with public fields and methods (private member class
 		public Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
 		public int creditHours = 0;
 
 		public double gradePoints = 0;
 
+		public void add(Section section, Grade grade) {
+			contents.put(section, grade);
+			creditHours += section.getCreditHours();
+			gradePoints += grade.getGrade();
+		}
+
 		/**
 		 * Returns a brief description of the Card. The exact details of the
 		 * representation are unspecified and subject to change, but the
 		 * following may be regarded as typical: "Section:History Grade:95.34(A) | "
 		 */
-
+		// TODO fix this description and the toString method
 		@Override
 		public String toString() {
-			StringBuffer buffer = new StringBuffer("Section: ");
+			StringBuffer buffer = new StringBuffer();
 			for (Entry<Section, Grade> entry : contents.entrySet()) {
 				buffer.append(entry.getKey() + " Grade:" + entry.getValue()
 						+ " | ");
 			}
 			return buffer.toString();
 		}
-		
-		//TODO equals method
+
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result
+					+ ((contents == null) ? 0 : contents.hashCode());
+			result = PRIME * result + creditHours;
+			long temp;
+			temp = Double.doubleToLongBits(gradePoints);
+			result = PRIME * result + (int) (temp ^ (temp >>> 32));
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Transcript other = (Transcript) obj;
+			if (contents == null) {
+				if (other.contents != null)
+					return false;
+			} else if (!contents.equals(other.contents))
+				return false;
+			if (creditHours != other.creditHours)
+				return false;
+			if (Double.doubleToLongBits(gradePoints) != Double
+					.doubleToLongBits(other.gradePoints))
+				return false;
+			return true;
+		}
+
 	}
 
 }

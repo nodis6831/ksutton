@@ -25,7 +25,6 @@ public class ArrayPolynomial implements Polynomial {
 		this.coefficients = new double[coefficients.length];
 		System.arraycopy(coefficients, 0, this.coefficients, 0,
 				coefficients.length);
-		// TODO do we need a defensive copy?
 	}
 
 	/**
@@ -50,7 +49,6 @@ public class ArrayPolynomial implements Polynomial {
 			i--;
 		}
 		return i;
-		// TODO Better way to do this?
 	}
 
 	/**
@@ -60,7 +58,7 @@ public class ArrayPolynomial implements Polynomial {
 	 * @return value of the polynomial
 	 */
 	public double valueAt(double d) {
-		double sum = 0; // TODO better way to do this?
+		double sum = 0;
 		for (int i = 0; i < coefficients.length; i++) {
 			sum += (Math.pow(d, i)) * coefficients[i];
 		}

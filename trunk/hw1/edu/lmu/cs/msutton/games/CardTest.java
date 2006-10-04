@@ -28,5 +28,9 @@ public class CardTest {
 		assertEquals(card.toString(), "Five of Spades");
 
 	}
+	@Test
+	public void testEquals() {
+		//TODO write testEquals
+	}
 
 }

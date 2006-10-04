@@ -76,6 +76,14 @@ public class Person {
 	 * @author Garrett Shannon
 	 * 
 	 */
+	//TODO toString description
+	//TODO test what happens if you so toString without assigning a phone number
+	public String toString() {
+		if(male) {
+			return name + " Male " + yob + " " + getPhone();
+		}
+		else return name + " Female " + yob + " " + getPhone(); 
+	}
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
