@@ -79,8 +79,8 @@ public class RatioImpl implements Ratio {
 	 *            Second long
 	 * @return The greatest common factor (GCF)
 	 */
-	private final long gcf(long u, long v) { // TODO test if this actually
-		// works
+	private final long gcf(long u, long v) {
+		
 		int k = 0;
 		if (u == 0)
 			return v;
