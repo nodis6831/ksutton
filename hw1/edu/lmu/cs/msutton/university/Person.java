@@ -70,13 +70,14 @@ public class Person {
 		return male;
 	}
 
+	@Override
 	/**
+	 * Returns a brief description of the Person. The exact details of the
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical:
 	 * 
-	 * @author Kelly Sutton
-	 * @author Garrett Shannon
-	 * 
+	 * "name male yob phone" "Kelly Sutton Male 1987 (123)-451-6718"
 	 */
-	//TODO toString description
 	//TODO test what happens if you so toString without assigning a phone number
 	public String toString() {
 		if(male) {

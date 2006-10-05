@@ -124,8 +124,15 @@ public class Student {
 	public void printTranscript() {
 		System.out.println(transcript);
 	}
-//TODO description of toString
+
 	@Override
+	/**
+	 * Returns a brief description of the Student. The exact details of the
+	 * representation are unspecified and subject to change, but the following
+	 * may be regarded as typical:
+	 * 
+	 * "name male yob phone country" "Kelly Sutton Male 1987 (123)-451-6718 USA"
+	 */
 	public String toString() {
 		return person + country;
 	}
@@ -188,7 +195,7 @@ public class Student {
 		}
 
 		/**
-		 * Returns a brief description of the Card. The exact details of the
+		 * Returns a brief description of the Transcript. The exact details of the
 		 * representation are unspecified and subject to change, but the
 		 * following may be regarded as typical: "Section:History Grade:95.34(A) | "
 		 */
