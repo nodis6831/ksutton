@@ -1,5 +1,7 @@
 package edu.lmu.cs.msutton.util;
 
+import java.util.TreeMap;
+
 /**
  * A Purse class
  * 
@@ -9,17 +11,18 @@ package edu.lmu.cs.msutton.util;
 
 public class Purse {
 
-	// TODO should these be arrays? Answer: These should be a MAP
-	private int numPennies;
+	private final TreeMap purse;
 
-	private int numNickels;
-
-	private int numDimes;
-
-	private int numQuarters;
+	public Purse() {
+		purse = new TreeMap();
+		purse.put("pennies", "0");
+		purse.put("nickels", "0");
+		purse.put("dimes", "0");
+		purse.put("quarters", "0");
+	}
 
 	/**
-	 * A very lame method that return the number of coins of a specified
+	 * A method that returns the number of coins of a specified
 	 * denomination.
 	 * 
 	 * @param denomination
@@ -27,20 +30,8 @@ public class Purse {
 	 * @return The number of coins of the specified denomination. 0 = pennies, 1 =
 	 *         nickels, 2 = dimes, 3 = quarters
 	 */
-	public int getNumCoinsOf(int denomination) {
-		switch (denomination) {
-		case 0:
-			return numPennies;
-		case 1:
-			return numNickels;
-		case 2:
-			return numDimes;
-		case 3:
-			return numQuarters;
-		default:
-			throw new IllegalArgumentException(); 
-		// TODO are switch statements evil for CMSI 281? Answer: NO, use a map
-		}
+	public int getNumCoinsOf(String denomination) {
+		return Integer.parseInt((String) purse.get(denomination));
 	}
 
 	/**
@@ -51,20 +42,17 @@ public class Purse {
 	 * @param denomination
 	 *            The particular denomination of coins to add
 	 */
-	public void addNumCoinsOf(int number, int denomination) {
+	public void addNumCoinsOf(String number, String denomination) {
 
-		switch (denomination) {
-		case 0:
-			numPennies += number;
-		case 1:
-			numNickels += number;
-		case 2:
-			numDimes += number;
-		case 3:
-			numQuarters += number;
-		default:
-			throw new IllegalArgumentException();
-		}
+		int coins = Integer.parseInt((String) purse.get(denomination))
+				+ Integer.parseInt(number);
+
+		purse.put(denomination, Integer.toString(coins));
+
+	}
+
+	public void addNumCoinsOf(int number, String denomination) {
+		addNumCoinsOf(Integer.toString(number), denomination);
 	}
 
 	/**
@@ -72,16 +60,18 @@ public class Purse {
 	 * @return The total number of coins.
 	 */
 	public int totalNumCoins() {
-		return numPennies + numNickels + numDimes + numQuarters;
+		return this.getNumCoinsOf("pennies") + this.getNumCoinsOf("nickels")
+				+ this.getNumCoinsOf("dimes") + this.getNumCoinsOf("quarters");
 	}
 
 	/**
-	 * 
 	 * @return The total dollars.
 	 */
-	public double totalvalue() {
-		return (0.01 * numPennies) + (0.05 * numNickels) + (0.10 * numDimes)
-				+ (0.25 * numQuarters);
+	public double totalValue() {
+		return (0.01 * this.getNumCoinsOf("pennies"))
+				+ (0.05 * this.getNumCoinsOf("nickels"))
+				+ (0.10 * this.getNumCoinsOf("dimes"))
+				+ (0.25 * this.getNumCoinsOf("quarters"));
 	}
 
 	/**
@@ -94,8 +84,9 @@ public class Purse {
 
 	@Override
 	public String toString() {
-		return this.numPennies + " pennie(s), " + this.numNickels
-				+ " nickel(s), " + this.numDimes + " dime(s), and "
-				+ this.numQuarters + " quarter(s)";
+		return this.getNumCoinsOf("pennies") + " pennie(s), "
+				+ this.getNumCoinsOf("nickels") + " nickel(s), "
+				+ this.getNumCoinsOf("dimes") + " dime(s), and "
+				+ this.getNumCoinsOf("quarters") + " quarter(s)";
 	}
 }
