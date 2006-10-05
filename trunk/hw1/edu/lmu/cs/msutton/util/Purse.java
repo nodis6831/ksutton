@@ -11,19 +11,18 @@ import java.util.TreeMap;
 
 public class Purse {
 
-	private final TreeMap purse;
+	private final TreeMap<String, Integer> purse;
 
 	public Purse() {
 		purse = new TreeMap();
-		purse.put("pennies", "0");
-		purse.put("nickels", "0");
-		purse.put("dimes", "0");
-		purse.put("quarters", "0");
+		purse.put("pennies", 0);
+		purse.put("nickels", 0);
+		purse.put("dimes", 0);
+		purse.put("quarters", 0);
 	}
 
 	/**
-	 * A method that returns the number of coins of a specified
-	 * denomination.
+	 * A method that returns the number of coins of a specified denomination.
 	 * 
 	 * @param denomination
 	 *            The denomination coin count that the user wishes returned.
@@ -31,28 +30,19 @@ public class Purse {
 	 *         nickels, 2 = dimes, 3 = quarters
 	 */
 	public int getNumCoinsOf(String denomination) {
-		return Integer.parseInt((String) purse.get(denomination));
+		return purse.get(denomination);
 	}
 
 	/**
-	 * Add a number of coins of a certain denomination to the Purse object.
+	 * A method that adds coins of a specific denomination
 	 * 
 	 * @param number
-	 *            The number of coins to add
+	 *            An int of the number of coins to add
 	 * @param denomination
-	 *            The particular denomination of coins to add
+	 *            The correct String of the denomination of coins being added
 	 */
-	public void addNumCoinsOf(String number, String denomination) {
-
-		int coins = Integer.parseInt((String) purse.get(denomination))
-				+ Integer.parseInt(number);
-
-		purse.put(denomination, Integer.toString(coins));
-
-	}
-
 	public void addNumCoinsOf(int number, String denomination) {
-		addNumCoinsOf(Integer.toString(number), denomination);
+		purse.put(denomination, number);
 	}
 
 	/**
