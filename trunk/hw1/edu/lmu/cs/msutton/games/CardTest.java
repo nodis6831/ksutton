@@ -2,6 +2,7 @@ package edu.lmu.cs.msutton.games;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import edu.lmu.cs.msutton.games.Card.Rank;
@@ -20,6 +21,7 @@ public class CardTest {
 		Card card = new Card(Rank.FIVE, Suit.SPADES);
 		assertEquals(card.getRank(), Rank.FIVE);
 		assertEquals(card.getSuit(), Suit.SPADES);
+
 	}
 
 	@Test
@@ -28,9 +30,19 @@ public class CardTest {
 		assertEquals(card.toString(), "Five of Spades");
 
 	}
+
 	@Test
 	public void testEquals() {
-		//TODO write testEquals
+		Card a = new Card(Rank.FIVE, Suit.SPADES);
+		Card b = new Card(Rank.SIX, Suit.SPADES);
+		Card c = new Card(Rank.FIVE, Suit.HEARTS);
+		Card d = a;
+
+		assertEquals(a, a);
+		assertEquals(a, d);
+		Assert.assertFalse(a.equals(b));
+		Assert.assertFalse(a.equals(c));
+
 	}
 
 }
