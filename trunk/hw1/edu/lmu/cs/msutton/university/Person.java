@@ -6,11 +6,11 @@ package edu.lmu.cs.msutton.university;
  */
 public class Person {
 
-	private String name;
+	private final String name;
 
-	private boolean male;
+	private final boolean male;
 
-	private int yob;
+	private final int yob;
 
 	private Phone phone;
 
@@ -43,6 +43,8 @@ public class Person {
 	 * @return the phone
 	 */
 	public Phone getPhone() {
+		if (phone == null)
+			throw new IllegalStateException("The phone has not been set");
 		return phone;
 	}
 
@@ -64,7 +66,7 @@ public class Person {
 
 	/**
 	 * 
-	 * @return the gender
+	 * @return the gender, true for male, false for female
 	 */
 	public boolean isMale() {
 		return male;
@@ -76,14 +78,13 @@ public class Person {
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical:
 	 * 
-	 * "name male yob phone" "Kelly Sutton Male 1987 (123)-451-6718"
+	 * "name male yob" "Kelly Sutton Male 1987"
 	 */
-	//TODO test what happens if you so toString without assigning a phone number
 	public String toString() {
 		if(male) {
-			return name + " Male " + yob + " " + getPhone();
+			return name + " Male " + yob;
 		}
-		else return name + " Female " + yob + " " + getPhone(); 
+		else return name + " Female " + yob; 
 	}
 	@Override
 	public int hashCode() {

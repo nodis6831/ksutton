@@ -16,6 +16,8 @@ public class ArrayPolynomial implements Polynomial {
 
 	private double[] coefficients;
 
+	public static final ArrayPolynomial ZERO = new ArrayPolynomial(0);
+
 	/**
 	 * 
 	 * @param coefficients
@@ -24,7 +26,11 @@ public class ArrayPolynomial implements Polynomial {
 	public ArrayPolynomial(double[] coefficients) {
 		this.coefficients = new double[coefficients.length];
 		System.arraycopy(coefficients, 0, this.coefficients, 0,
-				coefficients.length);
+				coefficients.length); // defensive copy
+	}
+
+	private ArrayPolynomial(int i) {
+		this.coefficients = new double[] { i };
 	}
 
 	/**
@@ -32,7 +38,12 @@ public class ArrayPolynomial implements Polynomial {
 	 * @return the derivative
 	 */
 	public ArrayPolynomial derivative() {
-		double[] derivative = new double[this.coefficients.length - 1];
+		double[] derivative;
+		if (coefficients.length == 0 | coefficients == null)
+			throw new IllegalStateException("Polynomial is undefined.");
+		if (coefficients.length == 1)
+			return ZERO;
+		derivative = new double[this.coefficients.length - 1];
 		System
 				.arraycopy(this.coefficients, 1, derivative, 0,
 						derivative.length);
@@ -44,8 +55,11 @@ public class ArrayPolynomial implements Polynomial {
 	 * @return the degree
 	 */
 	public int getDegree() {
+		if (coefficients.length == 0 | coefficients == null)
+			throw new IllegalStateException("Polynomial is undefined.");
 		int i = (this.coefficients.length - 1);
-		while (this.coefficients[i] == 0.0) {
+		while (this.coefficients[i] == 0.0 && i > 0) {// skips terms with a
+			// coefficient of zero
 			i--;
 		}
 		return i;
@@ -58,6 +72,8 @@ public class ArrayPolynomial implements Polynomial {
 	 * @return value of the polynomial
 	 */
 	public double valueAt(double d) {
+		if (coefficients.length == 0 | coefficients == null)
+			throw new IllegalStateException("Polynomial is undefined.");
 		double sum = 0;
 		for (int i = 0; i < coefficients.length; i++) {
 			sum += (Math.pow(d, i)) * coefficients[i];
@@ -66,27 +82,36 @@ public class ArrayPolynomial implements Polynomial {
 	}
 
 	/**
-	 * Returns a brief description of the Card. The exact details of the
-	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Polynomial: 3 + -2.32X^1 + 7.002X^2 + -33X^3 +
+	 * Returns a brief description of the ArrayPolynomial. The exact details of
+	 * the representation are unspecified and subject to change, but the
+	 * following may be regarded as typical: "3 + -2.32X^1 + 7.002X^2 + -33X^3 +
 	 * 5X^5" Note* It skips coefficients of zero
 	 */
 	@Override
 	public String toString() {
 		StringBuffer buffer;
+		if (coefficients.length == 0 | coefficients == null)
+			throw new IllegalStateException("Polynomial is undefined.");
+		if (this.equals(ZERO))
+			return "0";
 		if (coefficients[0] == 0.0) {
-			buffer = new StringBuffer();
+			buffer = new StringBuffer(); // don't print a term if the
+			// coefficient is zero
 		} else {
-			buffer = new StringBuffer(coefficients[0] + " + ");
+			buffer = new StringBuffer(coefficients[0] + " + ");// don't print
+			// the X for the
+			// first term
 		}
 		for (int i = 1; i < coefficients.length - 1; i++) {
-			if (coefficients[i] == 0.0) {
+			if (coefficients[i] == 0.0) {// don't print a term if the
+				// coefficient is zero
 			} else {
 				buffer.append(coefficients[i] + "X^" + i + " + ");
 			}
 		}
 		if (coefficients[coefficients.length - 1] == 0) {
-			buffer.setLength(buffer.length() - 3);
+			buffer.setLength(buffer.length() - 3);// trims the string to the
+			// end of the most recent term if the last coefficient is zero
 		} else {
 			buffer.append(coefficients[coefficients.length - 1] + "X^"
 					+ (coefficients.length - 1));

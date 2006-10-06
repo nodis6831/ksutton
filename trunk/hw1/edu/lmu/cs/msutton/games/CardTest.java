@@ -42,6 +42,7 @@ public class CardTest {
 		assertEquals(a, d);
 		Assert.assertFalse(a.equals(b));
 		Assert.assertFalse(a.equals(c));
+		Assert.assertFalse(b.equals(c));
 
 	}
 

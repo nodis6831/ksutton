@@ -28,7 +28,7 @@ public class Section {
 	 *            the course number
 	 * @param section
 	 *            the section number
-	 * @param credits
+	 * @param creditHours
 	 *            the credit hours
 	 * @param year
 	 *            the year
@@ -45,36 +45,60 @@ public class Section {
 		this.fallSemester = fallSemester;
 	}
 
+	/**
+	 * 
+	 * @return the course number
+	 */
 	public int getCourse() {
 		return course;
 	}
 
+	/**
+	 * 
+	 * @return the credit hours associated with the course
+	 */
 	public int getCreditHours() {
 		return creditHours;
 	}
 
+	/**
+	 * 
+	 * @return the department name
+	 */
 	public String getDepartment() {
 		return department;
 	}
 
+	/**
+	 * 
+	 * @return the section number
+	 */
 	public int getSection() {
 		return section;
 	}
 
+	/**
+	 * 
+	 * @return true if the course is held in the fall semester or false if held
+	 *         in spring semester
+	 */
 	public boolean isFallSemester() {
 		return fallSemester;
 	}
 
+	/**
+	 * 
+	 * @return the year the course was offered
+	 */
 	public int getYear() {
 		return year;
 	}
 
 	/**
-	 * Returns a brief description of the Card. The exact details of the
+	 * Returns a brief description of the Section. The exact details of the
 	 * representation are unspecified and subject to change, but the following
-	 * may be regarded as typical: "Department:department Course:# Section:#
-	 * Credits:crdits Semester:semester Year:year" "Department:History
-	 * Course:101 Section:02 Credits:3 Semester:Fall Year:2005"
+	 * may be regarded as typical: "department course# section# credits semester
+	 * year" "History 101 02 3 Fall 2005"
 	 */
 
 	@Override
