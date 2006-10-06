@@ -12,7 +12,7 @@ public class Grade {
 	/**
 	 * 
 	 * @param grade
-	 *            the grade
+	 *            the grade as a double
 	 */
 	public Grade(double grade) {
 		this.grade = grade;
@@ -20,7 +20,7 @@ public class Grade {
 
 	/**
 	 * 
-	 * @return the grade
+	 * @return the grade as a bouble
 	 */
 	public double getGrade() {
 		return grade;
@@ -28,7 +28,7 @@ public class Grade {
 
 	/**
 	 * 
-	 * @return the letter grade
+	 * @return a string representation of the letter grade
 	 */
 	public String getLetterGrade() {
 		if (this.grade < 60.0)
@@ -60,7 +60,7 @@ public class Grade {
 	}
 
 	/**
-	 * Returns a brief description of the Card. The exact details of the
+	 * Returns a brief description of the Grade. The exact details of the
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical: "94.76(A)"
 	 */

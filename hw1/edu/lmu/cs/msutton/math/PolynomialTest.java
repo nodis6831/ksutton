@@ -10,35 +10,60 @@ import static org.junit.Assert.assertEquals;
  * 
  */
 public class PolynomialTest {
-	double[] d = new double[] { 3, 0, 4.7, -8.2, -53 };
-	double[] e = new double[] {0, -2.3, 10.5, 0,}; 
-
-	Polynomial a = new ArrayPolynomial(d);
-	Polynomial b = new ArrayPolynomial(e);
+	double[] a = new double[] { 3, 0, 4.7, -8.2, -53 };
+	double[] b = new double[] {0, -2.3, 10.5, 0,};
+	double[] c = new double[] { 0, 3, 0, 4.7, -8.2, -53, 0, 0 };
+	double[] d = new double[0];
+	double[] e = new double[] {0};
+	
+	Polynomial polyA = new ArrayPolynomial(a);
+	Polynomial polyB = new ArrayPolynomial(b);
+	Polynomial polyC = new ArrayPolynomial(a);
+	Polynomial polyD = new ArrayPolynomial(c);
+	Polynomial polyE = new ArrayPolynomial(d);
+	Polynomial polyF = new ArrayPolynomial(e);
+	Polynomial polyG = polyB;
+//	TODO how did you test to see that the correct exception was being thrown??
 
 	@Test
 	public void testToString() {
-		assertEquals(a.toString(), "3.0 + 4.7X^2 + -8.2X^3 + -53.0X^4");
-		assertEquals(b.toString(), "-2.3X^1 + 10.5X^2");
+		assertEquals(polyA.toString(), "3.0 + 4.7X^2 + -8.2X^3 + -53.0X^4");
+		assertEquals(polyB.toString(), "-2.3X^1 + 10.5X^2");
+		assertEquals(polyD.toString(), "3.0X^1 + 4.7X^3 + -8.2X^4 + -53.0X^5");
+		assertEquals(polyF.toString(), "0");
+		System.out.println(polyE.toString());
+		//TODO polyE.toString() should throw exception
 	}
 
 	@Test
 	public void testDerivative() {
-		assertEquals(a.derivative().toString(), "4.7X^1 + -8.2X^2 + -53.0X^3");
-		assertEquals(b.derivative().toString(), "-2.3 + 10.5X^1");
+		assertEquals(polyA.derivative().toString(), "4.7X^1 + -8.2X^2 + -53.0X^3");
+		assertEquals(polyB.derivative().toString(), "-2.3 + 10.5X^1");
+		assertEquals(polyD.derivative().toString(), "3.0 + 4.7X^2 + -8.2X^3 + -53.0X^4");
+		//TODO polyE.derivative() and polyF.derivative() should throw exception
 	}
 
 	@Test
 	public void testGetDegree() {
-		assertEquals(a.getDegree(), 4);
-		assertEquals(a.derivative().getDegree(), 3);
-		assertEquals(b.getDegree(), 2);
-		assertEquals(b.derivative().getDegree(), 1);
+		assertEquals(polyA.getDegree(), 4);
+		assertEquals(polyA.derivative().getDegree(), 3);
+		assertEquals(polyB.getDegree(), 2);
+		assertEquals(polyB.derivative().getDegree(), 1);
+		assertEquals(polyD.getDegree(), 5);
+		assertEquals(polyD.derivative().getDegree(), 4);
+		assertEquals(polyF.getDegree(), 0);
 	}
 	
 	@Test
 	public void testValueAt() {
-		assertEquals(a.valueAt(0), 3.0);
-		assertEquals(a.valueAt(1), -53.5);
+		assertEquals(polyA.valueAt(0), 3.0);
+		assertEquals(polyA.valueAt(1), -53.5);
+		assertEquals(polyF.valueAt(7), 0);
+	}
+	
+	@Test
+	public void testEquals() {
+		assertEquals(polyG, polyB);
+		assertEquals(polyA, polyC);		
 	}
 }

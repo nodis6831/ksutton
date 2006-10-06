@@ -36,10 +36,15 @@ public class Student {
 		this.country = country;
 	}
 
+	public Student(Person person, String country) {
+		this.person = person;
+		this.country = country;
+	}
+
 	/**
 	 * forwarding method
 	 * 
-	 * @return the name
+	 * @return the name of the student
 	 */
 	public String getName() {
 		return person.getName();
@@ -48,7 +53,7 @@ public class Student {
 	/**
 	 * forwarding method
 	 * 
-	 * @return the phone
+	 * @return the phone of the student
 	 */
 	public Phone getPhone() {
 		return person.getPhone();
@@ -66,7 +71,7 @@ public class Student {
 	/**
 	 * forwarding method
 	 * 
-	 * @return the year of birth
+	 * @return the year of birth of the student
 	 */
 	public int getYob() {
 		return person.getYob();
@@ -75,7 +80,7 @@ public class Student {
 	/**
 	 * forwarding method
 	 * 
-	 * @return the gender
+	 * @return the gender of the student. True for male false for female
 	 */
 	public boolean isMale() {
 		return person.isMale();
@@ -83,7 +88,7 @@ public class Student {
 
 	/**
 	 * 
-	 * @return the country
+	 * @return the country of the student
 	 */
 	public String getCountry() {
 		return country;
@@ -91,18 +96,24 @@ public class Student {
 
 	/**
 	 * 
-	 * @return the credits hours
+	 * @return the total credit hours the student is taking
 	 */
 	public int credits() {
-		return transcript.creditHours;
+		if (transcript == null | transcript.contents.size() == 0)
+			return 0;
+		else
+			return transcript.creditHours;
 	}
 
 	/**
 	 * 
-	 * @return the gpa
+	 * @return the gpa of the student
 	 */
 	public double gpa() {
-		return transcript.gradePoints / (double) transcript.creditHours;
+		if (transcript == null | transcript.contents.size() == 0)
+			return 0;
+		else
+			return transcript.gradePoints / (double) transcript.creditHours;
 	}
 
 	/**
@@ -131,7 +142,7 @@ public class Student {
 	 * representation are unspecified and subject to change, but the following
 	 * may be regarded as typical:
 	 * 
-	 * "name male yob phone country" "Kelly Sutton Male 1987 (123)-451-6718 USA"
+	 * "name male yob country" "Kelly Sutton Male 1987 USA"
 	 */
 	public String toString() {
 		return person + country;
@@ -188,6 +199,12 @@ public class Student {
 
 		public double gradePoints = 0;
 
+		/**
+		 * Adds a section and its corresponding grade to the transcript
+		 * 
+		 * @param section
+		 * @param grade
+		 */
 		public void add(Section section, Grade grade) {
 			contents.put(section, grade);
 			creditHours += section.getCreditHours();
@@ -195,17 +212,18 @@ public class Student {
 		}
 
 		/**
-		 * Returns a brief description of the Transcript. The exact details of the
-		 * representation are unspecified and subject to change, but the
-		 * following may be regarded as typical: "Section:History Grade:95.34(A) | "
+		 * Returns a brief description of the Transcript. The exact details of
+		 * the representation are unspecified and subject to change, but the
+		 * following may be regarded as typical: "section : grade || section : grade"
 		 */
-		// TODO fix this description and the toString method
 		@Override
 		public String toString() {
+			if (this == null | contents.size() == 0)
+				return "";
 			StringBuffer buffer = new StringBuffer();
 			for (Entry<Section, Grade> entry : contents.entrySet()) {
-				buffer.append(entry.getKey() + " Grade:" + entry.getValue()
-						+ " | ");
+				buffer.append(entry.getKey() + " : " + entry.getValue()
+						+ " || ");
 			}
 			return buffer.toString();
 		}

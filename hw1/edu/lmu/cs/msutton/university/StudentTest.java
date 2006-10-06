@@ -22,6 +22,11 @@ public class StudentTest {
 		assertEquals(s.getName(), "Billy");
 
 	}
+	
+	@Test
+	public void testPhone() {
+		
+	}
 
 	@Test
 	public void testToString() {
@@ -29,13 +34,13 @@ public class StudentTest {
 	}
 
 	@Test
-	public void testTranscript() {
-
-	}
-
-	@Test
 	public void testUpdateTranscript() {
 
+	}
+	
+	@Test
+	public void testPrintTranscript() {
+		
 	}
 	//TODO test the final-ness of the Transcript private field
 }
