@@ -115,15 +115,13 @@ public class Student {
 		//some code from http://www.thescripts.com/forum/thread155625.html
 		if (transcript == null | transcript.contents.size() == 0)
 			throw new IllegalStateException("No Transcript");
-		int creditHours = 0;
 		double qualityPoints = 0;
 		for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
-			creditHours += entry.getKey().getCreditHours();
 			qualityPoints += entry.getKey().getCreditHours()
 					* entry.getValue().getGradePoints();
 		}
 		int decimalPlace = 2;
-		BigDecimal bd = new BigDecimal(qualityPoints / creditHours);
+		BigDecimal bd = new BigDecimal(qualityPoints / this.credits());
 		bd = bd.setScale(decimalPlace, BigDecimal.ROUND_FLOOR);
 		return (bd.doubleValue()); //rounds double to 2 decimal places
 
