@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
-import edu.lmu.cs.msutton.university.Person.Phone;
-
 /**
  * A simple Student class
  * 
@@ -99,10 +97,11 @@ public class Student {
 	 * @return the total credit hours the student is taking
 	 */
 	public int credits() {
-		if (transcript == null | transcript.contents.size() == 0)
-			return 0;
-		else
-			return transcript.creditHours;
+		int creditHours = 0;
+		for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
+			creditHours += entry.getKey().getCreditHours();
+		}
+		return creditHours;
 	}
 
 	/**
@@ -110,10 +109,18 @@ public class Student {
 	 * @return the gpa of the student
 	 */
 	public double gpa() {
+		int creditHours = 0;
+		double qualityPoints = 0;
 		if (transcript == null | transcript.contents.size() == 0)
 			return 0;
-		else
-			return transcript.gradePoints / (double) transcript.creditHours;
+		else {
+			for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
+				creditHours += entry.getKey().getCreditHours();
+				qualityPoints += entry.getKey().getCreditHours()
+						* entry.getValue().getGradePoints();
+			}
+			return qualityPoints / creditHours;
+		}
 	}
 
 	/**
@@ -145,13 +152,13 @@ public class Student {
 	 * "name male yob country" "Kelly Sutton Male 1987 USA"
 	 */
 	public String toString() {
-		return person + country;
+		return person + " " + country;
 	}
 
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = PRIME * result + ((country == null) ? 0 : country.hashCode());
 		result = PRIME * result + ((person == null) ? 0 : person.hashCode());
 		result = PRIME * result
@@ -195,10 +202,6 @@ public class Student {
 	private class Transcript {
 		public Map<Section, Grade> contents = new TreeMap<Section, Grade>();
 
-		public int creditHours = 0;
-
-		public double gradePoints = 0;
-
 		/**
 		 * Adds a section and its corresponding grade to the transcript
 		 * 
@@ -207,19 +210,18 @@ public class Student {
 		 */
 		public void add(Section section, Grade grade) {
 			contents.put(section, grade);
-			creditHours += section.getCreditHours();
-			gradePoints += grade.getGrade();
 		}
 
 		/**
 		 * Returns a brief description of the Transcript. The exact details of
 		 * the representation are unspecified and subject to change, but the
-		 * following may be regarded as typical: "section : grade || section : grade"
+		 * following may be regarded as typical: "section : grade || section :
+		 * grade"
 		 */
 		@Override
 		public String toString() {
 			if (this == null | contents.size() == 0)
-				return "";
+				throw new IllegalStateException("No Transcript");
 			StringBuffer buffer = new StringBuffer();
 			for (Entry<Section, Grade> entry : contents.entrySet()) {
 				buffer.append(entry.getKey() + " : " + entry.getValue()
@@ -234,10 +236,6 @@ public class Student {
 			int result = 1;
 			result = PRIME * result
 					+ ((contents == null) ? 0 : contents.hashCode());
-			result = PRIME * result + creditHours;
-			long temp;
-			temp = Double.doubleToLongBits(gradePoints);
-			result = PRIME * result + (int) (temp ^ (temp >>> 32));
 			return result;
 		}
 
@@ -254,11 +252,6 @@ public class Student {
 				if (other.contents != null)
 					return false;
 			} else if (!contents.equals(other.contents))
-				return false;
-			if (creditHours != other.creditHours)
-				return false;
-			if (Double.doubleToLongBits(gradePoints) != Double
-					.doubleToLongBits(other.gradePoints))
 				return false;
 			return true;
 		}

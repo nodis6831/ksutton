@@ -1,6 +1,7 @@
 package edu.lmu.cs.msutton.math;
 
 import org.junit.Test;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -23,7 +24,6 @@ public class PolynomialTest {
 	Polynomial polyE = new ArrayPolynomial(d);
 	Polynomial polyF = new ArrayPolynomial(e);
 	Polynomial polyG = polyB;
-//	TODO how did you test to see that the correct exception was being thrown??
 
 	@Test
 	public void testToString() {
@@ -31,8 +31,12 @@ public class PolynomialTest {
 		assertEquals(polyB.toString(), "-2.3X^1 + 10.5X^2");
 		assertEquals(polyD.toString(), "3.0X^1 + 4.7X^3 + -8.2X^4 + -53.0X^5");
 		assertEquals(polyF.toString(), "0");
-		System.out.println(polyE.toString());
-		//TODO polyE.toString() should throw exception
+		try{
+			assertEquals(polyE.toString(), "");
+		}
+		catch (Exception e){
+			Assert.assertTrue(e instanceof IllegalStateException);
+		}
 	}
 
 	@Test
@@ -40,7 +44,17 @@ public class PolynomialTest {
 		assertEquals(polyA.derivative().toString(), "4.7X^1 + -8.2X^2 + -53.0X^3");
 		assertEquals(polyB.derivative().toString(), "-2.3 + 10.5X^1");
 		assertEquals(polyD.derivative().toString(), "3.0 + 4.7X^2 + -8.2X^3 + -53.0X^4");
-		//TODO polyE.derivative() and polyF.derivative() should throw exception
+		assertEquals(polyF.derivative().toString(), "0");
+		assertEquals(polyF.derivative(), ArrayPolynomial.ZERO);
+		
+		try{
+			assertEquals(polyE.derivative().toString(), "");
+		}
+		catch (Exception e){
+			Assert.assertTrue(e instanceof IllegalStateException);
+		}
+		
+		
 	}
 
 	@Test
@@ -58,7 +72,7 @@ public class PolynomialTest {
 	public void testValueAt() {
 		assertEquals(polyA.valueAt(0), 3.0);
 		assertEquals(polyA.valueAt(1), -53.5);
-		assertEquals(polyF.valueAt(7), 0);
+		assertEquals(polyF.valueAt(7), 0.0);
 	}
 	
 	@Test
