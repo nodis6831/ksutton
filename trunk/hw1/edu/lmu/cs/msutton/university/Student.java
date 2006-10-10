@@ -109,7 +109,7 @@ public class Student {
 
 	/**
 	 * 
-	 * @return the gpa of the student
+	 * @return the gpa of the student to two decimal places
 	 */
 	public double gpa() {
 		if (transcript == null | transcript.contents.size() == 0)
