@@ -1,5 +1,6 @@
 package edu.lmu.cs.msutton.university;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
@@ -16,7 +17,7 @@ public class Student {
 
 	private final String country;
 
-	private final Transcript transcript = new Transcript();
+	private Transcript transcript = new Transcript();
 
 	/**
 	 * 
@@ -97,6 +98,8 @@ public class Student {
 	 * @return the total credit hours the student is taking
 	 */
 	public int credits() {
+		if (transcript == null | transcript.contents.size() == 0)
+			throw new IllegalStateException("No Transcript");
 		int creditHours = 0;
 		for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
 			creditHours += entry.getKey().getCreditHours();
@@ -109,18 +112,20 @@ public class Student {
 	 * @return the gpa of the student
 	 */
 	public double gpa() {
+		if (transcript == null | transcript.contents.size() == 0)
+			throw new IllegalStateException("No Transcript");
 		int creditHours = 0;
 		double qualityPoints = 0;
-		if (transcript == null | transcript.contents.size() == 0)
-			return 0;
-		else {
-			for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
-				creditHours += entry.getKey().getCreditHours();
-				qualityPoints += entry.getKey().getCreditHours()
-						* entry.getValue().getGradePoints();
-			}
-			return qualityPoints / creditHours;
+		for (Entry<Section, Grade> entry : transcript.contents.entrySet()) {
+			creditHours += entry.getKey().getCreditHours();
+			qualityPoints += entry.getKey().getCreditHours()
+					* entry.getValue().getGradePoints();
 		}
+		int decimalPlace = 2;
+		BigDecimal bd = new BigDecimal(qualityPoints / creditHours);
+		bd = bd.setScale(decimalPlace, BigDecimal.ROUND_FLOOR);
+		return (bd.doubleValue()); //rounds double to 2 decimal places
+
 	}
 
 	/**
@@ -135,12 +140,12 @@ public class Student {
 		transcript.add(section, grade);
 	}
 
-	/**
-	 * Prints the transcript
-	 * 
-	 */
-	public void printTranscript() {
-		System.out.println(transcript);
+/**
+ * 
+ * @return the transcript
+ */
+	public String printTranscript() {
+		return transcript.toString();
 	}
 
 	@Override
@@ -222,7 +227,7 @@ public class Student {
 		public String toString() {
 			if (this == null | contents.size() == 0)
 				throw new IllegalStateException("No Transcript");
-			StringBuffer buffer = new StringBuffer();
+			StringBuffer buffer = new StringBuffer("|| ");
 			for (Entry<Section, Grade> entry : contents.entrySet()) {
 				buffer.append(entry.getKey() + " : " + entry.getValue()
 						+ " || ");
