@@ -44,7 +44,6 @@ public class PurseTest {
 		assertTrue(5 == c.getNumCoinsOf("pennies"));
 
 		c.addNumCoinsOf(10, "pennies");
-		System.out.println(c.getNumCoinsOf("pennies"));
 		assertTrue(15 == c.getNumCoinsOf("pennies"));
 
 		c.addNumCoinsOf(50, "quarters");
