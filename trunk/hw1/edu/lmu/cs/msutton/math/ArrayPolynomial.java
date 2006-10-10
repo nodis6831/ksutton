@@ -74,6 +74,9 @@ public class ArrayPolynomial implements Polynomial {
 	public double valueAt(double d) {
 		if (coefficients.length == 0 | coefficients == null)
 			throw new IllegalStateException("Polynomial is undefined.");
+		if (coefficients.length == 1){
+			return coefficients[0];
+		}
 		double sum = 0;
 		for (int i = 0; i < coefficients.length; i++) {
 			sum += (Math.pow(d, i)) * coefficients[i];
