@@ -18,7 +18,7 @@ public class PurseTest {
 	 */
 	@Test
 	public void testConstruction() {
-		Purse a = new Purse();
+		PurseImpl a = new PurseImpl();
 		assertNotNull(a);
 	}
 
@@ -27,7 +27,7 @@ public class PurseTest {
 	 */
 	@Test
 	public void testGetCoins() {
-		Purse b = new Purse();
+		PurseImpl b = new PurseImpl();
 		assertTrue(0 == b.getNumCoinsOf("pennies"));
 		assertTrue(0 == b.getNumCoinsOf("nickels"));
 		assertTrue(0 == b.getNumCoinsOf("dimes"));
@@ -39,11 +39,12 @@ public class PurseTest {
 	 */
 	@Test
 	public void testAddCoins() {
-		Purse c = new Purse();
+		PurseImpl c = new PurseImpl();
 		c.addNumCoinsOf(5, "pennies");
 		assertTrue(5 == c.getNumCoinsOf("pennies"));
 
 		c.addNumCoinsOf(10, "pennies");
+		System.out.println(c.getNumCoinsOf("pennies"));
 		assertTrue(15 == c.getNumCoinsOf("pennies"));
 
 		c.addNumCoinsOf(50, "quarters");
@@ -55,7 +56,7 @@ public class PurseTest {
 	 */
 	@Test
 	public void testTotalNumCoins() {
-		Purse d = new Purse();
+		PurseImpl d = new PurseImpl();
 		d.addNumCoinsOf(10, "pennies");
 		d.addNumCoinsOf(10, "nickels");
 		d.addNumCoinsOf(10, "dimes");
@@ -69,7 +70,7 @@ public class PurseTest {
 	 */
 	@Test
 	public void testTotalValue() {
-		Purse p = new Purse();
+		PurseImpl p = new PurseImpl();
 		p.addNumCoinsOf(10, "pennies");
 		p.addNumCoinsOf(10, "nickels");
 		p.addNumCoinsOf(10, "dimes");
