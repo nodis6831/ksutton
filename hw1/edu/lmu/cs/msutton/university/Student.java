@@ -109,9 +109,10 @@ public class Student {
 
 	/**
 	 * 
-	 * @return the gpa of the student to two decimal places
+	 * @return the gpa of the student with precision to two decimal places
 	 */
 	public double gpa() {
+		//some code from http://www.thescripts.com/forum/thread155625.html
 		if (transcript == null | transcript.contents.size() == 0)
 			throw new IllegalStateException("No Transcript");
 		int creditHours = 0;
