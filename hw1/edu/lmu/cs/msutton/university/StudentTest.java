@@ -14,23 +14,25 @@ import org.junit.Test;
  */
 public class StudentTest {
 	Student s = new Student("Billy", true, 1987, "USA");
+
 	Student t = s;
+
 	Student u = new Student("Billy", true, 1987, "USA");
 
 	Phone p = new Phone(858, 451, 6718);
+
 	Phone q = new Phone(619, 922, 8100);
-	
+
 	@Test
 	public void testStudent() {
-		
+
 		assertEquals(s.getCountry(), "USA");
 		assertEquals(s.getYob(), 1987);
 		assertEquals(s.isMale(), true);
 		assertEquals(s.getName(), "Billy");
-		try{
+		try {
 			assertEquals(s.getPhone().toString(), "(858)-451-6718");
-		}
-		catch( Exception e){
+		} catch (Exception e) {
 			Assert.assertTrue(e instanceof IllegalStateException);
 		}
 		s.setPhone(p);
@@ -38,13 +40,13 @@ public class StudentTest {
 		s.setPhone(q);
 		assertEquals(s.getPhone().toString(), "(619)-922-8100");
 		assertEquals(t, s);
-		Assert.assertFalse(u.equals(s)); 
+		Assert.assertFalse(u.equals(s));
 		Assert.assertFalse(t.equals(u));
 		t.setPhone(q);
 		u.setPhone(q);
 		assertEquals(u, s);
 		assertEquals(t, u);
-	}	
+	}
 
 	@Test
 	public void testToString() {
@@ -59,15 +61,16 @@ public class StudentTest {
 		Grade bGrade = new Grade(85.05);
 		Section c = new Section("Math", 101, 17, 3, 2006, true);
 		Grade cGrade = new Grade(70.99);
-		
-		
-		//assertEquals(s.credits(), 3);
-		//assertEquals(s.gpa(), 4.0);
-		s.updateTranscript(c, cGrade);
-		System.out.println(s.gpa());
-		s.updateTranscript(b, bGrade);
-		s.updateTranscript(a, aGrade);
 
+		s.updateTranscript(a, aGrade);
+		assertEquals(s.credits(), 3);
+		assertEquals(s.gpa(), 4.0);
+		s.updateTranscript(c, cGrade);
+		s.updateTranscript(b, bGrade);
+		assertEquals(s.credits(), 9);
+		assertEquals(s.gpa(), 2.9);
+		assertEquals(s.printTranscript(),
+				"|| History 152 2 3 Fall 2006 : 93.54(A) || Math 101 17 3 Fall 2006 : 70.99(C-) || Science 101 1 3 Fall 2006 : 85.05(B) || ");
 
 	}
 }

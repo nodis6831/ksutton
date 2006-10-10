@@ -7,7 +7,7 @@ package edu.lmu.cs.msutton.university;
  * 
  * 
  */
-public class Section {
+public class Section implements Comparable {
 	private String department;
 
 	private int course;
@@ -152,4 +152,15 @@ public class Section {
 		return true;
 	}
 
+	public int compareTo(Object obj) {
+		if (this == obj)
+			return 0;
+		if (obj == null)
+			return -1;
+		if (getClass() != obj.getClass())
+			return -1;
+		final Section other = (Section) obj;	
+		
+		return department.compareTo(other.department);
+	}
 }
