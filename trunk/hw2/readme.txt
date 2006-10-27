@@ -21,6 +21,7 @@
     	b. x - ((9 + y) * (6 - z))
     	c. x/(3/(y/(2/z)))
     - Problem 3.17
+    	> SEE ArrayExercise.java for our answer
     - Problem 3.19
     - Problem 4.5
     - Problem 4.8
