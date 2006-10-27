@@ -10,7 +10,8 @@
 
 ### ASSIGNMENT CHECKLIST
 # ( "+" indicates complete assignment )
-    - Exercise 3.9
+    + Exercise 3.9
+    	> See ArrayExercise.java for our answer and why the Data Structures book is el terrible
     - Exercise 5.2
     - Exercise 5.3
     - Problem 3.17
