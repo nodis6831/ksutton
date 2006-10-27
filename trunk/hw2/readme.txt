@@ -12,8 +12,14 @@
 # ( "+" indicates complete assignment )
     + Exercise 3.9
     	> See ArrayExercise.java for our answer and why the Data Structures book is el terrible
-    - Exercise 5.2
-    - Exercise 5.3
+    + Exercise 5.2
+    	a. x 4 + y 8 z + / -
+    	b. x 6 y / 5 z - * /
+    	c. x 2 y / / 7 z - *
+    + Exercise 5.3
+    	a. (x + 4) / (y - 3) + z
+    	b. x - ((9 + y) * (6 - z))
+    	c. x/(3/(y/(2/z)))
     - Problem 3.17
     - Problem 3.19
     - Problem 4.5
