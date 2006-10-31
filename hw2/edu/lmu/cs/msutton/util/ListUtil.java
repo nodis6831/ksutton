@@ -8,6 +8,9 @@ package edu.lmu.cs.msutton.util;
  */
 public class ListUtil {
 
+	/*
+	 * @return a new list that is a duplicate of the specified list
+	 */
 	Node copy(Node list) {
 
 		Node node2 = new Node(list.next().getData()); // a placeholder to link
