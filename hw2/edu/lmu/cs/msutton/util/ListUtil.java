@@ -13,9 +13,20 @@ public class ListUtil {
 	 */
 	Node copy(Node list) {
 
-		Node node2 = new Node(list.next().getData()); // a placeholder to link
-														// to
-		Node node = new Node(list.getData(), node2);
+		Node node;
+		Node node2;
+		
+		try{ //list is more than one Node long
+			node2 = new Node(list.next().getData()); // a placeholder to link
+			// to
+			
+			node = new Node(list.getData(), node2);
+		}
+		
+		catch (Exception e){
+			return new Node(list.getData());
+		}
+		
 		while (list.next() != null) {
 			/*
 			 * generating a completely new Node object linked to a Node object
@@ -25,7 +36,7 @@ public class ListUtil {
 			
 			/* move onto to the next Node object */
 			list = list.next();
-			node2.next();
+			node2 = node2.next();
 		}
 
 		return node;
