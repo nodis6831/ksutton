@@ -17,12 +17,27 @@ public class ArrayExercise {
 	 * copying the contents of the original array into the new array in reverse
 	 * order.
 	 */
-	public int[] reverse(int[] a) {
+	public static int[] reverse(int[] a) {
 		int[] b = new int[a.length];
 		for (int i = 0; i < a.length; i++) {
 			b[a.length - i - 1] = a[i];
 		}
 		return b;
+	}
+
+	/**
+	 * As of right now, the best way we can think of to do this is to iterate
+	 * through the array and count up the number of times the specified number
+	 * occurs.
+	 */
+	//TODO find a better way to get the number of times the specified number occurs in an array
+	//TODO write tests for this method
+	public static int frequency(int[] a, int value){
+		int count = 0;
+		for(int i: a){
+			if(a[i] == value) count++;
+		}
+		return count;
 	}
 
 }
