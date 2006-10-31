@@ -15,25 +15,25 @@ public class ListUtil {
 
 		Node node;
 		Node node2;
-		
-		try{ //list is more than one Node long
+
+		try { // list is more than one Node long
 			node2 = new Node(list.next().getData()); // a placeholder to link
 			// to
-			
+
 			node = new Node(list.getData(), node2);
 		}
-		
-		catch (Exception e){
+
+		catch (Exception e) {
 			return new Node(list.getData());
 		}
-		
+
 		while (list.next() != null) {
 			/*
 			 * generating a completely new Node object linked to a Node object
 			 * created from list.next() and linked to null
 			 */
 			node2 = new Node(list.getData(), new Node(list.next().getData()));
-			
+
 			/* move onto to the next Node object */
 			list = list.next();
 			node2 = node2.next();
