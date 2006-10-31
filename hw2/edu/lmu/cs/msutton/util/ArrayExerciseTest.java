@@ -21,8 +21,10 @@ public class ArrayExerciseTest {
 	
 	@Test
 	public void testPartition() {
-		int[] a = new int[] {44, 99, 55, 88, 33, 66, 22, 77};
-		assertEquals(2, ArrayExercise.partition(a));
+		//int[] a = new int[] {44, 99, 55, 88, 33, 66, 22, 77};
+		//assertEquals(2, ArrayExercise.partition(a));
+		int[] b = new int[] {44, 99, 55, 88, 70, 66, 22, 77};
+		assertEquals(2, ArrayExercise.partition(b));
 		
 	}
 }

@@ -68,16 +68,17 @@ public class ArrayExercise {
 			
 			
 		}
-		System.out.println(Arrays.toString(a));
+		
 		// Swaps a[0] and a[j]. Note this part is useless if all you need to do
 		// is return the index because you know what the index of the first
 		// number in the array needs to be so there is no point in actually
 		// moving it there.
 		
 		temp = a[0];
-		a[0] = a[j];
-		a[j] = temp;
-		return i;
+		a[0] = a[j + (j%2)];
+		a[j + (j%2)] = temp;
+		System.out.println(Arrays.toString(a));
+		return j + (j%2);
 
 	}
 }
