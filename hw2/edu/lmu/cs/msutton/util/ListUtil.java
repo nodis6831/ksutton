@@ -25,6 +25,7 @@ public class ListUtil {
 			
 			/* move onto to the next Node object */
 			list = list.next();
+			node2.next();
 		}
 
 		return node;
