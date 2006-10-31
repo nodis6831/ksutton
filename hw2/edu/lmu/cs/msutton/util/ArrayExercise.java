@@ -72,7 +72,7 @@ public class ArrayExercise {
 		a[0] = a[j];
 		a[j] = temp;
 		System.out.println(Arrays.toString(a));
-		return j;
+		return i;
 
 	}
 }
