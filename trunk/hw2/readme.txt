@@ -23,6 +23,8 @@
     + Problem 3.17
     	> SEE ArrayExercise.java for our answer
     - Problem 3.19
+    	> SEE ArrayExercise.java for our answer
+    	> TODO: figure out the mysterious infinite loop
     - Problem 4.5
     - Problem 4.8
     - Problem 4.11
