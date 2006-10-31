@@ -1,6 +1,7 @@
 package edu.lmu.cs.msutton.util;
 
 /**
+ * This class holds the answers to Exercise 3.9 and Problem 3.17
  * 
  * @author Garrett Shannon
  * @author Kelly Sutton
@@ -24,7 +25,6 @@ public class ArrayExercise {
 		}
 		return b;
 	}
-
 	/**
 	 * As of right now, the best way we can think of to do this is to iterate
 	 * through the array and count up the number of times the specified number
@@ -39,5 +39,4 @@ public class ArrayExercise {
 		}
 		return count;
 	}
-
 }
