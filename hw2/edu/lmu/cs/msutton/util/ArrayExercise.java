@@ -34,7 +34,7 @@ public class ArrayExercise {
 	//TODO write tests for this method
 	public static int frequency(int[] a, int value){
 		int count = 0;
-		for(int i: a){
+		for(int i = 0; i < a.length; i++){
 			if(a[i] == value) count++;
 		}
 		return count;
