@@ -1,5 +1,7 @@
 package edu.lmu.cs.msutton.util;
 
+import java.util.Arrays;
+
 /**
  * This class holds the answers to Exercise 3.9 and Problem 3.17
  * 
@@ -70,7 +72,7 @@ public class ArrayExercise {
 		temp = a[0];
 		a[0] = a[j];
 		a[j] = temp;
-
+		System.out.println(Arrays.toString(a));
 		return j;
 
 	}
