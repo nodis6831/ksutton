@@ -52,8 +52,7 @@ public class ArrayExercise {
 		int temp;
 
 		while (i < j) {
-			// Swaps a[i] and a[j] when a[i] is greater than the pivot and a[j]
-			// is less than the pivot
+			// Swaps a[i] and a[j] when a[i] > pivot and a[j] < pivot
 			while(a[i] < pivot) i++;
 			while(a[j] > pivot) j--;
 			if (a[i] > pivot && a[j] < pivot) {
