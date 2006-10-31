@@ -25,18 +25,53 @@ public class ArrayExercise {
 		}
 		return b;
 	}
+
 	/**
 	 * As of right now, the best way we can think of to do this is to iterate
 	 * through the array and count up the number of times the specified number
 	 * occurs.
 	 */
-	//TODO find a better way to get the number of times the specified number occurs in an array
-	//TODO write tests for this method
-	public static int frequency(int[] a, int value){
+	// TODO find a better way to get the number of times the specified number
+	// occurs in an array
+	// TODO write tests for this method
+	public static int frequency(int[] a, int value) {
 		int count = 0;
-		for(int i = 0; i < a.length; i++){
-			if(a[i] == value) count++;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == value)
+				count++;
 		}
 		return count;
+	}
+
+	public static int partition(int[] a) {
+		int pivot = a[0];
+		int i = 1;
+		int j = a.length - 1;
+		int temp;
+
+		while (i < j) {
+			// Swaps a[i] and a[j] when a[i] is greater than the pivot and a[j]
+			// is less than the pivot
+			while(a[i] < pivot) i++;
+			while(a[j] > pivot) j--;
+			if (a[i] > pivot && a[j] < pivot) {
+				temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+				i++;
+				j--;
+			}
+			
+		}
+		// Swaps a[0] and a[j]. Note this part is useless if all you need to do
+		// is return the index because you know what the index of the first
+		// number in the array needs to be so there is no point in actually
+		// moving it there.
+		temp = a[0];
+		a[0] = a[j];
+		a[j] = temp;
+
+		return j;
+
 	}
 }
