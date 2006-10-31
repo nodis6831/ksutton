@@ -26,6 +26,7 @@
     	> SEE ArrayExercise.java for our answer
     	> TODO: figure out the mysterious infinite loop
     - Problem 4.5
+    	> TODO: Write tests
     - Problem 4.8
     - Problem 4.11
     - Problem 6.6
