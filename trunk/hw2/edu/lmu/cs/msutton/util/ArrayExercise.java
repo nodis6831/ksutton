@@ -53,8 +53,6 @@ public class ArrayExercise {
 
 		while (i < j) {
 			// Swaps a[i] and a[j] when a[i] > pivot and a[j] < pivot
-			while(a[i] < pivot) i++;
-			while(a[j] > pivot) j--;
 			if (a[i] > pivot && a[j] < pivot) {
 				temp = a[i];
 				a[i] = a[j];
@@ -62,16 +60,23 @@ public class ArrayExercise {
 				i++;
 				j--;
 			}
+			while(a[i] < pivot || a[j] > pivot ) {
+				if(a[i] < pivot) i++;
+				else j--;
+			}
+			
+			
 			
 		}
+		System.out.println(Arrays.toString(a));
 		// Swaps a[0] and a[j]. Note this part is useless if all you need to do
 		// is return the index because you know what the index of the first
 		// number in the array needs to be so there is no point in actually
 		// moving it there.
+		
 		temp = a[0];
 		a[0] = a[j];
 		a[j] = temp;
-		System.out.println(Arrays.toString(a));
 		return i;
 
 	}
