@@ -32,6 +32,10 @@ public class SimClient {
 		stopTime = t;
 	}
 	
+	public int getTotalTime(){
+		return stopTime - startTime;
+	}
+	
 	public String toString(){
 		return "Client " + id;
 	}
