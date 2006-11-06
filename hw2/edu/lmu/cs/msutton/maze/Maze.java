@@ -13,7 +13,7 @@ public class Maze {
 
 	/**
 	 * An (x,y) position. The method <code>legal()</code> returns whether the
-	 * position is inside the maze.
+	 * position is inside the maze. Positions are eithe rlegal or not legal.
 	 */
 	private class Location {
 		int x;
@@ -57,6 +57,8 @@ public class Maze {
 	 */
 	public enum Cell {
 		OPEN('.'), WALL('#'), TRIED('x'), PATH('o'), RAT('r');
+		// Display values are attached to the enum and the ability to display
+		// the character
 
 		private char display;
 
@@ -129,7 +131,22 @@ public class Maze {
 
 		// Solution loop. At each step, place the rat and notify listener.
 		while (true) {
-
+			cells[current.y][current.x] = Cell.RAT
+			listener.mazeChanged(this)
+			
+			// Did we reach the desired end cell?
+			if (current.x ==x2 && current.y == y2) {
+				return true;
+			}
+			
+			// Move to an adacent open cell, leaving a breadcrumb. IF we canlt
+			// move at all, backtrack. If there's nowhere to backtrack to, we're
+			// totally stuck.
+			if( current.above().isOpen()){
+				path.push(current);
+				cells[current.y][current.x]
+			
+			}
 			// TODO
 			// 1 - put the rat at the current position
 			// 2 - notify the listener
