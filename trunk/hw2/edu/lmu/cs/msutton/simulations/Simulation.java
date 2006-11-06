@@ -56,15 +56,6 @@ public class Simulation {
 			System.out.println("Mean service time for " + servers[j] + " = " + servers[j].getMeanServiceTime());
 		}
 	}
-
-	private class Server{
-		
-	}
-	
-
-	private class Client{
-		
-	}
 }
 
 
