@@ -28,8 +28,11 @@
     + Problem 4.5
     - Problem 4.8
     	> TODO: write tests
+    	> I need to upload the Node.java class --Kelly
     - Problem 4.11
     - Problem 6.6
+    	> Needs to be finished and tested
+    	> What's up with/where is ArrayQueue?
     - Project 3.1
     - Project 5.3
     - Project 6.1
