@@ -34,5 +34,6 @@
     	> Needs to be finished and tested
     	> What's up with/where is ArrayQueue?
     - Project 3.1
+    	> Got a start, but we need to ask Ray to clarify what the problem it asking
     - Project 5.3
     - Project 6.1
