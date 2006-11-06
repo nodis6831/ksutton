@@ -52,9 +52,30 @@ public class Simulation {
 		System.out.println("\t\tMean service time = " + meanServiceTime );
 		System.out.println("\t\tMean interarrival time = " + meanInterarrivalTime );
 		
+		/*
+		 * Computing average client wait time and average total time in system
+		 */
+		int totalClientWaitTime = 0;
+		int totalClientTimeInSystem = 0;
+		int numClients = 0;
+		for (Client c : clients){
+			totalClientWaitTime += c.getWaitTime();
+			totalClientTimeInSystem += c.getStopTime() - c.getArrivalTime() ;
+			numClients++;
+		}
+		int averageClientWaitTime = totalClientWaitTime / numClients;
+		int averageClientTimeInSystem = totalClientTimeInSystem / numClients;
+		
+		System.out.println("\t\tAverage time client waited in queue = " + averageClientWaitTime);
+		System.out.println("\t\tAverage time client spent in system = " + averageClientTimeInSystem);
+		
 		for (int j = 0; j < numServers; j++){
 			System.out.println("Mean service time for " + servers[j] + " = " + servers[j].getMeanServiceTime());
 		}
+		
+		/*
+		 * Computing average total time that a client spends in the system
+		 */
 	}
 }
 

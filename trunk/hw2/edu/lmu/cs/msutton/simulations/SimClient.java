@@ -32,8 +32,12 @@ public class SimClient {
 		stopTime = t;
 	}
 	
-	public int getTotalTime(){
+	public int getTotalServiceTime(){
 		return stopTime - startTime;
+	}
+	
+	public int getWaitTime(){
+		return startTime - arrivalTime;
 	}
 	
 	public String toString(){

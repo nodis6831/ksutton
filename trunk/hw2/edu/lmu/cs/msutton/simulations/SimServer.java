@@ -40,7 +40,7 @@ public class SimServer implements Server {
 				+ t);
 		client = null;
 	}
-
+	
 	public String toString() {
 		String s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		return "Server " + s.charAt(id);
