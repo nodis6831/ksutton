@@ -8,10 +8,10 @@ package edu.lmu.cs.msutton.util;
  */
 public class ListUtil {
 
-	/*
+	/**
 	 * @return a new list that is a duplicate of the specified list
 	 */
-	Node copy(Node list) {
+	public static Node copy(Node list) {
 
 		Node node;
 		Node node2;
@@ -44,33 +44,28 @@ public class ListUtil {
 	}
 
 	/**
-	 * The Node class as copied from our Data Structures with Java book (the
-	 * lame one).
+	 * Problem 4.8
 	 * 
-	 * @author Data Structures book
+	 * @return a new list that contains a copy of list1, followed by a copy of
+	 *         list2
 	 */
-	private class Node {
-		private int data;
+	public static Node concat(Node list1, Node list2) {
 
-		private Node next;
+		Node returnList = copy(list1);
+		// Node b = copy(list2); //Making sure we're not playing with the
+		// original Nodes in memory
 
-		public Node(int data) {
-			this.data = data;
-			this.next = null; // TODO is this safe/what it's supposed to do?
+		Node iteratorNode = returnList;
+
+		while (true) { // looking two ahead
+
+			if (iteratorNode.next() == null) {
+				iteratorNode.setNext(copy(list2)); // This madness appends a
+													// copy of list2
+				break;
+			}
 		}
 
-		public Node(int data, Node next) {
-			this.data = data;
-			this.next = next;
-		}
-
-		public int getData() {
-			return data;
-		}
-
-		public Node next() {
-			return next;
-		}
+		return returnList;
 	}
-
 }
