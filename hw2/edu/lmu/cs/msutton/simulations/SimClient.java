@@ -1,5 +1,11 @@
 package edu.lmu.cs.msutton.simulations;
 
+
+/**
+ * The SimClient class as copied from the Data Structures book
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
 public class SimClient {
 
 	int id, arrivalTime=-1, startTime=-1, stopTime=-1;
