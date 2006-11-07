@@ -71,6 +71,6 @@ public class ListUtil {
 	
 	public static Node merged(Node list1, Node list2){
 		Node result;
-		
+		return result;
 	}
 }
