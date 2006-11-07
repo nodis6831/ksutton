@@ -33,9 +33,6 @@ public class ArrayExercise {
 	 * through the array and count up the number of times the specified number
 	 * occurs.
 	 */
-	// TODO find a better way to get the number of times the specified number
-	// occurs in an array
-	// TODO write tests for this method
 	public static int frequency(int[] a, int value) {
 		int count = 0;
 		for (int i = 0; i < a.length; i++) {
