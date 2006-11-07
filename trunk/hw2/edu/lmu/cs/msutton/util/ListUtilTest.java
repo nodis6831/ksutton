@@ -43,4 +43,9 @@ public class ListUtilTest {
 		assertEquals(a.getData(), 10);
 		
 	}
+	
+	@Test
+	public void testNodeMerged() {
+		
+	}
 }
