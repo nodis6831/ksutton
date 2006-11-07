@@ -24,16 +24,16 @@
     	> SEE ArrayExercise.java for our answer
     + Problem 3.19
     	> SEE ArrayExercise.java for our answer
-    + Problem 4.5
-    - Problem 4.8
+    + Problem 4.5 (Node copy)
+    - Problem 4.8 (Node concat)
     	> TODO: write tests
     	> I need to upload the Node.java class --Kelly
-    - Problem 4.11
-    - Problem 6.6
+    - Problem 4.11 (Node merged)
+    - Problem 6.6 (Simulation)
     	> Needs to be finished and tested
     	> What's up with/where is ArrayQueue?
-    - Project 3.1
+    - Project 3.1 (BinarySearchAnalyzer)
     	> Got a start, but we need to ask Ray to clarify what the problem it asking
-    - Project 5.3
-    - Project 6.1
+    - Project 5.3 (SwingMazeDemo)
+    - Project 6.1 (CapitalGainsComputer)
     	> It _should_ work, but it still needs to be heavily tested
