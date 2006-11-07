@@ -131,8 +131,8 @@ public class Maze {
 
 		// Solution loop. At each step, place the rat and notify listener.
 		while (true) {
-			cells[current.y][current.x] = Cell.RAT
-			listener.mazeChanged(this)
+			cells[current.y][current.x] = Cell.RAT;
+			listener.mazeChanged(this);
 			
 			// Did we reach the desired end cell?
 			if (current.x ==x2 && current.y == y2) {
@@ -144,7 +144,7 @@ public class Maze {
 			// totally stuck.
 			if( current.above().isOpen()){
 				path.push(current);
-				cells[current.y][current.x]
+				//cells[current.y][current.x]; //TODO what's this line supposed to do?
 			
 			}
 			// TODO
