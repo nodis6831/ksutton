@@ -68,4 +68,9 @@ public class ListUtil {
 
 		return returnList;
 	}
+	
+	public static Node merged(Node list1, Node list2){
+		Node result;
+		
+	}
 }
