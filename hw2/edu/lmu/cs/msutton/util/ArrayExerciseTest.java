@@ -26,8 +26,7 @@ public class ArrayExerciseTest {
 		int[] b = new int[] {44, 99, 55, 88, 70, 66, 22, 77};
 		assertEquals(1, ArrayExercise.partition(b));
 		int[] c = new int[] {44, 99, 55, 88, 70, 66, 22, 77, 10, 9, 26, 13, 19};
-		assertEquals(6, ArrayExercise.partition(c));
-		//TODO hangs when the pivot number occurs more than once
+		assertEquals(6, ArrayExercise.partition(c));		
 		int[] d = new int[] {44, 99, 55, 88, 70, 66, 22, 77, 10, 44};
 		assertEquals(3, ArrayExercise.partition(d));
 		

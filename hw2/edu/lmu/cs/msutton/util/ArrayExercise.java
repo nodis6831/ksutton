@@ -54,17 +54,18 @@ public class ArrayExercise {
 		while (i < j) {
 			// Swaps a[i] and a[j] when a[i] > pivot and a[j] < pivot. Numbers
 			// equal to the pivot are considered to be greater.
-			if (a[i] >= pivot && a[j] < pivot) {
+			if (a[i] > pivot && a[j] <= pivot) {
 				temp = a[i];
 				a[i] = a[j];
 				a[j] = temp;
+				System.out.println(Arrays.toString(a));
 				i++;
 				j--;
 			}
 			while (a[i] <= pivot || a[j] > pivot) {
 				if (i > a.length - 1 || j < 0)
 					throw new IllegalStateException();
-				if (a[j] > pivot)
+				if (a[j] >= pivot)
 					j--;
 				else
 					i++;
