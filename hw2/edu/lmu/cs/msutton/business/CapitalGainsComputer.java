@@ -17,16 +17,20 @@ import java.util.Date;
  * and sold queues from data stored in external files.
  */
 
-
-
 public class CapitalGainsComputer {
 
+	private static Transaction[] boughtTransactions;
+	private static Transaction[] soldTransactions;
+	
 	public static double main(String[] args){
 		
 		//TODO load data from an external file
-		//fetchData();
-		Transaction[] boughtTransactions = new Transaction[10];	//TMP!
-		Transaction[] soldTransactions = new Transaction[10];	//TMP!
+		fetchData();
+		//	boughtTransactions = fetchTransactionData();
+		//	soldTransactions = fetchSoldTransactionData();
+		
+		//boughtTransactions = new Transaction[10];	//TMP!
+		//soldTransactions = new Transaction[10];	//TMP!
 		
 		LinkedQueue bought = new LinkedQueue();				// #1
 		
@@ -65,6 +69,10 @@ public class CapitalGainsComputer {
 		}
 		
 		return gains;
+	}
+	
+	private static void fetchData(){
+		
 	}
 	
 	/*
