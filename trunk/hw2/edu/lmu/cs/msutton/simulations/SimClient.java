@@ -41,7 +41,7 @@ public class SimClient {
 	
 	public int getWaitTime(){
 		return startTime - arrivalTime;
-	}
+	}	
 	
 	public String toString(){
 		return "Client " + id;
