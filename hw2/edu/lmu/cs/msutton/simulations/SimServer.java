@@ -1,5 +1,10 @@
 package edu.lmu.cs.msutton.simulations;
 
+/**
+ * SimServer class as copied from the _ultra_ lame Data Structures book
+ * @author Kelly Sutton
+ * @author Garrett Shannon
+ */
 public class SimServer implements Server {
 
 	private Client client;

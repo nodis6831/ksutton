@@ -76,6 +76,7 @@ public class Simulation {
 		 * Computing average total time that a client spends in the system
 		 */
 	}
+	
 }
 
 
