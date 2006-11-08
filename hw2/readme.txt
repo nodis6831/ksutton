@@ -11,7 +11,7 @@
 ### ASSIGNMENT CHECKLIST
 # ( "+" indicates complete assignment )
     + Exercise 3.9
-    	> See ArrayExercise.java for our answer and why the Data Structures book is el terrible
+    	> See ArrayUtil.java for our answer and why the Data Structures book is el terrible
     + Exercise 5.2
     	a. x 4 + y 8 z + / -
     	b. x 6 y / 5 z - * /
@@ -21,9 +21,9 @@
     	b. x - ((9 + y) * (6 - z))
     	c. x/(3/(y/(2/z)))
     + Problem 3.17
-    	> SEE ArrayExercise.java for our answer
+    	> SEE ArrayUtil.java for our answer
     + Problem 3.19
-    	> SEE ArrayExercise.java for our answer
+    	> SEE ArrayUtil.java for our answer
     + Problem 4.5 (Node copy)
     + Problem 4.8 (Node concat)
     - Problem 4.11 (Node merged)
