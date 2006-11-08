@@ -27,7 +27,6 @@
     + Problem 4.5 (Node copy)
     - Problem 4.8 (Node concat)
     	> TODO: write tests
-    	> I need to upload the Node.java class --Kelly
     - Problem 4.11 (Node merged)
     - Problem 6.6 (Simulation)
     	> Needs to be finished and tested
