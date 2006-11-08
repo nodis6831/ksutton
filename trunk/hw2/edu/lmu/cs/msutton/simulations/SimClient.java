@@ -8,7 +8,10 @@ package edu.lmu.cs.msutton.simulations;
  */
 public class SimClient {
 
-	int id, arrivalTime=-1, startTime=-1, stopTime=-1;
+	int id;
+	int arrivalTime = -1;
+	int startTime = -1;
+	int stopTime = -1;
 	
 	public SimClient(int id, int t){
 		this.id = id;

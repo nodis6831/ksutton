@@ -1,8 +1,7 @@
 package edu.lmu.cs.msutton.simulations;
 
-import java.util.Queue;
-
-import com.sun.jmx.remote.internal.ArrayQueue;
+import java.util.AbstractQueue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Simulation program, copied from the Data Structures book 
@@ -17,7 +16,7 @@ public class Simulation {
 	static int meanInterarrivalTime;
 	static Server[] servers;
 	static Client[] clients;
-	static Queue queue = new ArrayQueue();
+	static ArrayBlockingQueue<Client> queue;
 	static java.util.Random randomArrival;
 	static java.util.Random randomService;
 	
@@ -41,7 +40,7 @@ public class Simulation {
 		clients = new Client[numClients];
 		randomService = new ExponentialRandom(meanServiceTime);
 		randomArrival = new ExponentialRandom(meanInterarrivalTime);
-		queue = new ArrayQueue();
+		queue = new ArrayBlockingQueue(numClients);//TODO should this just be an ArrayQueue? Where do we find that?
 		
 		for (int j = 0; j < numServers; j++){
 			servers[j] = new SimServer(j, randomService.nextInt());
