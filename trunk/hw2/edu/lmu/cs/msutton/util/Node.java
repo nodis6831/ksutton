@@ -17,9 +17,9 @@ public class Node {
 		next = null; // TODO is this safe/what it's supposed to do?
 	}
 
-	public Node(int i, Node next) {
+	public Node(int i, Node n) {
 		data = i;
-		next = next;
+		next = n;
 	}
 
 	public int getData() {

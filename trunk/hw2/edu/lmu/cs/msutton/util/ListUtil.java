@@ -12,35 +12,31 @@ public class ListUtil {
 	 * @return a new list that is a duplicate of the specified list
 	 */
 	public static Node copy(Node list) {
-
-		Node node;
-		Node node2;
-
-		try { // list is more than one Node long
-			node2 = new Node(list.next().getData()); // a placeholder to link
-			// to
-
-			node = new Node(list.getData(), node2);
-		}
-
-		catch (Exception e) {
+		
+		/*
+		 * list is only one Node
+		 */
+		if (list.next() == null){
 			return new Node(list.getData());
 		}
+		
+		Node returnNode = new Node(list.getData(), list.next());
+		Node returnListIteratorNode = returnNode;
+		Node iteratorNode = list;
 
-		while (list.next() != null) {
+		while (iteratorNode.next() != null) {
 			/*
 			 * generating a completely new Node object linked to a Node object
 			 * created from list.next() and linked to null
 			 */
-			node2 = new Node(list.getData(), new Node(list.next().getData()));
+			returnListIteratorNode.setNext(new Node(iteratorNode.next().getData(), iteratorNode.next().next()));
 
 			/* move onto to the next Node object */
-			list = list.next();
-			node2 = node2.next();
+			
+			iteratorNode = iteratorNode.next();
+			returnListIteratorNode = returnListIteratorNode.next();
 		}
-
-		return node;
-
+		return returnNode;
 	}
 
 	/**
@@ -61,16 +57,17 @@ public class ListUtil {
 
 			if (iteratorNode.next() == null) {
 				iteratorNode.setNext(copy(list2)); // This madness appends a
-													// copy of list2
+				// copy of list2
 				break;
 			}
 		}
 
 		return returnList;
 	}
-	
-	public static Node merged(Node list1, Node list2){
+
+	public static Node merged(Node list1, Node list2) {
 		Node result;
+
 		return result;
 	}
 }
