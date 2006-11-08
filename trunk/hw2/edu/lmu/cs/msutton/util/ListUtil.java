@@ -47,11 +47,11 @@ public class ListUtil {
 	 */
 	public static Node concat(Node list1, Node list2) {
 
-		Node returnList = copy(list1);
+		Node result = copy(list1);
 		// Node b = copy(list2); //Making sure we're not playing with the
 		// original Nodes in memory
 
-		Node iteratorNode = returnList;
+		Node iteratorNode = result;
 
 		while (true) {
 
@@ -63,11 +63,16 @@ public class ListUtil {
 			iteratorNode = iteratorNode.next();
 		}
 
-		return returnList;
+		return result;
 	}
 
 	public static Node merged(Node list1, Node list2) {
-		Node result;
+		
+		Node result = new Node(list1.getData() <= list2.getData() ? list1.getData() : list2.getData());
+		//figure out which list has the smallest number
+		while (list1.next() != null | list2.next() != null) {
+			result.setData(list1.getData() <= list2.getData() ? list1.getData() : list2.getData());
+		}
 
 		return result;
 	}
