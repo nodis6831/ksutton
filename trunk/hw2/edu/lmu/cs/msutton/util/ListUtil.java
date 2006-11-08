@@ -53,13 +53,14 @@ public class ListUtil {
 
 		Node iteratorNode = returnList;
 
-		while (true) { // looking two ahead
+		while (true) {
 
 			if (iteratorNode.next() == null) {
 				iteratorNode.setNext(copy(list2)); // This madness appends a
 				// copy of list2
 				break;
 			}
+			iteratorNode = iteratorNode.next();
 		}
 
 		return returnList;
