@@ -30,7 +30,7 @@ public class ListUtilTest {
 		
 		assertNotSame(a, x);
 		assertNotSame(b, x.next());
-		//assertNotSame(c, x.next().next());
+		assertNotSame(c, x.next().next());
 		
 		assertEquals(a.getData(), 0);
 		assertEquals(b.getData(), 1);
@@ -61,6 +61,8 @@ public class ListUtilTest {
 		
 		Node concatList = ListUtil.concat(a, d);
 		
+		assertNotSame(concatList, a);
+		
 		assertEquals(a.getData(), concatList.getData());
 		assertEquals(b.getData(), concatList.next().getData());
 		
@@ -68,6 +70,15 @@ public class ListUtilTest {
 		
 		assertEquals(a.getData(), 10);
 		assertTrue(a.getData() != concatList.getData());
+		
+		/*
+		 * Test to make sure the concat worked correctly
+		 */
+		Node concatListIterator = concatList;
+		for (int i = 0; concatListIterator.next() != null; i++){
+			assertEquals(concatListIterator.getData(), i);
+			concatListIterator = concatListIterator.next();
+		}
 		
 	}
 	
