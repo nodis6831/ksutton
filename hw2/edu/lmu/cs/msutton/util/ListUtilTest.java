@@ -20,13 +20,12 @@ public class ListUtilTest {
 		assertNotNull(a);
 		assertNotNull(b);
 		assertNotNull(c);
+		assertNull(c.next());
 		
 		Node x = ListUtil.copy(a);
 		assertNotNull(x);
 		assertNotNull(x.next());
 		assertNotNull(x.next().next());
-		
-		//System.out.println(a.toString() + " " + x.toString());
 		
 		assertNotSame(a, x);
 		assertNotSame(b, x.next());
@@ -38,6 +37,10 @@ public class ListUtilTest {
 		assertEquals(x.getData(), 0);
 		assertEquals(x.next().getData(), 1);
 		assertEquals(x.next().next().getData(), 2);
+		
+		a.setData(10);		
+		assertEquals(a.getData(), 10);
+		assertTrue(a.getData() != x.getData());
 	}
 	
 	@Test
@@ -65,6 +68,9 @@ public class ListUtilTest {
 		
 		assertEquals(a.getData(), concatList.getData());
 		assertEquals(b.getData(), concatList.next().getData());
+		assertEquals(c.getData(), concatList.next().next().getData());
+		assertEquals(d.getData(), concatList.next().next().next().getData());
+		assertEquals(e.getData(), concatList.next().next().next().next().getData());
 		
 		a.setData(10);
 		
@@ -84,6 +90,31 @@ public class ListUtilTest {
 	
 	@Test
 	public void testNodeMerged() {
+		Node c = new Node(5);
+		Node b = new Node(3, c);
+		Node a = new Node(1, b);
 		
+		assertNotNull(a);
+		assertNotNull(b);
+		assertNotNull(c);
+		assertNull(c.next());
+		
+		Node e = new Node(4);
+		Node d = new Node(2,e);
+		
+		assertNotNull(d);
+		assertNotNull(e);
+		assertNull(e.next());
+		
+		Node mergedList = ListUtil.merged(a, d);
+		
+		assertNotSame(mergedList, a);
+		assertNotSame(mergedList, d);
+		
+		assertEquals(a.getData(), mergedList.getData());
+		assertEquals(d.getData(), mergedList.next().getData());
+		assertEquals(b.getData(), mergedList.next().next().getData());
+		assertEquals(e.getData(), mergedList.next().next().next().getData());
+		assertEquals(c.getData(), mergedList.next().next().next().next().getData());
 	}
 }
