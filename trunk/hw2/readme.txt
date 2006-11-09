@@ -13,7 +13,7 @@
 
  To access the source for this project, enter 
  
- 	svn checkout http://ksutton.googlecode.com/svn/trunk/ ksutton
+ 	svn checkout http://ksutton.googlecode.com/svn/trunk/hw2 ksutton
  	
  into your preferred Subversion-enabled shell.
 
