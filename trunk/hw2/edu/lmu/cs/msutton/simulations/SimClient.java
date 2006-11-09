@@ -6,7 +6,7 @@ package edu.lmu.cs.msutton.simulations;
  * @author Kelly Sutton
  * @author Garrett Shannon
  */
-public class SimClient {
+public class SimClient implements Client{
 
 	int id;
 	int arrivalTime = -1;
@@ -42,6 +42,10 @@ public class SimClient {
 	public int getWaitTime(){
 		return startTime - arrivalTime;
 	}	
+	
+	public int getArrivalTime(){
+		return arrivalTime;
+	}
 	
 	public String toString(){
 		return "Client " + id;

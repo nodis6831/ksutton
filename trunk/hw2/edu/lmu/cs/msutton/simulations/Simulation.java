@@ -1,7 +1,5 @@
 package edu.lmu.cs.msutton.simulations;
 
-import java.util.AbstractQueue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Simulation program, copied from the Data Structures book 
@@ -14,15 +12,36 @@ public class Simulation {
 	static int numClients;
 	static int meanServiceTime;
 	static int meanInterarrivalTime;
+	static int nextArrivalTime = 0;
 	static Server[] servers;
 	static Client[] clients;
-	static ArrayBlockingQueue<Client> queue;
+	static BoundedQueue queue;
 	static java.util.Random randomArrival;
 	static java.util.Random randomService;
+
 	
 	public static void main(String[] args){
 		init(args);
-		//	See Listing 6.3 on page 187
+		
+		//	from page 187
+		int nextClient = 0;
+		for (int t=0; ; t++){
+			if (t == nextArrivalTime){
+				Client client = clients[nextClient++] = new SimClient(nextClient, t);
+				queue.enqueue(client);
+				nextArrivalTime = t + randomArrival.nextInt();
+			}
+			for( int j = 0; j < numServers; j++){
+				Server server = servers[j];
+				if (t == server.getStopTime()){
+					server.stopServing(t);
+				}
+				if (server.isIdle() && !queue.isEmpty()){
+					Client client = (SimClient)queue.dequeue();
+					server.startServing(client, t);
+				}
+			}
+		}
 	}
 	
 	static void init(String[] args){
@@ -40,7 +59,7 @@ public class Simulation {
 		clients = new Client[numClients];
 		randomService = new ExponentialRandom(meanServiceTime);
 		randomArrival = new ExponentialRandom(meanInterarrivalTime);
-		queue = new ArrayBlockingQueue(numClients);//TODO should this just be an ArrayQueue? Where do we find that?
+		queue = new BoundedQueue(numClients);//TODO should this just be an ArrayQueue? Where do we find that?
 		
 		for (int j = 0; j < numServers; j++){
 			servers[j] = new SimServer(j, randomService.nextInt());
@@ -50,6 +69,10 @@ public class Simulation {
 		System.out.println("\t\tNumber of clients = " + numClients );
 		System.out.println("\t\tMean service time = " + meanServiceTime );
 		System.out.println("\t\tMean interarrival time = " + meanInterarrivalTime );
+
+		for (int j = 0; j < numServers; j++){
+			System.out.println("Mean service time for " + servers[j] + " = " + servers[j].getMeanServiceTime());
+		}
 		
 		/*
 		 * Computing average client wait time and average total time in system
@@ -57,7 +80,7 @@ public class Simulation {
 		int totalClientWaitTime = 0;
 		int totalClientTimeInSystem = 0;
 		int numClients = 0;
-		for (Client c : clients){
+		/*for (Client c : clients){
 			totalClientWaitTime += c.getWaitTime();
 			totalClientTimeInSystem += c.getStopTime() - c.getArrivalTime() ;
 			numClients++;
@@ -68,9 +91,7 @@ public class Simulation {
 		System.out.println("\t\tAverage time client waited in queue = " + averageClientWaitTime);
 		System.out.println("\t\tAverage time client spent in system = " + averageClientTimeInSystem);
 		
-		for (int j = 0; j < numServers; j++){
-			System.out.println("Mean service time for " + servers[j] + " = " + servers[j].getMeanServiceTime());
-		}
+		 */
 		
 		/*
 		 * Computing average total time that a client spends in the system
