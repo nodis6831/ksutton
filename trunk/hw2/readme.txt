@@ -39,5 +39,5 @@
     + Problem 6.6 (Simulation)
     + Project 3.1 (BinarySearchAnalyzer)
     	> We're done, but I think we're running into double overflow errors --Kelly
-    - Project 5.3 (SwingMazeDemo)
+    + Project 5.3 (SwingMazeDemo)
     + Project 6.1 (CapitalGainsComputer)
