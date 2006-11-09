@@ -162,10 +162,11 @@ public class Maze {
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.right();
 			}
-			//else if((Location)path.peek().isOpen()){
-			//	cells[current.y][current.x] = Cell.TRIED;
-			//	current = (Location)path.pop();
-			//}
+			else if(((Location)path.peek()).isOpen()){
+				cells[current.y][current.x] = Cell.TRIED;
+				current = (Location)path.peek();
+				path.pop();
+			}
 			else return false;
 		}
 	}
