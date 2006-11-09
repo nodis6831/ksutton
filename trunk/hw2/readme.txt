@@ -26,7 +26,7 @@
     	> SEE ArrayUtil.java for our answer
     + Problem 4.5 (Node copy)
     + Problem 4.8 (Node concat)
-    - Problem 4.11 (Node merged)
+    + Problem 4.11 (Node merged)
     - Problem 6.6 (Simulation)
     	> Needs to be finished and tested
     	> What's up with/where is ArrayQueue?
