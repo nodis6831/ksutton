@@ -9,14 +9,16 @@ public class SimServer implements Server {
 
 	private Client client;
 
-	private int id, meanServiceTime, stopTime = -1;
+	private int id;
+	private int meanServiceTime;
+	private int stopTime = -1;
 
 	private java.util.Random random;
 
-	public SimServer(int id, int meanServiceTime) {
-		this.id = id;
-		this.meanServiceTime = meanServiceTime;
-		this.random = new ExponentialRandom(meanServiceTime);
+	public SimServer(int serverid, int mst) {
+		id = serverid;
+		meanServiceTime = mst;
+		random = new ExponentialRandom(meanServiceTime);
 	}
 
 	public int getMeanServiceTime() {
@@ -31,10 +33,10 @@ public class SimServer implements Server {
 		return client == null;
 	}
 
-	public void startServing(Client client, int t) {
-		this.client = client;
-		this.client.setStartTime(t);
-		this.stopTime = t + random.nextInt();
+	public void startServing(Client c, int t) {
+		client = c;
+		client.setStartTime(t);
+		stopTime = t + random.nextInt();
 		System.out.println(this + " started serving " + client + " at time "
 				+ t + " and will finish at time " + stopTime);
 	}
