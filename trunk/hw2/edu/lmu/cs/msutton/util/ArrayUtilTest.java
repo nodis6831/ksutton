@@ -2,9 +2,19 @@ package edu.lmu.cs.msutton.util;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class ArrayUtilTest {
+
+	@Test
+	public void testReverse() {
+		int[] a = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		int[] b = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+
+		assert (Arrays.equals(b, ArrayUtil.reverse(a)));
+	}
 
 	@Test
 	public void testFrequency() {
