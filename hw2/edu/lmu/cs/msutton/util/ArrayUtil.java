@@ -29,9 +29,12 @@ public class ArrayUtil {
 	}
 
 	/**
-	 * As of right now, the best way we can think of to do this is to iterate
-	 * through the array and count up the number of times the specified number
-	 * occurs.
+	 * 
+	 * @param a
+	 *            the array
+	 * @param value
+	 *            the value to find teh frequency of
+	 * @return the frequency of the given value in the given array
 	 */
 	public static int frequency(int[] a, int value) {
 		int count = 0;
@@ -42,6 +45,15 @@ public class ArrayUtil {
 		return count;
 	}
 
+	/**
+	 * 
+	 * @param a
+	 *            the array
+	 * @return the index j after partitioning the array so that all the elements
+	 *         that are less than a[0] jave been moved left of position j and
+	 *         all elements greater moved to the right and a[0] then moved to
+	 *         position j
+	 */
 	public static int partition(int[] a) {
 		int pivot = a[0];
 		int i = 1;
