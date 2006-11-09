@@ -21,10 +21,7 @@ public class BoundedQueue implements Queue {
 
 	public void enqueue(Object item) {
 		if (size == array.length) {
-			// throw new IllegalStateException("Cannot add to full queue");
-			// We've got plenty of memory, so we'll just created a new array
-			// twice the size
-			array = new Object[this.size() * 2];//TODO whoops, we'll need to copy everything in
+			throw new IllegalStateException("Cannot add to full queue");	
 		}
 		array[tail] = item;
 		tail = (tail + 1) % array.length;
