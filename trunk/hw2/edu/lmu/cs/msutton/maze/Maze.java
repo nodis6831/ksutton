@@ -48,6 +48,31 @@ public class Maze {
 		Location right() {
 			return new Location(x + 1, y);
 		}
+
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + x;
+			result = PRIME * result + y;
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Location other = (Location) obj;
+			if (x != other.x)
+				return false;
+			if (y != other.y)
+				return false;
+			return true;
+		}
 	}
 
 	/**
@@ -133,41 +158,38 @@ public class Maze {
 		while (true) {
 			cells[current.y][current.x] = Cell.RAT;
 			listener.mazeChanged(this);
-			
+
 			// Did we reach the desired end cell?
-			if (current.x ==x2 && current.y == y2) {
+			if (current.x == x2 && current.y == y2) {
 				return true;
 			}
-			
-			// Move to an adacent open cell, leaving a breadcrumb. IF we can't
+
+			// Move to an adacent open cell, leaving a breadcrumb. If we can't
 			// move at all, backtrack. If there's nowhere to backtrack to, we're
 			// totally stuck.
-			if( current.above().isOpen()){
+			if (current.above().isOpen()) {
 				path.push(current);
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.above();
-			}
-			else if(current.left().isOpen()){
+			} else if (current.left().isOpen()) {
 				path.push(current);
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.left();
-			}
-			else if(current.below().isOpen()){
+			} else if (current.below().isOpen()) {
 				path.push(current);
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.below();
-			}
-			else if(current.right().isOpen()){
+			} else if (current.right().isOpen()) {
 				path.push(current);
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.right();
-			}
-			else if(((Location)path.peek()).isOpen()){
+			} else if (path.size() == 0) {
+				return false;
+			} else {
 				cells[current.y][current.x] = Cell.TRIED;
 				current = (Location)path.peek();
 				path.pop();
 			}
-			else return false;
 		}
 	}
 
