@@ -33,5 +33,4 @@
     + Project 3.1 (BinarySearchAnalyzer)
     	> We're done, but I think we're running into double overflow errors --Kelly
     - Project 5.3 (SwingMazeDemo)
-    - Project 6.1 (CapitalGainsComputer)
-    	> It _should_ work, but it still needs to be heavily tested
+    + Project 6.1 (CapitalGainsComputer)
