@@ -7,6 +7,15 @@
 # Kelly Sutton
 #
 
+#### 
+# ACCESS
+####
+
+ To access the source for this project, enter 
+ 
+ 	svn checkout http://ksutton.googlecode.com/svn/trunk/ ksutton
+ 	
+ into your preferred Subversion-enabled shell.
 
 ### ASSIGNMENT CHECKLIST
 # ( "+" indicates complete assignment )
@@ -27,9 +36,7 @@
     + Problem 4.5 (Node copy)
     + Problem 4.8 (Node concat)
     + Problem 4.11 (Node merged)
-    - Problem 6.6 (Simulation)
-    	> Needs to be finished and tested
-    	> What's up with/where is ArrayQueue?
+    + Problem 6.6 (Simulation)
     + Project 3.1 (BinarySearchAnalyzer)
     	> We're done, but I think we're running into double overflow errors --Kelly
     - Project 5.3 (SwingMazeDemo)
