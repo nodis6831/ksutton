@@ -162,25 +162,11 @@ public class Maze {
 				cells[current.y][current.x] = Cell.PATH;
 				current = current.right();
 			}
-			else if(path.peek().isOpen()){
-				cells[current.y][current.x] = Cell.TRIED;
-				current = path.pop();
-			}
+			//else if((Location)path.peek().isOpen()){
+			//	cells[current.y][current.x] = Cell.TRIED;
+			//	current = (Location)path.pop();
+			//}
 			else return false;
-				
-			
-				
-				
-				
-			}
-			// TODO
-			// 1 - put the rat at the current position
-			// 2 - notify the listener
-			// 3 - Check if we reached the end
-			// 4 - Move to an adjacent open cell, leaving a "breadcrumb"
-			// but if you can't move anywhere, backtrack. But if
-			// there's nowhere to backtrack to, you know you are
-			// stuck.
 		}
 	}
 
