@@ -109,7 +109,7 @@ public class BinarySearchAnalyzer {
 	private static void printResults(int n, double ave) {
 		double log = Math.log(n) / Math.log(2);
 		//System.out.println(n + "  " + ave + "  " + (Math.log(n) / Math.log(2)));
-		System.out.printf( "%-7d %-1.6f %-1.1f\n", n, ave, log);
+		System.out.printf( "%-7d  %-1.6f %-1.1f\n", n, ave, log);
 	}
 
 }
