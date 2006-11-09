@@ -139,13 +139,39 @@ public class Maze {
 				return true;
 			}
 			
-			// Move to an adacent open cell, leaving a breadcrumb. IF we canlt
+			// Move to an adacent open cell, leaving a breadcrumb. IF we can't
 			// move at all, backtrack. If there's nowhere to backtrack to, we're
 			// totally stuck.
 			if( current.above().isOpen()){
 				path.push(current);
-				//cells[current.y][current.x]; //TODO what's this line supposed to do?
+				cells[current.y][current.x] = Cell.PATH;
+				current = current.above();
+			}
+			else if(current.left().isOpen()){
+				path.push(current);
+				cells[current.y][current.x] = Cell.PATH;
+				current = current.left();
+			}
+			else if(current.below().isOpen()){
+				path.push(current);
+				cells[current.y][current.x] = Cell.PATH;
+				current = current.below();
+			}
+			else if(current.right().isOpen()){
+				path.push(current);
+				cells[current.y][current.x] = Cell.PATH;
+				current = current.right();
+			}
+			else if(path.peek().isOpen()){
+				cells[current.y][current.x] = Cell.TRIED;
+				current = path.pop();
+			}
+			else return false;
+				
 			
+				
+				
+				
 			}
 			// TODO
 			// 1 - put the rat at the current position
