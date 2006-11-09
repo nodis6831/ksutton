@@ -19,7 +19,11 @@ public class Node {
 
 	public Node(int i, Node n) {
 		data = i;
+<<<<<<< .mine
+		this.next = next;
+=======
 		next = n;
+>>>>>>> .r196
 	}
 
 	public int getData() {
