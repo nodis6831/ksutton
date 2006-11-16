@@ -7,8 +7,55 @@
 		
 		runs in theta(n^2) time.
 		
+		### 
+		# ANSWER
+		
+		For each polynomial term raised to the nth degree, the n+1 degree requires a factor of 2 greater computations.
+		For example:
+			
+			x^2 + 2x + 1 
+				requires 2 multiplication and 2 addition computations
+			
+			while
+			
+			x^3 + 3x^2 + 3x + 1 
+				requires 5 multiplication and 3 addition computations
+			
+			and finally
+			
+			x^4 + 4x^3 + 6x^2 + 4x + 1 
+				requires 9 multiplication and 4 addition computations
+		
+		#
+		###
+		
 	b. Explain why Horner's method, evaluating polynomials of the form
 	
 		...
 		
 		runs in theta(n) time.
+		
+		###
+		# ANSWER
+		
+			By factoring down the polynomial using Horner's method, the number of computations
+			required for a polynomial of the nth degree versus a polynomial of the n+1 degree
+			increases linearly, not exponentially.
+			
+			For example:
+			
+				x^2 + 2x + 1 
+					requires 1 multiplication and 2 addition computations
+			
+				while
+				
+				x^3 + 3x^2 + 3x + 1 
+					requires 2 multiplication and 3 addition computations
+			
+				and finally
+				
+				x^4 + 4x^3 + 6x^2 + 4x + 1
+					requires 3 multiplication and 4 addition computations
+					
+		#
+		###
