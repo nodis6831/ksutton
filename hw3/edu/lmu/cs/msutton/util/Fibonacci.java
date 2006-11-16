@@ -16,7 +16,9 @@ public class Fibonacci {
 										 //the problem wants to know how many _recursive_ calls are made
 	}
 	
-	
+	/**
+	 * Lame recursive fibonacci method copied from our Data Structures book
+	 */
 	private static int fibonacci(int n){
 		counter++;
 		if ( n < 1 ) return 0;

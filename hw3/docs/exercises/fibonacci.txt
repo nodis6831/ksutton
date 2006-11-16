@@ -24,3 +24,28 @@
 				Now, we prove that 2^(n) - 1 yields the proper solution for n+1. So, we compute 
 				2^(n+1) - 1 = 2*2^n - 1. Then 2^(n+1) - 1 = 2^(n+1) - 1. Therefore 2^(n) - 1 is the
 				correct solution to the Tower of Hanoi problem for n disks. 
+				
+				
+#
+###
+
+###
+# EXERCISE 10.6
+
+	How many recursive calls would the call f(8) generate in the Fibonacci program in Listing 10.3 on page 304?
+	
+	
+	###
+	# ANSWER
+
+		After working it out on paper:
+		
+		40 calls
+		
+		also see our little test program in Fibonacci.java
+		
+	#
+	###
+
+#
+###
