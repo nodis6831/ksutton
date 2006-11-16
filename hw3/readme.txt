@@ -25,7 +25,7 @@
     + Exercise 8.4
     - Exercise 10.5
     	> Ask Ray to give us a brush-up in inductive reasoning
-    - Exercise 10.6
+    + Exercise 10.6
     - Exercise 10.12
     - Problem 10.8
     - Problem 10.11
