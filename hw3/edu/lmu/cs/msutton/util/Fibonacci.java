@@ -12,7 +12,8 @@ public class Fibonacci {
 	
 	public static void main(String args[]){
 		System.out.println(fibonacci(8));
-		System.out.println(counter);
+		System.out.println(counter - 1); //the - 1 is for the initial call
+										 //the problem wants to know how many _recursive_ calls are made
 	}
 	
 	
