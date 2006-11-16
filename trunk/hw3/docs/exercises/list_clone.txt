@@ -1,1 +1,17 @@
-as
+###
+# EXERCISE 8.1
+
+	Suppose that list1 has size 4 and list2 is created by cloing list2 like this:
+	
+	Object list2 = list1.clone();
+	
+	How many new objects will this statement create?
+	
+
+	### ANSWER
+	
+	Well, depending on what the book exactly means by clone, it will either create 1 or 5 new objects.
+	
+	If it's a smart clone method, it will create 4 new objects inside the list and a new instance of a list class.
+	
+	If it's a stupid clone method, it will just create a new list linked to the 4 objects in list1. That would be bad :(.
