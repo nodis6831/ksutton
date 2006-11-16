@@ -1,1 +1,14 @@
-a
+###
+# EXERCISE 8.4
+
+	a. Explain why the direct evaluation of a polynomial of the form
+	
+		....
+		
+		runs in theta(n^2) time.
+		
+	b. Explain why Horner's method, evaluating polynomials of the form
+	
+		...
+		
+		runs in theta(n) time.
