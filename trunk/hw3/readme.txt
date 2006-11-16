@@ -29,10 +29,11 @@
     - Exercise 10.12
     - Problem 10.8
     - Problem 10.11
-    - Write a recursive method for the function A defined like this:
+    + Write a recursive method for the function A defined like this:
     	A(0, y) = y + 1				if y >= 0
     	A(x, 0) = A(x-1, 1 )		if x >  0
     	A(x, y) = A(x-1, A(x, y-1))	if x >  0, y > 0
+    	#Should we be getting a stack overflow error when computing A(4, 2)??
     	
     	
     	
