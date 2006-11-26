@@ -70,9 +70,7 @@ public class MathUtil {
 	 * account for otherwise.
 	 */
 	public static String intToBinary(int n) {
-		if (n == 0) {
-			return "0";
-		}
+		if (n == 0)	return "0"; // the 0-case
 		return intToBinaryHelper(n);
 	}
 
@@ -82,13 +80,7 @@ public class MathUtil {
 	 * much unnecessary complexity otherwise.
 	 */
 	private static String intToBinaryHelper(int n) {
-		if (n == 0) {
-			return "";
-		}
-		if (n % 2 == 1) { // odd
-			return intToBinaryHelper(n / 2) + "1";
-		} else { // even
-			return intToBinaryHelper(n / 2) + "0";
-		}
+		if (n == 0)	return ""; //base case
+		return n % 2 == 1 ? intToBinaryHelper(n/2) + "1" : intToBinaryHelper(n/2) +"0";
 	}
 }
