@@ -1,1 +1,16 @@
-a
+###
+# EXERCISE 10.12
+
+	Prove that the recursive version of the exp() method in Section 10.8
+	on page 315 runs in theta(lg n) time. Let T(n) be the run time for
+	n > 0, and explain why T(n) = c + T(n/2) for some constant c > 0, and
+	then forumulate an argument similar to that for Forumula 10.2 on page 314.
+	
+	> exp method from Section 10.8:
+	
+		double exp(double x, int n) {
+			double factor = (n%2 == 0  1.0 : x); 	// 1 if x is even; else x;
+			if (n < 2) return factor;				// base
+			return factor*exp(x*x, n/2);			// recursion
+		}
+		

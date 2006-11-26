@@ -27,6 +27,7 @@
     	> Ask Ray to give us a brush-up in inductive reasoning
     + Exercise 10.6
     - Exercise 10.12
+    	> Ask Ray to give us a brush-up on proofs
     - Problem 10.8
     - Problem 10.11
     + Write a recursive method for the function A defined like this:
