@@ -53,8 +53,43 @@ public class MathUtil {
 	 * strategy.]
 	 */
 
-	public int maxValueInSequence(int[] a) {
-		return 0;
+	public static int maxValueInSequence(int[] a) {
+		if (a.length == 0 || a == null) throw new IllegalArgumentException();
+		
+		if (a.length == 1) // a singular case
+			return a[0];
+		//if (a.length == 2)
+		//	return a[0] > a[1] ? a[0] : a[1];
+			
+		// this nastiness tests for the greater subsequence which requires recursion
+		return maxValueInSequence(subArray(a, 0, a.length / 2 - 1)) 
+				>=	maxValueInSequence(subArray(a, a.length / 2, a.length - 1))
+				? maxValueInSequence(subArray(a, 0, a.length / 2 - 1))
+				: maxValueInSequence(subArray(a, a.length / 2, a.length - 1));
+	}
+
+	/**
+	 * A helper method that returns the subsequence of an array between two
+	 * given bounds. Think substring(), but for an array of ints.
+	 * 
+	 * @param a
+	 *            the array to be chopped down
+	 * @param startIndex
+	 *            will be at position 0 of the return array
+	 * @param endIndex
+	 *            will be at position length - 1 of the new array
+	 * @return an array of length endIndex - startIndex + 1 with the proper
+	 *         elements inserted
+	 */
+	static int[] subArray(int[] a, int startIndex, int endIndex) {
+		if (endIndex > a.length - 1)
+			throw new IndexOutOfBoundsException();
+
+		int[] returnArray = new int[endIndex - startIndex + 1];
+		for (int i = startIndex, k = 0; i <= endIndex; i++, k++) {
+			returnArray[k] = a[i];
+		}
+		return returnArray;
 	}
 
 	/*
@@ -70,7 +105,8 @@ public class MathUtil {
 	 * account for otherwise.
 	 */
 	public static String intToBinary(int n) {
-		if (n == 0)	return "0"; // the 0-case
+		if (n == 0)
+			return "0"; // the 0-case
 		return intToBinaryHelper(n);
 	}
 
@@ -80,7 +116,9 @@ public class MathUtil {
 	 * much unnecessary complexity otherwise.
 	 */
 	private static String intToBinaryHelper(int n) {
-		if (n == 0)	return ""; //base case
-		return n % 2 == 1 ? intToBinaryHelper(n/2) + "1" : intToBinaryHelper(n/2) +"0";
+		if (n == 0)
+			return ""; // base case
+		return n % 2 == 1 ? intToBinaryHelper(n / 2) + "1"
+				: intToBinaryHelper(n / 2) + "0";
 	}
 }
