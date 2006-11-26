@@ -43,4 +43,52 @@ public class MathUtil {
 		else
 			throw new IllegalArgumentException(); // if x or y is less than 0
 	}
+
+	/*
+	 * Problem 10.8
+	 * 
+	 * Write and test a recursive method that returns the maximum value among
+	 * the n elements {a(sub)p, ..., a(sub)p+n-1} of a subsequence of integers,
+	 * using at most lg n recursive calls. [Hint: use the divide-and-conquer
+	 * strategy.]
+	 */
+
+	public int maxValueInSequence(int[] a) {
+		return 0;
+	}
+
+	/*
+	 * Problem 10.11
+	 * 
+	 * Write and test a recursive function that returns a string that contains
+	 * the binary representation of a positive integer.
+	 */
+
+	/**
+	 * This is the public entry method for converting an int to the requested
+	 * binary String. It catches a 0 case that would have been difficult to
+	 * account for otherwise.
+	 */
+	public static String intToBinary(int n) {
+		if (n == 0) {
+			return "0";
+		}
+		return intToBinaryHelper(n);
+	}
+
+	/**
+	 * Helper method for the public intToBinary. The actual recursion occurs
+	 * here. This method is a private method because the 0 would have added too
+	 * much unnecessary complexity otherwise.
+	 */
+	private static String intToBinaryHelper(int n) {
+		if (n == 0) {
+			return "";
+		}
+		if (n % 2 == 1) { // odd
+			return intToBinaryHelper(n / 2) + "1";
+		} else { // even
+			return intToBinaryHelper(n / 2) + "0";
+		}
+	}
 }
