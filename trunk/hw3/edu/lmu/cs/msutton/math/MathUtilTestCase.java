@@ -15,6 +15,7 @@ public class MathUtilTestCase extends TestCase {
 		assertEquals(intToBinary(8), "1000");
 		assertEquals(intToBinary(1), "1");
 		assertEquals(intToBinary(0), "0");
+		assertEquals(intToBinary(54273854), "11001111000010011100111110");
 	}
 
 	@Test
