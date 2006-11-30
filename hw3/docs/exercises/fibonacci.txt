@@ -16,14 +16,14 @@
 			2^n - 1
 			
 			Base case:
-				First, let us assume that that 2^n - 1 yields the total number of moves required
-				to solve the Towers of Hanoi problem for n disks. If n = 1, then 2^1 - 1 = 1. It
+				First, let us assume that that f(n) = 2^n - 1 yields the total number of moves required
+				to solve the Towers of Hanoi problem for n disks. If n = 1, then 2^1 - 1 = f(1) = 1. It
 				only takes one move to solve the problem for one disk.
 				
 			Inductive step:
-				Now, we prove that 2^(n) - 1 yields the proper solution for n+1. So, we compute 
-				2^(n+1) - 1 = 2*2^n - 1. Then 2^(n+1) - 1 = 2^(n+1) - 1. Therefore 2^(n) - 1 is the
-				correct solution to the Tower of Hanoi problem for n disks. 
+				Now, we prove that f(n) = 2^(n) - 1 yields the proper solution for f(n+1). So, we compute 
+				2^(n+1) - 1 = f(n+1). So f(n+1) = f(n) + 1 + f(n) = 2^n - 1 + 1 + 2^n - 1. This simplifies
+				to 2(2^n)-1 = 2^(n+1) - 1. Therefore f(n) is true for all positive integers n. 
 				
 				
 #
