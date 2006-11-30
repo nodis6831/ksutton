@@ -23,8 +23,7 @@
     - Look at Hubbard and Huray's Programming Problems 7.6 and 7.8. They ask you to add a couple methods to their LinkedCollection class. Instead, add those methods to my SimpleLinkedList class from the course notes.
     + Exercise 8.1 
     + Exercise 8.4
-    - Exercise 10.5
-    	> Ask Ray to give us a brush-up in inductive reasoning
+    + Exercise 10.5
     + Exercise 10.6
     - Exercise 10.12
     	> Ask Ray to give us a brush-up on proofs
