@@ -14,3 +14,25 @@
 			return factor*exp(x*x, n/2);			// recursion
 		}
 		
+		
+	###
+	# ANSWER
+	
+		To prove that the exp() method runs in theta(log n) time, we prove by
+		induction.
+		
+		Base case:
+		
+			Let n = 1. Then T(n) = c + T(n/2) = c + T(1/2) for some constant c.
+			
+		Induction:
+		
+			Now we consider the case of n+1. So, T(n+1) = c + T((n+1)/2).
+			Each time the exp() method is called, it recursively calls itself.
+			This recursive call takes c + T(n/2) time for some constant c until
+			n < 2. So, for n very large, the exp() method will call itself t number
+			of times, while t is logarithmically proportional to n because each
+			recursive call takes 1/2 the amount of time as the previous call before it.
+			
+			Not exactly a proof by induction, we know, but we're on the right track.
+		
