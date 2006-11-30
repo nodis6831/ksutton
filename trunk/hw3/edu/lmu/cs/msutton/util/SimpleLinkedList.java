@@ -162,7 +162,7 @@ public class SimpleLinkedList {
 		 * and (magic happens) we remove every other Node, which is what we
 		 * want. We also like run-on sentences a lot.
 		 */
-		for (int i = 1; i < this.size(); i++) {
+		for (int i = 0; i < this.size(); i++) {
 			this.remove(i);
 		}
 		return true;
