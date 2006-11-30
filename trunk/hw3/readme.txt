@@ -20,7 +20,7 @@
 ### ASSIGNMENT CHECKLIST
 # ( "+" indicates complete assignment )
 
-    - Problems 7.6 and 7.8
+    + Problems 7.6 and 7.8
     + Exercise 8.1 
     + Exercise 8.4
     + Exercise 10.5
