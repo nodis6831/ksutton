@@ -25,8 +25,7 @@
     + Exercise 8.4
     + Exercise 10.5
     + Exercise 10.6
-    - Exercise 10.12
-    	> Ask Ray to give us a brush-up on proofs
+    + Exercise 10.12
     + Problem 10.8
     + Problem 10.11
     + Write a recursive method for the function A defined like this:
