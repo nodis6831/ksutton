@@ -35,4 +35,8 @@
 			recursive call takes 1/2 the amount of time as the previous call before it.
 			
 			Not exactly a proof by induction, we know, but we're on the right track.
+			
+			For the answer to the second half of the question, see p. 314 because, as
+			far as we can tell, the answer is exactly the same as what they have written down.
+			And we don't like extra work =(.
 		
