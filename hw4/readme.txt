@@ -20,17 +20,29 @@
 ### ASSIGNMENT CHECKLIST
 # ( "+" indicates complete assignment )
 
-    - Exercise 11.8
-    - Exercise 11.10
-    - Exercise 11.13
+    + Exercise 11.8
+    	see exercises.tree_exercises    	
+    + Exercise 11.10
+    	see exercises.tree_exercises    	
+    + Exercise 11.13
+    	see exercises.tree_exercises
+    	
     - Exercise 12.6
+    	Can we just draw this on a piece of paper?
     - Exercise 12.14
+    	What is a "proper subtree?"
     - Exercise 12.20
-    - Problem 12.1
+    	Induction problems
+    + Problem 12.1
+    	//TODO tests
     - Problem 12.2
-    - Problem 12.3
-    - Problem 12.4
-    - Problem 12.7
+    	Tests done?
+    + Problem 12.3
+    	Tests done?
+    + Problem 12.4
+    	Tests done?
+    + Problem 12.7
+    	Tests done?
     - Problem 12.8
     - Problem 12.9
     - Problem 12.12 (all in one class - see below)

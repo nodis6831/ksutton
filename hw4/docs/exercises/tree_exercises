@@ -1,0 +1,25 @@
+Exercise 11.8
+    	A) H, N, F, C, J, O, P, L, M
+    	B) G
+    	C) 2
+    	D) 4
+    	E) D, A
+    	F) J, K, O, P, L, M
+    	G) H, I, J, K, L, M
+    	H) 4
+    	I) 4
+    	J) 4
+    	
+Exercise 11.10
+    	n = (d^(h+1) - 1) / d-1
+    	n(d-1) = (d^(h+1))-1
+    	dn-n+1 = d^(h+1)
+    	log(base d)(dn-n+1) = (h+1)log(base d)d
+    	log(base d)(dn-n+1) = h + 1
+    	log(base d)(dn-n+1) - 1 = h
+    	h = (log(base d)(dn-n+1)) - 1
+    	
+Exercise 11.13
+    	A) A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P
+    	B) A, B, E, H, I, N, F, C, D, G, J, K, O, P, L, M
+    	C) H, N, I, E, F, B, C, J, O, P, K, L, M, G, D, A
