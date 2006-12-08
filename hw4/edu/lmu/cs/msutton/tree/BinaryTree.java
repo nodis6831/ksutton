@@ -126,6 +126,17 @@ public class BinaryTree {
 
 	/**
 	 * 
+	 * @return the height of the tree
+	 */
+	public int height() {
+		if (this.isLeaf())
+			return 1;
+		return this.left.height() >= this.right.height() ? this.left.height()
+				: this.right.height();
+	}
+
+	/**
+	 * 
 	 * @return the number of elements in the tree
 	 */
 	public int size() {
@@ -136,12 +147,20 @@ public class BinaryTree {
 
 	/**
 	 * 
-	 * @return the number of leaves in the tree
+	 * @return thenumber of leaves in the tree
 	 */
 	public int numLeaves() {
 		if (this.isLeaf())
 			return 1;
 		return left.numLeaves() + right.numLeaves();
+	}
+/**
+ * 
+ * @return whether or not the binary tree is full
+ */
+	public boolean isFull() {
+		return Math.log((double) this.size() + 1.0) / Math.log(2.0) - 1 == (double) this
+				.height();
 	}
 
 	/**
