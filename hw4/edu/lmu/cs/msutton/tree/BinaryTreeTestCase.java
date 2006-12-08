@@ -76,5 +76,10 @@ public class BinaryTreeTestCase extends TestCase {
 		assertEquals(treeX.count("A"), 0);
 	}
 	
+	@Test
+	public void testReverse(){
+		//TODO write these
+	}
+	
 
 }
