@@ -154,10 +154,11 @@ public class BinaryTree {
 			return 1;
 		return left.numLeaves() + right.numLeaves();
 	}
-/**
- * 
- * @return whether or not the binary tree is full
- */
+
+	/**
+	 * 
+	 * @return whether or not the binary tree is full
+	 */
 	public boolean isFull() {
 		return Math.log((double) this.size() + 1.0) / Math.log(2.0) - 1 == (double) this
 				.height();
@@ -181,7 +182,6 @@ public class BinaryTree {
 		else if (this.isLeaf()) {
 			return this.getRoot().equals(x) ? 1 : 0;
 		}
-
 
 		/*
 		 * If x is equal to the root, we add one to the count and recurse to the
@@ -209,5 +209,20 @@ public class BinaryTree {
 		else
 			return root.equals(x) ? 1 + right.count(x) : right.count(x);
 
+	}
+
+	/**
+	 * 
+	 * @return reverse of the binary tree as though it has been flipped along
+	 *         its vertical axis
+	 */
+	public BinaryTree reverse() {
+		if (left != null) {
+			BinaryTree temp = left;
+			setRight(temp.reverse());
+		}
+		if (right != null)
+			setLeft(right.reverse());
+		return this;
 	}
 }
