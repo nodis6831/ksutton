@@ -136,11 +136,42 @@ public class BinaryTree {
 
 	/**
 	 * 
-	 * @return thenumber of leaves in the tree
+	 * @return the number of leaves in the tree
 	 */
 	public int numLeaves() {
 		if (this.isLeaf())
 			return 1;
 		return left.numLeaves() + right.numLeaves();
+	}
+
+	/**
+	 * A recursive method that counts the instances of the Object x in a given
+	 * tree.
+	 * 
+	 * @return the number of references that this tree has to the given object
+	 *         x.
+	 */
+	public int count(Object x) {
+
+		/*
+		 * If the root of the tree is null, we've reached the end and need to
+		 * stop recursing
+		 */
+		if (root == null)
+			return 0;
+
+		/*
+		 * If x is equal to the root, we add one to the count and recurse
+		 */
+		if (root.equals(x))
+			return 1 + left.count(x) + right.count(x);
+
+		/*
+		 * If x is not equal to the root, we recurse without adding
+		 */
+		else
+			// (!x.equals(root))
+			return left.count(x) + right.count(x);
+
 	}
 }
