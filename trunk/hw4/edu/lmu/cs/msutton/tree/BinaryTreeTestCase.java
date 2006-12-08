@@ -26,7 +26,7 @@ public class BinaryTreeTestCase extends TestCase {
 	}
 
 	@Test
-	public void testisLeaf() {
+	public void testIsLeaf() {
 		assertTrue(treeD.isLeaf());
 		assertTrue(treeE.isLeaf());
 		assertTrue(treeB.isLeaf());
@@ -53,5 +53,22 @@ public class BinaryTreeTestCase extends TestCase {
 		assertFalse(treeC.numLeaves() == 1);
 		assertFalse(treeC.numLeaves() == 3);
 	}
+	
+	@Test
+	public void testCount() {
+		assertEquals(treeA.count("A"), 1);
+		assertEquals(treeA.count("B"), 1);
+		assertEquals(treeC.count("C"), 1);
+		assertEquals(treeA.count("D"), 1);
+		assertEquals(treeA.count("E"), 1);
+		
+		BinaryTree treeX3 = new BinaryTree("X");
+		BinaryTree treeX2 = new BinaryTree("X");
+		BinaryTree treeX = new BinaryTree("X", treeX2, treeX3);
+		
+		assertEquals(treeX.count("X"), 3);
+		assertEquals(treeX.count("A"), 0);
+	}
+	
 
 }
