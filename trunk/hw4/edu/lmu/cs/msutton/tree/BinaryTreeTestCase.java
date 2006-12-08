@@ -55,6 +55,12 @@ public class BinaryTreeTestCase extends TestCase {
 	}
 	
 	@Test
+	public void testIsFull(){
+		assertTrue(treeC.isFull());
+		assertFalse(treeA.isFull());
+	}
+	
+	@Test
 	public void testCount() {
 		assertEquals(treeA.count("A"), 1);
 		assertEquals(treeA.count("B"), 1);
