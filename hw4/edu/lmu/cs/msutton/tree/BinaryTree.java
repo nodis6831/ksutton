@@ -159,19 +159,36 @@ public class BinaryTree {
 		 */
 		if (root == null)
 			return 0;
+		else if (this.isLeaf()) {
+			return this.getRoot().equals(x) ? 1 : 0;
+		}
+
 
 		/*
-		 * If x is equal to the root, we add one to the count and recurse
+		 * If x is equal to the root, we add one to the count and recurse to the
+		 * left and to the right Otherwise we just recurse left and right
 		 */
-		if (root.equals(x))
-			return 1 + left.count(x) + right.count(x);
+		if (left != null && right != null) {
+			return root.equals(x) ? 1 + left.count(x) + right.count(x) : left
+					.count(x)
+					+ right.count(x);
+		}
 
 		/*
-		 * If x is not equal to the root, we recurse without adding
+		 * The right child is null so we can only recurse to the left. Add one
+		 * and recurse if this is equal to Object x
+		 */
+		else if (left != null && right == null)
+			return root.equals(x) ? 1 + left.count(x) : left.count(x);
+
+		/*
+		 * The left child is null so we can only recurse to the right. Add one
+		 * and recurse if the this is equals to Object x. We don't have to worry
+		 * about both left and right being null because we checked to see if
+		 * this is a leaf node earlier
 		 */
 		else
-			// (!x.equals(root))
-			return left.count(x) + right.count(x);
+			return root.equals(x) ? 1 + right.count(x) : right.count(x);
 
 	}
 }
