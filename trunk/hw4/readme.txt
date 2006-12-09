@@ -41,8 +41,7 @@
     + Problem 12.7    	
     + Problem 12.8
     + Problem 12.9
-    - Problem 12.12 (all in one class - see below)
-    	//TODO write tests
+    + Problem 12.12 (all in one class - see below)
     + Exercise 13.3
     + Exercise 13.5
     - Exercise 13.12

@@ -245,16 +245,22 @@ public class BinaryTree {
 
 	/**
 	 * 
-	 * @return reverse of the binary tree as though it has been flipped along
+	 * @return a copy of the reverse of the binary tree as though it has been flipped along
 	 *         its vertical axis
 	 */
 	public BinaryTree reverse() {
-		if (left != null) {
-			BinaryTree temp = left;
-			setRight(temp.reverse());
+		BinaryTree returnTree = new BinaryTree(this);
+		
+		BinaryTree oldLeft = left;
+		BinaryTree oldRight = right;
+		
+		if (oldLeft != null) {
+			setRight(oldLeft.reverse());
 		}
-		if (right != null)
-			setLeft(right.reverse());
-		return this;
+		
+		if (oldRight != null){
+			setLeft(oldRight.reverse());
+		}
+		return returnTree;
 	}
 }

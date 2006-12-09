@@ -85,7 +85,11 @@ public class BinaryTreeTestCase extends TestCase {
 
 	@Test
 	public void testReverse() {
-		// TODO write these
+		assertEquals(treeA.toString(), "((B),A,((D),C,(E)))");
+		
+		treeA.reverse();
+		
+		assertEquals(treeA.toString(), "(((D),C,(E)),A,(B))");
 	}
 
 }
