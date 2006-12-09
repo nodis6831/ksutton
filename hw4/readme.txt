@@ -34,8 +34,8 @@
     - Exercise 12.20
     	Induction problems
     + Problem 12.1
-    	//TODO tests
-    - Problem 12.2    	
+    + Problem 12.2
+    	> More extensive tests wouldn't hurt    	
     + Problem 12.3    	
     + Problem 12.4    	
     + Problem 12.7    	
