@@ -25,9 +25,11 @@ public class BinaryTreeTestCase extends TestCase {
 
 	@Test
 	public void testToString() {
-		System.out.println(treeA.toString());
 		assertEquals(treeA.toString(), "((B),A,((D),C,(E)))");
 		assertEquals(treeC.toString(), "((D),C,(E))");
+		assertEquals(treeB.toString(), "(B)");
+		assertEquals(treeD.toString(), "(D)");
+		assertEquals(treeE.toString(), "(E)");
 	}
 
 	@Test
