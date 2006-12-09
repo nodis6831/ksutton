@@ -1,7 +1,5 @@
 package edu.lmu.cs.msutton.hash;
 
-import java.util.Map.Entry;
-
 public class HashTable {
 	private Entry[] entries;
 	private int size;
