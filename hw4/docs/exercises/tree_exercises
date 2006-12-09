@@ -23,3 +23,33 @@ Exercise 11.13
     	A) A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P
     	B) A, B, E, H, I, N, F, C, D, G, J, K, O, P, L, M
     	C) H, N, I, E, F, B, C, J, O, P, K, L, M, G, D, A
+    
+Exercise 13.5
+		A) True. To be a binary search tree, all subtrees of 
+		   that tree must also be a binary search tree. A binary search
+		   tree is defined as a parent with two ordered children, 
+		   if you were to change that structure it would no longer be a BST.
+		
+		B) False. The left and right subtrees could be ordered
+		   improperly in relation to tree T.
+		   
+		C) False. Unless the tree balances itself, the order will
+		   determine the shape. For example if all data is ordered
+		   a long skinny tree would result but a random order would
+		   produce a somewhat more ordered tree.
+		   
+		D) True. AVL trees are height balanced, optimizing the tree
+		   to keep the height difference between any two leaf nodes
+		   one or less. Any subtree will also maintain this structure
+		   for the tree to still be soncidred an AVL tree.
+		   
+		E) False. Although tree T will have the structure of an
+		   AVL tree, tree T will not have the functionality of an
+		   AVL tree. Tree T will be a BST with AVL subtrees and will
+		   look like an AVL tree and will fucntion for the most part
+		   as an AVL tree, but once the tree needs to change its
+		   root node, everything will fall apart.
+		   
+Exercise 13.12
+		
+		 
