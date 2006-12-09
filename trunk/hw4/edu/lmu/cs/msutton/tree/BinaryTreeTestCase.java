@@ -4,10 +4,6 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertEquals;
-
 public class BinaryTreeTestCase extends TestCase {
 	BinaryTree treeB = new BinaryTree("B");
 
@@ -20,7 +16,16 @@ public class BinaryTreeTestCase extends TestCase {
 	BinaryTree treeA = new BinaryTree("A", treeB, treeC);
 
 	@Test
+	public void testConstructors() {
+		assertEquals(treeA.getLeft(), treeB);
+		assertEquals(treeA.getRight(), treeC);
+		assertEquals(treeC.getLeft(), treeD);
+		assertEquals(treeC.getRight(), treeE);
+	}
+
+	@Test
 	public void testToString() {
+		System.out.println(treeA.toString());
 		assertEquals(treeA.toString(), "((B),A,((D),C,(E)))");
 		assertEquals(treeC.toString(), "((D),C,(E))");
 	}
@@ -53,13 +58,13 @@ public class BinaryTreeTestCase extends TestCase {
 		assertFalse(treeC.numLeaves() == 1);
 		assertFalse(treeC.numLeaves() == 3);
 	}
-	
+
 	@Test
-	public void testIsFull(){
+	public void testIsFull() {
 		assertTrue(treeC.isFull());
 		assertFalse(treeA.isFull());
 	}
-	
+
 	@Test
 	public void testCount() {
 		assertEquals(treeA.count("A"), 1);
@@ -67,19 +72,18 @@ public class BinaryTreeTestCase extends TestCase {
 		assertEquals(treeC.count("C"), 1);
 		assertEquals(treeA.count("D"), 1);
 		assertEquals(treeA.count("E"), 1);
-		
+
 		BinaryTree treeX3 = new BinaryTree("X");
 		BinaryTree treeX2 = new BinaryTree("X");
 		BinaryTree treeX = new BinaryTree("X", treeX2, treeX3);
-		
+
 		assertEquals(treeX.count("X"), 3);
 		assertEquals(treeX.count("A"), 0);
 	}
-	
+
 	@Test
-	public void testReverse(){
-		//TODO write these
+	public void testReverse() {
+		// TODO write these
 	}
-	
 
 }

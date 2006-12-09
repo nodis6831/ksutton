@@ -56,7 +56,7 @@ public class BinaryTree {
 	 * @return the root
 	 */
 	public Object getRoot() {
-		return this.root;
+		return root;
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class BinaryTree {
 	 * @return the left tree node
 	 */
 	public BinaryTree getLeft() {
-		return this.left;
+		return left;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class BinaryTree {
 	 * @return the right tree node
 	 */
 	public BinaryTree getRight() {
-		return this.right;
+		return right;
 	}
 
 	/**
@@ -81,9 +81,9 @@ public class BinaryTree {
 	 * @return the original value for the root. replaces root with given
 	 *         argument
 	 */
-	public Object setRoot(Object root) {
-		Object temp = this.root;
-		this.root = root;
+	public Object setRoot(Object rootObj) {
+		Object temp = root;
+		root = rootObj;
 		return temp;
 	}
 
@@ -93,9 +93,9 @@ public class BinaryTree {
 	 * @return the original value for the left node. replaces left with the
 	 *         given argument
 	 */
-	public BinaryTree setLeft(BinaryTree left) {
-		BinaryTree temp = this.left;
-		this.left = left;
+	public BinaryTree setLeft(BinaryTree tree) {
+		BinaryTree temp = left;
+		left = tree;
 		return temp;
 	}
 
@@ -105,15 +105,44 @@ public class BinaryTree {
 	 * @return the original value for the right node. replaces right with the
 	 *         given argument
 	 */
-	public BinaryTree setRight(BinaryTree right) {
-		BinaryTree temp = this.right;
-		this.right = right;
+	public BinaryTree setRight(BinaryTree tree) {
+		BinaryTree temp = right;
+		right = tree;
 		return temp;
 	}
 
+	@Override
 	public String toString() {
-		// TODO write this method
-		throw new UnsupportedOperationException();
+
+		/*
+		 * We're dealing with a leaf node, just print out its contents in a set
+		 * of parens
+		 */
+		if (isLeaf()) {
+			return "(" + root.toString() + ")";
+		}
+
+		/*
+		 * Both left and right are not null, so we recurse down to both of them
+		 * while printing out the contents of the root
+		 */
+		else if (left != null && right != null) {
+			return "(" + left.toString() + "," + root.toString() + ","
+					+ right.toString() + ")";
+		}
+
+		/*
+		 * The right tree is null so we only recurse to the left
+		 */
+		else if (left != null && right == null) {
+			return "(" + left.toString() + "," + root.toString() + ")";
+		}
+
+		/*
+		 * The left tree is null so we only recurse to the right
+		 */
+		else
+			return "(" + root.toString() + "," + right.toString() + ")";
 	}
 
 	/**
@@ -125,6 +154,7 @@ public class BinaryTree {
 	}
 
 	/**
+	 * Recursive height function
 	 * 
 	 * @return the height of the tree
 	 */
@@ -147,7 +177,7 @@ public class BinaryTree {
 
 	/**
 	 * 
-	 * @return thenumber of leaves in the tree
+	 * @return the number of leaves in the tree
 	 */
 	public int numLeaves() {
 		if (this.isLeaf())
@@ -156,6 +186,8 @@ public class BinaryTree {
 	}
 
 	/**
+	 * isFull() checks to see if this tree is full by comparing a binary log of
+	 * the size to the height of the tree
 	 * 
 	 * @return whether or not the binary tree is full
 	 */
@@ -179,8 +211,8 @@ public class BinaryTree {
 		 */
 		if (root == null)
 			return 0;
-		else if (this.isLeaf()) {
-			return this.getRoot().equals(x) ? 1 : 0;
+		else if (isLeaf()) {
+			return getRoot().equals(x) ? 1 : 0;
 		}
 
 		/*
