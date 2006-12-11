@@ -28,10 +28,9 @@
     	see exercises.tree_exercises	
     + Exercise 12.6
     	> In Kelly's notes
-    - Exercise 12.14
-    	What is a "proper subtree?"
-    - Exercise 12.20
-    	Induction problems
+    + Exercise 12.14
+    + Exercise 12.20
+    	> In Kelly's notes
     + Problem 12.1
     + Problem 12.2
     	> More extensive tests wouldn't hurt    	
