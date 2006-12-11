@@ -25,9 +25,8 @@
     + Exercise 11.10
     	see exercises.tree_exercises    	
     + Exercise 11.13
-    	see exercises.tree_exercises
-    	
-    - Exercise 12.6
+    	see exercises.tree_exercises	
+    + Exercise 12.6
     	> In Kelly's notes
     - Exercise 12.14
     	What is a "proper subtree?"
