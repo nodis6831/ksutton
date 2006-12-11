@@ -12,5 +12,8 @@ public class HashTableTestCase {
 	Country portugal = new Country("Portugal", "Portuguese", 35672, 9918040);
 	Country sweden = new Country("Sweden", "Swedish", 173732, 8911396);
 
+	//TODO ARG!
+	
+	//table.size();
 	//table.put("AT", austria);
 }
