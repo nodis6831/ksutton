@@ -28,7 +28,7 @@
     	see exercises.tree_exercises
     	
     - Exercise 12.6
-    	Can we just draw this on a piece of paper?
+    	> In Kelly's notes
     - Exercise 12.14
     	What is a "proper subtree?"
     - Exercise 12.20
