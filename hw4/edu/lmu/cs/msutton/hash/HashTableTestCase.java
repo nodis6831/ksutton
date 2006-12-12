@@ -1,5 +1,7 @@
 package edu.lmu.cs.msutton.hash;
 
+import org.junit.Test;
+
 public class HashTableTestCase {
 
 	HashTable table = new HashTable(7);
@@ -12,8 +14,16 @@ public class HashTableTestCase {
 	Country portugal = new Country("Portugal", "Portuguese", 35672, 9918040);
 	Country sweden = new Country("Sweden", "Swedish", 173732, 8911396);
 
-	//TODO ARG!
-	
-	//table.size();
-	//table.put("AT", austria);
+	@Test
+	public void testHashTable(){
+		table.put("AT", austria);
+		table.put("AT", france);
+		table.put("AT", germany);
+		table.put("AT", greece);
+		table.put("AT", italy);
+		table.put("AT", portugal);
+		table.put("AT", sweden);
+		//TODO fix country codes
+		//TODO write tests
+	}
 }
