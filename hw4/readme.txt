@@ -42,8 +42,7 @@
     + Problem 12.12 (all in one class - see below)
     + Exercise 13.3
     + Exercise 13.5
-    - Exercise 13.12
-    - Problem 9.2
-    	//TODO wirte the tests
-    	//TODO fix country codes
+    + Exercise 13.12
+    + Problem 9.2
+    	
 
