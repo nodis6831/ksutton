@@ -1,0 +1,4 @@
+#ifndef SINGLY_LINKED_QUEUE_H_
+#define SINGLY_LINKED_QUEUE_H_
+
+#endif /*SINGLY_LINKED_QUEUE_H_*/
