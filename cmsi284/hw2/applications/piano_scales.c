@@ -1,3 +1,15 @@
+/**
+ * 
+ *  A simple C program to take in user input (a note) and then print out the associated
+ *  major and minor scale 
+ * 
+ *  Kelly Sutton
+ *  CMSI 284
+ *  2/15/07
+ * 
+ */
+
+
 #include <stdio.h>
 
 int main(){
