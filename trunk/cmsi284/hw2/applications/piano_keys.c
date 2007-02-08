@@ -1,3 +1,12 @@
+/**
+ *  Simple C program that prints out the 88 keys and their frequencies on a piano 
+ * 
+ *  Kelly Sutton
+ *  CMSI 284
+ *  2/15/07
+ * 
+ */
+
 #include <stdio.h>
 #include <math.h>
 
@@ -5,7 +14,7 @@ int main(){
 	
 	double a[88];
 	char* keys[13] = { "A" , "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
-        double z = 1.0594630943593; 
+    double z = 1.0594630943593; 
 	
 	a[0] = 27.5000; 
 	
