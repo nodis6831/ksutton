@@ -22,7 +22,7 @@ public class Select {
 		
 		Random generator = new Random();
 		
-		int pivot = generator.nextInt(a.size + 1);
+		int pivot = generator.nextInt(a.length + 1);
 		int i = 1;
 		int j = a.length - 1;
 		int temp;

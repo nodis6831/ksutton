@@ -12,7 +12,7 @@ public class IntegerHeapSort {
 		// File reading taken from a tutorial at:
 		// http://www.javapractices.com/Topic42.cjp
 
-		//readFromFile(args[0]);
+		NumberReader.readIntsFromFile(args[0]);
 
 		IntHeap heap = new IntHeap(12);
 		
@@ -34,67 +34,4 @@ public class IntegerHeapSort {
 		
 	}
 
-	private static IntHeap readFromFile(String f) {
-
-		System.out.println("The file name is " + f);
-		BufferedReader input = null;
-
-		try {
-
-			IntHeap heap;
-
-			input = new BufferedReader(new FileReader(f));
-			String line = null;
-
-			int i = 0;
-			while ((line = input.readLine()) != null) { // we're just going to
-				// count the lines this
-				// time through
-				i++;
-			}
-
-			heap = new IntHeap(i); // creating our new heap.
-
-			try {
-				if (input != null)
-					input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			// now we reopen the file and load it into our array
-
-			input = new BufferedReader(new FileReader(f));
-			line = null;
-
-			while ((line = input.readLine()) != null) {
-				heap.add(Integer.parseInt(line));
-			}
-
-			System.out.println(heap.toString());
-			return heap;
-
-		}
-
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		finally {
-			try {
-				if (input != null)
-					input.close();
-			}
-
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-
-	}
 }

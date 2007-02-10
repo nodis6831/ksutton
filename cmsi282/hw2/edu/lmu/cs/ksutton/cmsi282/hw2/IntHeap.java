@@ -156,6 +156,7 @@ class IntHeap {
 		System.out.println(tmp + " " + a[i] + " " + a[j]);
 		a[i] = a[j];
 		a[j] = tmp;
+		System.out.println(a[i] + " " + a[j]);
 
 	}
 
