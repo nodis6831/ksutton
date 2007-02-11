@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 
@@ -57,6 +58,70 @@ public class NumberReader {
 
 			System.out.println(heap.toString());
 			return heap;
+
+		}
+
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		/*
+		 * finally { try { if (input != null) input.close(); }
+		 * 
+		 * catch (IOException e) { e.printStackTrace(); } }
+		 */
+		return null;
+
+	}
+	
+	public static int[] readIntsAsArrayFromFile(String f) {
+
+		//System.out.println("The file name is " + f);
+		BufferedReader input = null;
+
+		try {
+
+			int[] a;
+
+			input = new BufferedReader(new FileReader(f));
+			String line = null;
+
+			
+			// we're just going to count the lines this time through
+			int i = 0;
+			while ((line = input.readLine()) != null) { 
+				i++;
+			}
+
+			//BufferedReader counts the last line, so we subtract one
+			a = new int[i-1]; 
+
+			try {
+				if (input != null)
+					input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// now we reopen the file and load it into our array
+
+			input = new BufferedReader(new FileReader(f));
+			line = null;
+			
+			int j = 0;
+			while ((line = input.readLine()) != null) {
+				if (!line.equals("")){
+					a[j] = Integer.parseInt(line);
+					j++;
+				}
+			}
+
+			System.out.println(Arrays.toString(a));
+			return a;
 
 		}
 
