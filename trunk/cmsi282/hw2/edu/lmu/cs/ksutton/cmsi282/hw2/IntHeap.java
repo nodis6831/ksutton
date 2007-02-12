@@ -3,7 +3,6 @@
  */
 package edu.lmu.cs.ksutton.cmsi282.hw2;
 
-import java.util.Arrays;
 
 class IntHeap {
 
@@ -18,6 +17,12 @@ class IntHeap {
 
 	}
 
+	
+	public int size(){
+		return size;
+	}
+	
+	
 	/**
 	 * Adds an int to the heap and readjusts the heap
 	 * 
@@ -41,15 +46,19 @@ class IntHeap {
 
 		int top = a[1];
 
-		if (a[2] > a[3]) {
-			a[1] = a[2];
+		/*if (a[size] > a[size]) {
+			a[1] = a[size];
 		}
 
 		else
 			// a[2] < a[3]
-			a[1] = a[3];
+			a[size] = a[size];*/
+		
+		a[1] = a[size];
+		a[size] = 0;
 
 		size--;
+		//reheap_up();
 		reheap_down();
 
 		return top;
@@ -81,18 +90,18 @@ class IntHeap {
 	 */
 	private void reheap_down() {
 
-		int i = 0;
+		int i = 1;
 
 		while (2 * i + 1 < size) {
-			int child = 2 * i + 1;
+			int child = 2 * i;
 
 			// since we're pushing a number down, we want to do the swapping
 			// with the smallest number
-			if (child < size && a[child] > a[child + 1])
+			if (child < size && a[child] < a[child + 1])
 				child++;
 
 			// the number is as far down as it needs to go
-			if (a[i] < a[child])
+			if (a[i] > a[child])
 				break;
 
 			else {
@@ -112,10 +121,10 @@ class IntHeap {
 	 */
 	private void reheap_up() {
 
-		int i = size - 1;
+		int i = size;
 
 		while (i > 1) {
-			if (parent(i) > a[i]) {
+			if (parent(i) < a[i]) {
 				swapInts(i, indexOfParent(i));
 			}
 
@@ -153,10 +162,10 @@ class IntHeap {
 	private void swapInts(int i, int j) {
 
 		int tmp = a[i];
-		System.out.println(tmp + " " + a[i] + " " + a[j]);
+		//System.out.println(tmp + " " + a[i] + " " + a[j]);
 		a[i] = a[j];
 		a[j] = tmp;
-		System.out.println(a[i] + " " + a[j]);
+		//System.out.println(a[i] + " " + a[j]);
 
 	}
 
