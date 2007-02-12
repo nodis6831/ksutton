@@ -55,8 +55,7 @@ public class NumberReader {
 				if (!line.equals(""))
 					heap.add(Integer.parseInt(line));
 			}
-
-			System.out.println(heap.toString());
+			
 			return heap;
 
 		}
@@ -98,7 +97,7 @@ public class NumberReader {
 			}
 
 			//BufferedReader counts the last line, so we subtract one
-			a = new int[i-1]; 
+			a = new int[i]; 
 
 			try {
 				if (input != null)
@@ -142,14 +141,14 @@ public class NumberReader {
 
 	}
 	
-	public static ArrayList readDoublesFromFile(String f) {
+	public static ArrayList<Double> readDoublesFromFile(String f) {
 
 		//System.out.println("The file name is " + f);
 		BufferedReader input = null;
 
 		try {
 
-			ArrayList a;
+			ArrayList<Double> a;
 
 			input = new BufferedReader(new FileReader(f));
 			String line = null;
@@ -160,7 +159,7 @@ public class NumberReader {
 				i++;
 			}
 
-			a = new ArrayList(i);// creating our new array of doubles
+			a = new ArrayList<Double>(i);// creating our new array of doubles
 
 			try {
 				if (input != null)

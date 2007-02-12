@@ -3,7 +3,6 @@ package edu.lmu.cs.ksutton.cmsi282.hw2;
 import static junit.framework.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.Test;
 

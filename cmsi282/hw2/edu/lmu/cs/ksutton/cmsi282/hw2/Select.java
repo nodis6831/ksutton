@@ -1,6 +1,5 @@
 package edu.lmu.cs.ksutton.cmsi282.hw2;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Select {

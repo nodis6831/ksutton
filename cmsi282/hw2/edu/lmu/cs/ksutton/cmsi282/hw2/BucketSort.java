@@ -1,50 +1,48 @@
 package edu.lmu.cs.ksutton.cmsi282.hw2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BucketSort {
 
 	public static void main(String args[]) {
-
-		NumberReader.readDoublesFromFile(args[0]);
-		ArrayList<Double> masterlist = NumberReader
-				.readDoublesFromFile(args[0]);
-		;
+		
+		ArrayList<Double> masterlist = NumberReader.readDoublesFromFile(args[0]);
+		
 
 		// all of the doubles will be 0.0 <= x < 100.0
 		double rangeOfBucket = 100.0 / masterlist.size();
 
 		// creating a new ArrayList of n buckets
 		ArrayList[] buckets = new ArrayList[masterlist.size()];
-		Arrays.fill(buckets, new ArrayList());
+		buckets = fillBuckets(buckets);
 
 		double d;
 		for (int i = 0; i < masterlist.size(); i++) {
 			d = (Double) masterlist.get(i);
-			buckets[(int) (d / rangeOfBucket)].add(d); // this mess discovers
-														// the appropriate
-														// bucket and dumps d in
-														// it
+			// this mess discovers the appropriate bucket and dumps d in it
+			buckets[(int) (d / rangeOfBucket)].add(d); 
 		}
 
-		// now we sort and spit out the list as we sort
-		int k;
-		for (k = 0; k < buckets.length - 1; k++)
-			;
-		{
-			buckets[k] = insertionSort(buckets[k]); // insert sort each bucket
-			System.out.println(buckets[k].toString() + "\n");
+		
+		masterlist = new ArrayList<Double>();
+		
+		for (int m = 0; m < buckets.length; m++){
+			buckets[m] = insertionSort(buckets[m]); //sort the bucket
+			for (int n = 0; n < buckets[m].size(); n++){
+				masterlist.add( (Double) buckets[m].get(n));//reading the numbers back into the original list in order
+			}
 		}
+		
+		System.out.println(masterlist.toString());
 
 	}
 
 	/**
-	 * Modified versino of InsertionSort found at
+	 * Modified version of InsertionSort found at
 	 * http://www.samspublishing.com/articles/article.asp?p=31526&seqNum=4&rl=1
 	 * 
-	 * @param a
-	 * @return
+	 * @param a The ArrayList to be sorted
+	 * @return A sorted ArrayList
 	 */
 	public static ArrayList insertionSort(ArrayList a) {
 
@@ -68,5 +66,19 @@ public class BucketSort {
 
 		return a;
 	} 
+	
+	
+	/**
+	 * Helper method to fill an array of ArrayLists with _unique_ ArrayLists,
+	 * something that Arrays.fill() does not do. 
+	 * @param b The array of ArrayLists to be filled
+	 * @return The original array filled with empty ArrayLists
+	 */
+	private static ArrayList[] fillBuckets(ArrayList[] b){
+		for (int i = 0; i < b.length; i++){
+			b[i] = new ArrayList();
+		}
+		return b;
+	}
 
 }
