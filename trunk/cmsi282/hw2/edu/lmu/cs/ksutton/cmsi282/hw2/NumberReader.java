@@ -10,7 +10,8 @@ import java.util.Arrays;
 
 
 /**
- * This is a nifty little utility class that reads numbers from files organized as one number per line
+ * This is a (repetitive) helper class that reads 
+ * values from a file into the data structures required for the assignment
  * 
  * @author Kelly Sutton
  *
@@ -68,18 +69,12 @@ public class NumberReader {
 			e.printStackTrace();
 		}
 
-		/*
-		 * finally { try { if (input != null) input.close(); }
-		 * 
-		 * catch (IOException e) { e.printStackTrace(); } }
-		 */
 		return null;
 
 	}
 	
 	public static int[] readIntsAsArrayFromFile(String f) {
 
-		//System.out.println("The file name is " + f);
 		BufferedReader input = null;
 
 		try {
@@ -132,11 +127,6 @@ public class NumberReader {
 			e.printStackTrace();
 		}
 
-		/*
-		 * finally { try { if (input != null) input.close(); }
-		 * 
-		 * catch (IOException e) { e.printStackTrace(); } }
-		 */
 		return null;
 
 	}
@@ -195,11 +185,6 @@ public class NumberReader {
 			e.printStackTrace();
 		}
 
-		/*
-		 * finally { try { if (input != null) input.close(); }
-		 * 
-		 * catch (IOException e) { e.printStackTrace(); } }
-		 */
 		return null;
 
 	}

@@ -2,6 +2,29 @@ package edu.lmu.cs.ksutton.cmsi282.hw2;
 
 import java.util.Random;
 
+
+/**
+ * Problem Set #2
+ * Problem #4
+ * 
+ * The Select class uses the method of random partitioning
+ * to discover the nth smallest number in a file of integers.
+ * 
+ * The program should be invoked as follows:
+ * 
+ *     java Select NTH FILENAME
+ *     
+ * Where NTH is the nth number to be found and FILENAME
+ * is the complete path to the file.
+ * 
+ * Caveat:The assignment asks to use the "<" to redirect the
+ * file's contents into stdin. After some research, I couldn't
+ * figure out how to do that exactly, so I created a class,
+ * NumberReader.java that reads the data from the file.
+ * 
+ * @author Kelly Sutton
+ *
+ */
 public class Select {
 
 	public static void main(String args[]) {
@@ -10,7 +33,13 @@ public class Select {
 
 		int[] a = NumberReader.readIntsAsArrayFromFile(args[1]);
 
-		int b = partition(a, --nth);// getting back a partitioned enough array
+		/*
+		 * The --nth is to compensate for the array indeces starting at 0.
+		 * If a user says (s)he wants the 1st element, (s)he really wants
+		 * the 0th element. =)
+		 */
+		int b = partition(a, --nth);//getting back a partitioned enough array
+		
 
 		System.out.println(b);// reading the correct element to stdo
 
@@ -52,18 +81,29 @@ public class Select {
 		}
 		swap(a, 0, j);
 		
-		//TODO comments beyotch!
-		
+		/*
+		 * We've partitioned around the correct number
+		 * such that we've found our nth smallest
+		 */
 		if (j == nth)
-			return a[j];//we've found it
+			return a[j];
 		
+		/*
+		 * The number we partitioned around ended up 
+		 * on the "right side" of the nth number we're
+		 * looking for. We divide and conquer.
+		 */
 		else if (j > nth) 
 			return partition(splitIntArray(a, 0, j), nth);
 		
+		/*
+		 * The number we partitioned around ended up on
+		 * the "left side" of our nth. We readjust 
+		 * accordingly and recurse.
+		 */
 		else
 			return partition(splitIntArray(a, i, a.length - 1), nth - i);
 		
-		//return j;
 	}
 
 	// Helper routine to swap array items.
@@ -75,7 +115,8 @@ public class Select {
 	}
 
 	/**
-	 * Returns a new array between i and j
+	 * Returns a new array that contains the element
+	 * found from index i to index j from array a.
 	 * 
 	 * @param a
 	 *            The array to be split
