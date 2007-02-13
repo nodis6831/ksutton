@@ -3,7 +3,12 @@
  */
 package edu.lmu.cs.ksutton.cmsi282.hw2;
 
-
+/**
+ * A self-contained integer heap class. It does all the heapifying as you add or remove objects.
+ * 
+ * @author Kelly Sutton
+ *
+ */
 class IntHeap {
 
 	private int[] a; // the heap
@@ -18,6 +23,9 @@ class IntHeap {
 	}
 
 	
+	/**
+	 * @return The size of the heap
+	 */
 	public int size(){
 		return size;
 	}
@@ -39,26 +47,17 @@ class IntHeap {
 	}
 
 	/**
-	 * 
+	 * remove() will return the top-most element of the heap and remove it.
 	 * @return The top-most element of the heap
 	 */
 	public int remove() {
 
 		int top = a[1];
-
-		/*if (a[size] > a[size]) {
-			a[1] = a[size];
-		}
-
-		else
-			// a[2] < a[3]
-			a[size] = a[size];*/
 		
 		a[1] = a[size];
 		a[size] = 0;
 
 		size--;
-		//reheap_up();
 		reheap_down();
 
 		return top;
@@ -162,11 +161,9 @@ class IntHeap {
 	private void swapInts(int i, int j) {
 
 		int tmp = a[i];
-		//System.out.println(tmp + " " + a[i] + " " + a[j]);
 		a[i] = a[j];
 		a[j] = tmp;
-		//System.out.println(a[i] + " " + a[j]);
-
+		
 	}
 
 }

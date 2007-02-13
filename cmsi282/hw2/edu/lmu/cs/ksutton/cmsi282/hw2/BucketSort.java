@@ -2,6 +2,34 @@ package edu.lmu.cs.ksutton.cmsi282.hw2;
 
 import java.util.ArrayList;
 
+
+/**
+ * Problem Set #2
+ * Problem #5
+ * 
+ * The BucketSort class reads doubles from a file into
+ * an ArrayList object then uses the BucketSorting 
+ * algorithm to quickly sort the list.
+ * 
+ * The program should be invoked as follows:
+ * 
+ *     java BucketSort FILENAME
+ *     
+ * Where FILENAME is a file full of doubles
+ * 
+ * Caveat: The assignment asks to use the "<" to redirect the
+ * file's contents into stdin. After some research, I couldn't
+ * figure out how to do that exactly, so I created a class,
+ * NumberReader.java that reads the data from the file.
+ * 
+ * Caveat: I'm getting a lot of warning concerning type safety,
+ * parameterization, and the ArrayList object. It's probably
+ * unsafe to be casting stuff back and forth all over the place,
+ * but it should not be a problem in this program.
+ * 
+ * @author Kelly Sutton
+ *
+ */
 public class BucketSort {
 
 	public static void main(String args[]) {
