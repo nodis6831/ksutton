@@ -14,14 +14,22 @@ public class StringSearch {
 	public static void main(String[] args) {
 
 		int i = 0;
-
+		
+		HString pattern = new HString(args[0]);
+		String line;
+		
 		while (true) { // we'll continue until we run out of lines
 			i++;
 			try {
+				
+				line = in.readLine();
 				// TODO Do a string match
+				ArrayList<Integer> matches = pattern.match(line);
 				// TODO If found, output line number(i) and index for each
-				// occurrence
-				System.out.println(in.readLine());
+				for ( int j = 0; j < matches.size(); j++){
+					System.out.println("Match found at line " + i + " and index " + matches.get(j));
+				}
+				
 			} catch (Exception e) {
 				break;
 			}
