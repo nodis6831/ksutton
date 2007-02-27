@@ -38,5 +38,7 @@ public class TrieNodeTester {
 		root.add("something");
 		root.add("something");
 		root.add("something");
+		
+		System.out.println(root.toString());
 	}
 }
