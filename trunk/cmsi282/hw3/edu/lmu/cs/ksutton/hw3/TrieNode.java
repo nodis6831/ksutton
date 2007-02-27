@@ -97,7 +97,8 @@ public class TrieNode {
 		String toReturn = "";
 
 		if (end == true) // we've reached a leaf
-			return Character.toString(c) + "\t" + count + "\n";
+			return Character.toString(c) + "\t" + count + "\n"
+					+ printCharactersBackToRoot(findLastEnd(this));
 
 		else {
 			for (int i = 0; i < children.size(); i++) {
@@ -160,4 +161,31 @@ public class TrieNode {
 		return parent;
 	}
 
+	/**
+	 * A helper method that recurses up the tree to the last found end node
+	 * 
+	 * @return
+	 */
+	public TrieNode findLastEnd(TrieNode t) {
+		if (end == true)
+			return this;
+		else
+			return findLastEnd(this.parent);
+	}
+
+	/**
+	 * Recursive helper method used by toString() for printing stuff out
+	 * correctly
+	 * 
+	 * @param t
+	 *            The current TrieNode
+	 * @return A String containing all the characters from the current node back
+	 *         up to the root
+	 */
+	public String printCharactersBackToRoot(TrieNode t) {
+		if (parent == null)
+			return "";
+		else
+			return printCharactersBackToRoot(parent) + Character.toString(c);
+	}
 }
