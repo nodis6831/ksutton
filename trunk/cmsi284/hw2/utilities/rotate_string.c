@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
 
 /*
  * Rotate will rotate around the nth letter in the string
@@ -21,8 +21,3 @@ char* rotate(char* str, int n){
 
     return newstr;
 }
-
-int main(){
-    printf("%s\n", rotate("doghouse", 3));
-}
-
