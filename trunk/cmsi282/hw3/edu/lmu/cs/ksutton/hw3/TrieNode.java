@@ -97,7 +97,7 @@ public class TrieNode {
 		String toReturn = "";
 
 		if (end == true) // we've reached a leaf
-			return Character.toString(c) + "\n";
+			return Character.toString(c) + "\t" + count + "\n";
 
 		else {
 			for (int i = 0; i < children.size(); i++) {
