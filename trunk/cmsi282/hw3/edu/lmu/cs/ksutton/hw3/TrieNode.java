@@ -13,6 +13,9 @@ public class TrieNode {
 	private boolean end;
 
 	private int count = 0; // For Concordance
+	
+	ArrayList<String> concordances = null;
+		
 
 	/**
 	 * The root node constructor
@@ -23,6 +26,7 @@ public class TrieNode {
 		children = new ArrayList<TrieNode>(0);
 		parent = null; // root node
 		end = false;
+		concordances = new ArrayList<String>();
 	}
 
 	public TrieNode(char character, TrieNode p) {
@@ -50,25 +54,15 @@ public class TrieNode {
 		// Last character of a word
 		if (s.length() == 0) {
 			end = true;
-			count++;
+			count++; // Concordance
 		}
 
 		else {
 			Character curChar = s.charAt(0);
 
 			// we need to create the first child then recurse
-			if (/* parent != null && */getChild(curChar) == null) {
+			if (getChild(curChar) == null)
 				children.add(new TrieNode(curChar, this));
-
-			}
-
-			/*
-			 * else if (s.length() > 1 && parent != null) { // Create a child if
-			 * it doesn't already exist if (getChild(c) == null){
-			 * children.add(new TrieNode(c, this)); }
-			 * 
-			 * //Recurse getChild(c).add(s.substring(1)); }
-			 */
 
 			getChild(curChar).add(s.substring(1));
 		}
@@ -79,10 +73,23 @@ public class TrieNode {
 	 * 
 	 * @param s
 	 *            The string to find inside the Trie
-	 * @return The number of times the word occurs in the Trie
+	 * @return The number of times the word occurs in the Trie. 0 If the word
+	 *         does not occur
 	 */
 	public int find(String s) {
-		return 0;
+		if (s.length() == 0)
+			return count;
+		
+
+		else if (getChild(s.charAt(0)) != null){
+			if(s.length() == 1){
+				return getChild(s.charAt(0)).find("");
+			}
+			else
+				return getChild(s.charAt(0)).find(s.substring(1));
+		}
+		else
+			return 0;
 	}
 
 	/*
@@ -93,24 +100,18 @@ public class TrieNode {
 	@Override
 	public String toString() {
 
-		// TODO output all words in the Trie
-		String toReturn = "";
+		String readOut = "";
+		
+		buildConcordances();
 
-		if (end == true) // we've reached a leaf
-			return Character.toString(c) + "\t" + count + "\n"
-					+ printCharactersBackToRoot(findLastEnd(this));
-
-		else {
-			for (int i = 0; i < children.size(); i++) {
-				if (parent != null) // child node
-					toReturn += Character.toString(c)
-							+ children.get(i).toString();
-				else
-					toReturn += children.get(i).toString();
+		if(isRoot())
+		{
+			for(String s : concordances){
+				readOut += s;
 			}
 		}
+		return readOut;
 
-		return toReturn;
 	}
 
 	/**
@@ -166,11 +167,21 @@ public class TrieNode {
 	 * 
 	 * @return
 	 */
-	public TrieNode findLastEnd(TrieNode t) {
-		if (end == true)
+	public TrieNode findLastEnd() {
+		if (end == true || parent == null)
 			return this;
 		else
-			return findLastEnd(this.parent);
+			return parent.findLastEnd();
+	}
+
+	public TrieNode findLastMultiChildNode() {
+
+		if (c == null)
+			return null;
+		if (children.size() > 1)
+			return this;
+		else
+			return parent.findLastMultiChildNode();
 	}
 
 	/**
@@ -182,10 +193,71 @@ public class TrieNode {
 	 * @return A String containing all the characters from the current node back
 	 *         up to the root
 	 */
-	public String printCharactersBackToRoot(TrieNode t) {
+	public String printCharactersBackToRoot() {
 		if (parent == null)
 			return "";
 		else
-			return printCharactersBackToRoot(parent) + Character.toString(c);
+			return parent.printCharactersBackToRoot() + Character.toString(c);
+	}
+
+	/**
+	 * @return True iff the TrieNode is root, false otherwise
+	 */
+	public boolean isRoot() {
+		return parent == null ? true : false;
+	}
+	
+	/**
+	 * @return True iff the TrieNode has no children
+	 */
+	public boolean isLeaf(){
+		return children.size() == 0;
+	}
+	
+	public String printUp(){
+		if (!isRoot())
+			return parent.printUp() + Character.toString(c);
+		else
+			return "";
+	}
+	
+	private void buildConcordances(){
+		
+		if(!isRoot() && end == true){	
+			getRoot().addConcordance(printUp() + "\t" + count + "\n");
+		}
+		
+		//if (end == true){ // we've reached a leaf
+		//	 readOut += tmp + "\t" + count + "\n";//	+ findLastMultiChildNode().getParent().printCharactersBackToRoot();
+			// tmp = findLastMultiChildNode().toString();
+		//}
+		if(children.size() > 0){
+			for (int i = 0; i < children.size(); i++) {
+				//if (!isRoot()){ // child node
+					children.get(i).toString();
+				//}
+				//else //isRoot()
+					//readOut += children.get(i).toString();
+			}
+		}
+
+		//return readOut;
+	}
+	
+	/**
+	 * @return The root node
+	 */
+	private TrieNode getRoot(){
+		if(isRoot())
+			return this;
+		else
+			return parent.getRoot();
+	}
+	
+	public void addConcordance(String s){
+		if(isRoot())
+			concordances.add(s);
+		else
+			throw new IllegalArgumentException("Non-root nodes do not have concordance arrays");
 	}
 }
