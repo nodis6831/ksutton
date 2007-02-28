@@ -15,11 +15,12 @@ public class TrieNodeTester {
 		root.add("something");
 		root.add("someone");
 		root.add("someplace");
-		
-		
-		
-		System.out.println(root.toString());
-		//Assert.assertEquals("apple\nape\nsomething\nsomeone\nsomeplace", root.toString());
+
+		Assert.assertFalse(root.equals(null));
+		Assert.assertFalse(root.getChild('a').equals(null));
+		Assert.assertFalse(root.getChild('s').equals(null));
+		Assert.assertTrue(root.getChild('c') == null);
+		Assert.assertTrue(root.getChild('r') == null);
 	}
 	
 	@Test
@@ -56,7 +57,5 @@ public class TrieNodeTester {
 		
 		Assert.assertEquals(4, root.find("apple"));
 		Assert.assertEquals(4, root.find("something"));
-		
-		System.out.println(root.toString());
 	}
 }
