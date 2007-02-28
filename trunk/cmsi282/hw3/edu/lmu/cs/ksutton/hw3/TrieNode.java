@@ -140,12 +140,16 @@ public class TrieNode {
 		if (c == null)
 			return null;
 
-		for (int i = 0; i < children.size(); i++) {
-			if (children.get(i).getC() == c)
-				return children.get(i);
+		try {
+			for (int i = 0; i < children.size(); i++) {
+				if (children.get(i).getC() == c)
+					return children.get(i);
+			}
 		}
-
-		return null;// we didn't find what we were looking for
+		catch (Exception e){
+			return null;// we didn't find what we were looking for
+		}
+		return null;
 	}
 
 	/**
@@ -224,7 +228,7 @@ public class TrieNode {
 	private void buildConcordances(){
 		
 		if(!isRoot() && end == true){	
-			getRoot().addConcordance(printUp() + "\t" + count + "\n");
+			getRoot().addConcordance(count + " " + printUp() + "\n");
 		}
 		
 		//if (end == true){ // we've reached a leaf
@@ -233,11 +237,8 @@ public class TrieNode {
 		//}
 		if(children.size() > 0){
 			for (int i = 0; i < children.size(); i++) {
-				//if (!isRoot()){ // child node
 					children.get(i).toString();
-				//}
-				//else //isRoot()
-					//readOut += children.get(i).toString();
+
 			}
 		}
 
