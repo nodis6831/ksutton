@@ -1,5 +1,6 @@
 package edu.lmu.cs.ksutton.hw4;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
@@ -302,3 +303,62 @@ class DayStack extends Stack<RowStack> {
 	}
 
 }
+
+class SchoolgirlQueue implements Queue{
+
+	private ArrayList<Schoolgirl> girls;
+	
+	private static final int FIRST_INDEX = 0;
+	
+	public SchoolgirlQueue(){
+		girls = new ArrayList<Schoolgirl>();
+	}
+	
+	/* (non-Javadoc)
+	 * @see edu.lmu.cs.ksutton.hw4.Queue#dequeue()
+	 */
+	public Object dequeue() {
+		return girls.remove(FIRST_INDEX);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.lmu.cs.ksutton.hw4.Queue#enqueue(java.lang.Object)
+	 */
+	public void enqueue(Object item) {
+		assert (item instanceof Schoolgirl);
+		girls.add((Schoolgirl) item);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.lmu.cs.ksutton.hw4.Queue#isEmpty()
+	 */
+	public boolean isEmpty() {
+		return girls.isEmpty();
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.lmu.cs.ksutton.hw4.Queue#peek()
+	 */
+	public Object peek() {
+		return girls.get(FIRST_INDEX);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.lmu.cs.ksutton.hw4.Queue#size()
+	 */
+	public int size() {
+		return girls.size();
+	}
+	
+	/**
+	 * Rotates the first element to the back
+	 */
+	public void rotate(){
+		girls.add(girls.remove(FIRST_INDEX));
+	}
+}
+
+class Schoolgirl {
+	
+}
+
