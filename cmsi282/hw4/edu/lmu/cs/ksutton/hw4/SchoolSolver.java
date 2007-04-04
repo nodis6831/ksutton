@@ -32,6 +32,13 @@ public class SchoolSolver {
 	 */
 	// private static RowStack rows;
 	/**
+	 * girlqueue is the queue to which we add and take girls from depending on
+	 * whether or not they fit into the slots correctly
+	 */
+
+	protected static SchoolgirlQueue girlQueue;
+
+	/**
 	 * The days object is a stack of stacks. Each "day" holds its own row stack.
 	 * The stacks inside a stack make it easy to backtrack.
 	 */
@@ -143,14 +150,13 @@ public class SchoolSolver {
 			else if (i == 14 && j == 12 && k == 13) {
 
 				// Pop off either a row or a day, depending on the case
-				if(days.peek().size() > 1)
+				if (days.peek().size() > 1)
 					days.peek().pop();
-				
-				else{
+
+				else {
 					days.pop();
 					loadCurrentDaysPlacedSchoolgirls();
 				}
-						
 
 				// Take the most recent row
 				Integer[] peekArray = days.peek().peek();
@@ -204,161 +210,13 @@ public class SchoolSolver {
 
 		System.out.println(nodes);
 	}
-	
-	private static void loadCurrentDaysPlacedSchoolgirls(){
+
+	private static void loadCurrentDaysPlacedSchoolgirls() {
 		usedToday = returnArrayFullOfFalse(15);
-		for (Integer[] a : days.peek()){
-			for(int i = 0; i < 3; i++){
+		for (Integer[] a : days.peek()) {
+			for (int i = 0; i < 3; i++) {
 				usedToday[i] = true;
 			}
 		}
 	}
 }
-
-/**
- * @author Kelly Sutton
- */
-class RowStack extends Stack<Integer[]> {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Stack#push(java.lang.Object)
-	 */
-	@Override
-	public Integer[] push(Integer[] item) {
-		addAdjacents(item);
-		return super.push(item);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Stack#pop()
-	 */
-	@Override
-	public synchronized Integer[] pop() {
-		// TODO this should reverse any changes made to hasStoodNextTo
-		eraseAdjacents(peek());
-		return super.pop();
-	}
-
-	private void addAdjacents(Integer[] row) {
-
-		Assert.assertTrue(row.length == 3);
-
-		// this nastiness logs the students walking next to each other
-		for (int i = 0; i < 2; i++) {
-			SchoolSolver.hasStoodNextTo[row[i]][row[i + 1]] = true;
-			SchoolSolver.hasStoodNextTo[row[i + 1]][row[i]] = true;
-		}
-
-		// logging that we've used this girl already today
-		for (int j = 0; j < 3; j++) {
-			SchoolSolver.usedToday[j] = true;
-		}
-	}
-
-	/**
-	 * Flips the values to false for the corresponding cells in hasStoodNextTo
-	 * 
-	 * @param oneRow
-	 */
-	private void eraseAdjacents(Integer[] row) {
-
-		assert row.length == 3;
-
-		// this nastiness undoes addAdjacents
-		for (int i = 0; i < 2; i++) {
-			SchoolSolver.hasStoodNextTo[row[i]][row[i + 1]] = false;
-			SchoolSolver.hasStoodNextTo[row[i + 1]][row[i]] = false;
-		}
-
-		for (int j = 0; j < 3; j++) {
-			SchoolSolver.usedToday[j] = false;
-		}
-	}
-
-}
-
-class DayStack extends Stack<RowStack> {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Stack#pop()
-	 */
-	/**
-	 * I'm adding in some safety to make sure that we always reset the
-	 * hasStoodNextTo table in case of a pop
-	 */
-	@Override
-	public synchronized RowStack pop() {
-
-		// while (peek().peek() != null) { // peek().peek() is an Integer[]
-		// peek().pop(); // popping things off one at a time,
-		// guaranteeing our table will be reset
-		// }
-		return super.pop();
-	}
-
-}
-
-class SchoolgirlQueue implements Queue{
-
-	private ArrayList<Schoolgirl> girls;
-	
-	private static final int FIRST_INDEX = 0;
-	
-	public SchoolgirlQueue(){
-		girls = new ArrayList<Schoolgirl>();
-	}
-	
-	/* (non-Javadoc)
-	 * @see edu.lmu.cs.ksutton.hw4.Queue#dequeue()
-	 */
-	public Object dequeue() {
-		return girls.remove(FIRST_INDEX);
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.lmu.cs.ksutton.hw4.Queue#enqueue(java.lang.Object)
-	 */
-	public void enqueue(Object item) {
-		assert (item instanceof Schoolgirl);
-		girls.add((Schoolgirl) item);
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.lmu.cs.ksutton.hw4.Queue#isEmpty()
-	 */
-	public boolean isEmpty() {
-		return girls.isEmpty();
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.lmu.cs.ksutton.hw4.Queue#peek()
-	 */
-	public Object peek() {
-		return girls.get(FIRST_INDEX);
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.lmu.cs.ksutton.hw4.Queue#size()
-	 */
-	public int size() {
-		return girls.size();
-	}
-	
-	/**
-	 * Rotates the first element to the back
-	 */
-	public void rotate(){
-		girls.add(girls.remove(FIRST_INDEX));
-	}
-}
-
-class Schoolgirl {
-	
-}
-
