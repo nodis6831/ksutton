@@ -41,21 +41,29 @@ public class SchoolSolver {
 	private static WeekStack week = new WeekStack();
 
 	private static int nodes = 0;
+	
+	private static final int DAYS = 7;
 
+	private static final int NUM_GIRLS = 15;
+	
+	private static final int NUM_ROWS = 5;
+	
+	private static final int NUM_GIRLS_IN_A_ROW = 3;
+	
 	public static void main(String[] args) {
 
 		hasStoodNextTo = fillMatrixWithFalse();
 
 		boolean dayFailed = false;
 
-		while (week.size() <= 7) { // 7 days
+		while (week.size() < DAYS) { // 7 days
 
 			// Add a new empty RowStack to our DayStack
-			week.push(new DayStack(15));
+			week.push(new DayStack(NUM_GIRLS));
 
 			DayStack currentDay = week.peek();
 			SchoolgirlQueue girlQueue = currentDay.getSchoolgirlQueue();
-			while (currentDay.size() < 5) { // 5 rows
+			while (currentDay.size() < NUM_ROWS) { // 5 rows
 
 				// we need to pop back
 				//  this should be rare or should never happen
@@ -71,9 +79,11 @@ public class SchoolSolver {
 				// try to add three schoolgirls
 				// days.peek().push(tryToAddNewRow(new Integer[] { 0, 1, 2 }));
 
+				currentDay.push(new RowStack());
+				
 				RowStack currentRow = currentDay.peek();
 
-				while (currentRow.size() < 3) { // 3 girls to a row
+				while (currentRow.size() < NUM_GIRLS_IN_A_ROW) { // 3 girls to a row
 
 					// we've already been through the girls once
 					if (girlQueue.getFlag() == true) {
@@ -99,15 +109,23 @@ public class SchoolSolver {
 
 					if (isRowOkay(currentRow)) { // march on
 						girlQueue.setFlag(false);
+						
+						
+						if (currentRow.size() == NUM_GIRLS_IN_A_ROW)
+							break;
 					}
 
 					else { // pop off and try adding the next
-						girlQueue.enqueue(currentRow.pop());
+						Schoolgirl popped = currentRow.pop();
+						eraseAdjacents(currentRow, popped);
+						girlQueue.enqueue(popped);
 					}
 				}
+				
+				//addAdjacents(currentRow, currentRow.peek()); //our day checks out
+				addAdjacents(currentRow);
 			}
 			// usedToday = returnArrayFullOfFalse(15);
-			girlQueue = new SchoolgirlQueue(15);
 		}
 
 		printResults(); // TODO update printResults
@@ -245,22 +263,21 @@ public class SchoolSolver {
 	}
 	
 	private static void printResults() {
-
-		System.out.println(week);
 		
-		/*
-		while (week.size() > 1) {
-			System.out.println("Day " + Math.abs((days.size() - 8)));
+		while (week.size() >= 1) {
+			System.out.println("Day " + Math.abs((week.size() - 8)));
 
-			while (days.peek().size() > 0) {
-				System.out.println(Arrays.toString(days.peek().pop()));
+			DayStack currentDay = week.pop();
+			while (currentDay.size() >= 1) {
+				
+				RowStack row = currentDay.pop();
+				System.out.println(row);
 			}
 			System.out.println();
-			days.pop();
 		}
 
 		System.out.println(nodes);
-		*/
+		
 	}
 
 	/*
@@ -301,5 +318,59 @@ public class SchoolSolver {
 		}
 
 		return true;
+	}
+	
+	public static void addAdjacents(RowStack r, Schoolgirl girl) {
+
+		// this nastiness logs the students walking next to each other
+		for (Object o : r.toArray()) {
+			Schoolgirl s;
+			if (o instanceof Schoolgirl)
+				s = (Schoolgirl) o;
+			
+			else
+				throw new IllegalArgumentException(); 
+			//TODO what type of exception should this be?
+			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = true;
+			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = true;
+		}
+	}
+	
+	public static void addAdjacents(RowStack r){
+		
+		assert (r.size() == 3);
+		
+		for (Object o : r.toArray()) {
+			Schoolgirl s;
+			if (o instanceof Schoolgirl)
+				s = (Schoolgirl) o;
+			
+			else
+				throw new IllegalArgumentException(); 
+			
+			addAdjacents(r, s);
+		}
+	}
+
+	/**
+	 * Flips the values to false for the corresponding cells in hasStoodNextTo
+	 * 
+	 * @param oneRow
+	 */
+	public static void eraseAdjacents(RowStack r, Schoolgirl girl) {
+		
+		// this nastiness undoes addAdjacents
+		for (Object o : r.toArray()) {
+			
+			Schoolgirl s;
+			if (o instanceof Schoolgirl)
+				s = (Schoolgirl) o;
+			else
+				throw new IllegalArgumentException(); 
+			//TODO what type of exception should this be?
+			
+			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = false;
+			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = false;
+		}
 	}
 }

@@ -13,7 +13,7 @@ public class RowStack extends Stack<Schoolgirl> {
 	 */
 	@Override
 	public Schoolgirl push(Schoolgirl item) {
-		addAdjacents(item);
+		//addAdjacents(item);
 		return super.push(item);
 	}
 
@@ -25,30 +25,17 @@ public class RowStack extends Stack<Schoolgirl> {
 	@Override
 	public synchronized Schoolgirl pop() {
 		// TODO this should reverse any changes made to hasStoodNextTo
-		eraseAdjacents(peek());
+		//eraseAdjacents(peek());
 		return super.pop();
 	}
 
-	private void addAdjacents(Schoolgirl girl) {
-
-		// this nastiness logs the students walking next to each other
-		for (Schoolgirl s : (Schoolgirl[]) this.toArray()) {
-			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = true;
-			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = true;
-		}
-	}
-
-	/**
-	 * Flips the values to false for the corresponding cells in hasStoodNextTo
-	 * 
-	 * @param oneRow
+	/* (non-Javadoc)
+	 * @see java.util.Vector#toString()
 	 */
-	private void eraseAdjacents(Schoolgirl girl) {
-		
-		// this nastiness undoes addAdjacents
-		for (Schoolgirl s : (Schoolgirl[]) this.toArray()) {
-			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = false;
-			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = false;
-		}
+
+	@Override
+	public synchronized String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 }
