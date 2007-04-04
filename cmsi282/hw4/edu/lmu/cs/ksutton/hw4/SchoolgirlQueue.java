@@ -42,7 +42,7 @@ public class SchoolgirlQueue implements Queue {
 	 * 
 	 * @see edu.lmu.cs.ksutton.hw4.Queue#dequeue()
 	 */
-	public Object dequeue() {
+	public Schoolgirl dequeue() {
 		return girls.remove(FIRST_INDEX);
 	}
 
@@ -70,7 +70,7 @@ public class SchoolgirlQueue implements Queue {
 	 * 
 	 * @see edu.lmu.cs.ksutton.hw4.Queue#peek()
 	 */
-	public Object peek() {
+	public Schoolgirl peek() {
 		return girls.get(FIRST_INDEX);
 	}
 
