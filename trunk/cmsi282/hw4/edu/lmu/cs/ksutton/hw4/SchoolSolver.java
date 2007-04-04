@@ -144,6 +144,7 @@ public class SchoolSolver {
 	 * @return Returns a filled Integer array of size 3 with the girls,
 	 *         otherwise it returns null
 	 */
+	/*
 	private static Integer[] checkTheseGirls(int a, int b, int c) {
 
 		if (!hasStoodNextTo[a][b] && !hasStoodNextTo[b][c] && !usedToday[a]
@@ -152,6 +153,7 @@ public class SchoolSolver {
 
 		return null;
 	}
+	*/
 
 	/**
 	 * Tiny helper function to make sure none of our incrementers are the same
