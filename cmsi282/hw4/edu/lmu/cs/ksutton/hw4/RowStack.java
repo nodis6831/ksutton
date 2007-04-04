@@ -5,6 +5,7 @@ import java.util.Stack;
 import org.junit.Assert;
 
 public class RowStack extends Stack<Schoolgirl> {
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -28,19 +29,12 @@ public class RowStack extends Stack<Schoolgirl> {
 		return super.pop();
 	}
 
-	private void addAdjacents(Schoolgirl row) {
-
-		Assert.assertTrue(row.length == 3);
+	private void addAdjacents(Schoolgirl girl) {
 
 		// this nastiness logs the students walking next to each other
-		for (int i = 0; i < 2; i++) {
-			SchoolSolver.hasStoodNextTo[row[i]][row[i + 1]] = true;
-			SchoolSolver.hasStoodNextTo[row[i + 1]][row[i]] = true;
-		}
-
-		// logging that we've used this girl already today
-		for (int j = 0; j < 3; j++) {
-			SchoolSolver.usedToday[j] = true;
+		for (Schoolgirl s : (Schoolgirl[]) this.toArray()) {
+			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = true;
+			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = true;
 		}
 	}
 
@@ -49,19 +43,12 @@ public class RowStack extends Stack<Schoolgirl> {
 	 * 
 	 * @param oneRow
 	 */
-	private void eraseAdjacents(Schoolgirl row) {
-
-		assert row.length == 3;
-
+	private void eraseAdjacents(Schoolgirl girl) {
+		
 		// this nastiness undoes addAdjacents
-		for (int i = 0; i < 2; i++) {
-			SchoolSolver.hasStoodNextTo[row[i]][row[i + 1]] = false;
-			SchoolSolver.hasStoodNextTo[row[i + 1]][row[i]] = false;
-		}
-
-		for (int j = 0; j < 3; j++) {
-			SchoolSolver.usedToday[j] = false;
+		for (Schoolgirl s : (Schoolgirl[]) this.toArray()) {
+			SchoolSolver.hasStoodNextTo[girl.getIndex()][s.getIndex()] = false;
+			SchoolSolver.hasStoodNextTo[s.getIndex()][girl.getIndex()] = false;
 		}
 	}
-
 }
