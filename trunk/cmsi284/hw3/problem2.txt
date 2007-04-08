@@ -1,0 +1,21 @@
+2. Give x86 logic instructions to perform the following operations on the ebx register:
+
+    a. Clear bits 8, 3, 22, 20 and 16
+
+           and 	ebx, FFAEFEF7h	; 1111 1111 1010 1110 1111 1110 1111 0111
+
+    b. Complement bits 30 through 18
+
+           xor	ebx, 7FF80000h	; 0111 1111 1111 1000 0000 0000 0000 0000
+
+    c. Replace it with the remainder of itself divided by 128
+
+           move eax, ebx	; move ebx into the eax register
+           idiv	dword 128
+           mov	ebx, edx	; move the remainder into the proper register
+
+
+    d. Set the middle 10 bits
+
+           or	ebx, 001FF800h	; 0000 0000 0001 1111 1111 1000 0000 0000
+
