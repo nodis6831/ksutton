@@ -12,7 +12,7 @@ public class GeneticSolver {
 
 	public static void main(String[] args) {
 
-		parseInput(args);
+		instance = parseInput(args[0]);
 
 	}
 	
@@ -20,12 +20,14 @@ public class GeneticSolver {
 	 * parseInput will organize the input into the instance array.
 	 * @param args The command line arguments
 	 */
-	private static void parseInput(String[] args){
+	static ArrayList<ArrayList<Boolean>> parseInput(String s){
+
+		ArrayList<ArrayList<Boolean>> returnList = new ArrayList<ArrayList<Boolean>>();
 		
-		if (args.length > 1)
-			throw new IllegalArgumentException("There should only be one argument!");
+		//if (s.length > 1)
+		//	throw new IllegalArgumentException("There should only be one argument!");
 		
-		String[] cases = args[0].split(")");
+		String[] cases = s.split(")");
 		
 		if (cases.length < 1)
 			throw new IllegalArgumentException("Malformed problem instance!");
@@ -41,11 +43,13 @@ public class GeneticSolver {
 				
 				//we're not dealing with a negative
 				if(clause[j].charAt(0) != '~')
-					instance.get(i).set(Integer.parseInt(clause[j]), true);    
+					returnList.get(i).set(Integer.parseInt(clause[j]), true);    
 				
 				else
-					instance.get(i).set(Integer.parseInt(clause[j].substring(1)), false);
+					returnList.get(i).set(Integer.parseInt(clause[j].substring(1)), false);
 			}
 		}
+		
+		return returnList;
 	}
 }
