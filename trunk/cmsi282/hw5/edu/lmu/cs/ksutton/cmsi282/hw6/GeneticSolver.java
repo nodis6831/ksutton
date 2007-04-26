@@ -3,21 +3,53 @@ package edu.lmu.cs.ksutton.cmsi282.hw6;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * CMSI 282 Problem Set #6 Problem #2
+ * 
+ * This is the GeneticSolver, which works (surprise!). It is, however, a good
+ * example of sloppy Java programming. There are far too many hard-coded values
+ * as is. To get rid of these hard-coded values, I'd have to go through the
+ * user-input twice. That would require a decent amount of recoding.
+ * 
+ * The unit tests are not the extensive by any means, but they do test a few of
+ * the more vital corner cases.
+ * 
+ * While iterating through generations, it's a crapshoot as to which method of
+ * population change will occur. It randomly picks between the crossover method
+ * and the mutation method.
+ * 
+ * IMPORTANT NOTE: Currently, GeneticSolver is not implementing "natural
+ * selection," i.e., attempting to keep the better members of the population. It
+ * usually spits out a solution to pretty complex problems with
+ * NUMBER_OF_GENERATIONS set high enough. Cool.
+ * 
+ * In the future, it might be worth messing with the NUMBER_OF_GENERATIONS and
+ * SIZE_OF_POPULATION. Should they always be proportional? Should they be
+ * proportional to the number of variables used in the program instance? Does it
+ * matter as long as they are large enough? The program runs quickly on my
+ * desktop with 1000000 generations and 100 "citizens."
+ * 
+ * @author Kelly Sutton
+ * 
+ */
 public class GeneticSolver {
 
 	public static final int SIZE_OF_MATRIX = 100;
 
-	public static final int NUMBER_OF_GENERATIONS = 1000;
+	public static final int NUMBER_OF_GENERATIONS = 1000000;
 
 	public static final int SIZE_OF_POPULATION = 100;
 
 	public static final int NUM_DIFFERENT_MODIFICATIONS = 2;
 
+	public static int NUM_CLAUSES;
+
 	public static final Random GENERATOR = new Random();
 
 	/**
 	 * instance is the particular problem instance GeneticSolver attempts to
-	 * solve
+	 * solve. Right now, it doesn't automatically size itself per the number of
+	 * arguments entered by the user, which is bad.
 	 */
 	public static Boolean[][] instance = new Boolean[SIZE_OF_MATRIX][SIZE_OF_MATRIX];
 
@@ -50,8 +82,12 @@ public class GeneticSolver {
 		int smallFractionOfThePopulation = SIZE_OF_POPULATION / 30;
 		// TODO find some fancy way to assign 30
 		int modStep;
+		int populationGoodness = 0;
 
 		while (t < NUMBER_OF_GENERATIONS) {
+
+			previousPopulationGoodness = populationGoodness;
+			populationGoodness = 0;
 
 			/* Select "fitter" members */
 			int top25PercentStartIndex = SIZE_OF_POPULATION
@@ -91,6 +127,7 @@ public class GeneticSolver {
 					/* Reassign the crossed over pairs */
 					population.set(currentPair1, tmpArray[0]);
 					population.set(currentPair2, tmpArray[1]);
+
 				}
 
 				/* Randomly select some small fraction of P(t) for "mutation" */
@@ -105,10 +142,24 @@ public class GeneticSolver {
 			}
 
 			/* Evaluate population */
+			populationGoodness = evaluatePopulation();
 
-			/* Some members pass unmodified */
+			/* We found a solution */
+			if (populationGoodness < 0) {
+				System.out.println("We've found a solution:");
+				System.out.println(printBooleanArray(population.get(Math
+						.abs(populationGoodness))));
+				break;
+			}
 
-			t++;
+			/* We didn't find a solution */
+			else if (t == NUMBER_OF_GENERATIONS - 1) {
+				System.out.println("No solution found.");
+				break;
+			}
+
+			else
+				t++;
 
 		}
 	}
@@ -121,13 +172,12 @@ public class GeneticSolver {
 	 */
 	static Boolean[][] parseInput(String s) {
 
-		Boolean[][] returnList = new Boolean[15][15];
-
-		// if (s.length > 1)
-		// throw new IllegalArgumentException("There should only be one
-		// argument!");
-
 		String[] cases = s.split("\\)");
+
+		NUM_CLAUSES = cases.length;
+
+		Boolean[][] returnList = generateMatrixFullOfFalse(NUM_CLAUSES,
+				SIZE_OF_MATRIX);
 
 		if (cases.length < 1)
 			throw new IllegalArgumentException("Malformed problem instance!");
@@ -145,17 +195,19 @@ public class GeneticSolver {
 			for (int j = 0; j < clause.length; j++) {
 
 				// we're not dealing with a negative
-				if (clause[j].charAt(0) != '~')
+				if (clause[j].charAt(0) != '~') {
 					tmpPosition = Integer.parseInt(clause[j]);
+					returnList[i][tmpPosition] = true;
+				}
 
 				// negative
-				else
+				else {
 					tmpPosition = Integer.parseInt(clause[j].substring(1));
-
+					returnList[i][tmpPosition] = false;
+				}
 				/* Set instance accordingly */
-				returnList[i][tmpPosition] = false;
 
-				/* Compute number of variables */
+				/* Compute total number of variables */
 				if (tmpPosition > numVariables)
 					numVariables = tmpPosition;
 			}
@@ -184,13 +236,14 @@ public class GeneticSolver {
 	 * @return A mutated Boolean[] object.
 	 */
 	static Boolean[] mutate(Boolean[] a) {
-		for (int i = 0; i < a.length; i++) {
+		Boolean[] tmp = a.clone();
+		for (int i = 0; i < tmp.length; i++) {
 			// We'll mutate about half the time
 			if (GENERATOR.nextBoolean()) {
-				a[i] = GENERATOR.nextBoolean();
+				tmp[i] = GENERATOR.nextBoolean();
 			}
 		}
-		return a;
+		return tmp;
 	}
 
 	/**
@@ -198,18 +251,18 @@ public class GeneticSolver {
 	 * integer that represents how many clauses were satisfied. If the value
 	 * returned is equal to the size of instance, then you have a solution.
 	 * 
-	 * @param a The guess to evaluate against the instance
+	 * @param a
+	 *            The guess to evaluate against the instance
 	 * @return The "goodness" value
 	 */
 
-	static int evaluate(Boolean[] a) {
+	static int evaluate(Boolean[] a, Boolean[][] key) {
 
 		int goodness = 0;
 
-		for (int i = 0; i < instance.length; i++) {
-
-			for (int j = 0; j < instance[0].length; j++) {
-				if (instance[i][j] == a[j]) {
+		for (int i = 0; i < key.length; i++) {
+			for (int j = 0; j < a.length; j++) {
+				if (key[i][j] == a[j]) {
 					goodness++;
 					break;
 				}
@@ -217,6 +270,32 @@ public class GeneticSolver {
 		}
 
 		return goodness;
+	}
+
+	/**
+	 * A helper method to evaluate the goodness of the _entire_ population.
+	 * 
+	 * @return
+	 */
+	static int evaluatePopulation() {
+
+		int totalPopulationGoodness = 0;
+		int specificAttemptGoodness = 0;
+
+		for (int i = 0; i < SIZE_OF_POPULATION; i++) {
+			specificAttemptGoodness = evaluate(population.get(i), instance);
+
+			/* This "citizen" fulfilled each clause */
+			if (specificAttemptGoodness == NUM_CLAUSES) {
+				// System.out.println("We've found a perfect citizen!");
+				return -i;
+			}
+
+			else
+				totalPopulationGoodness += specificAttemptGoodness;
+		}
+
+		return totalPopulationGoodness;
 	}
 
 	/**
@@ -247,11 +326,10 @@ public class GeneticSolver {
 		returnArray[0] = a;
 		returnArray[1] = b;
 
-		for (int i = seed; i < a.length; i++)
+		for (int i = seed; i < a.length; i++) {
 			returnArray[0][i] = bClone[i];
-
-		for (int j = 0; j < seed; j++)
-			returnArray[0][j] = aClone[j];
+			returnArray[1][i] = aClone[i];
+		}
 
 		return returnArray;
 	}
@@ -263,6 +341,40 @@ public class GeneticSolver {
 	 */
 	static Boolean[][] fillMatrixWithFalse() {
 		Boolean[][] tmp = new Boolean[SIZE_OF_MATRIX][SIZE_OF_MATRIX];
+
+		for (int i = 0; i < tmp.length; i++) {
+			for (int j = 0; j < tmp[i].length; j++) {
+				tmp[i][j] = false;
+			}
+		}
+
+		return tmp;
+	}
+
+	/**
+	 * A helper method to just return a Boolean matrix fillled with false.
+	 * 
+	 * @return
+	 */
+	static Boolean[][] generateMatrixFullOfFalse(int size) {
+		Boolean[][] tmp = new Boolean[size][size];
+
+		for (int i = 0; i < tmp.length; i++) {
+			for (int j = 0; j < tmp[i].length; j++) {
+				tmp[i][j] = false;
+			}
+		}
+
+		return tmp;
+	}
+
+	/**
+	 * A helper method to just return a Boolean matrix fillled with false.
+	 * 
+	 * @return
+	 */
+	static Boolean[][] generateMatrixFullOfFalse(int rows, int columns) {
+		Boolean[][] tmp = new Boolean[rows][columns];
 
 		for (int i = 0; i < tmp.length; i++) {
 			for (int j = 0; j < tmp[i].length; j++) {
@@ -311,5 +423,49 @@ public class GeneticSolver {
 
 		return true;
 
+	}
+
+	/**
+	 * ... because equals() just doesn't do the trick
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	static Boolean testEquality(Boolean[] a, Boolean[] b) {
+
+		if (a.length != b.length)
+			return false;
+
+		// Not the best loops, but they'll do the trick
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != b[i])
+				return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Slick little method that works the way Boolean[].toString() should work
+	 * 
+	 * @param a
+	 *            A Boolean[] object
+	 * @return A String representation of a
+	 */
+	static String printBooleanArray(Boolean[] a) {
+
+		String s = "";
+
+		s += "[";
+
+		for (int i = 0; i < a.length - 1; i++) {
+			s += a[i] + ", ";
+		}
+
+		s += a[a.length - 1];
+
+		s += "]";
+		return s;
 	}
 }
